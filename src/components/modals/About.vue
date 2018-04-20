@@ -16,6 +16,12 @@
                 <dt class="col-3">{{ lang.modal.about.developer }}:</dt>
                 <dd class="col-9">Aleksandr Manekin - alexusmai@gmail.com</dd>
 
+                <dt class="col-3">GitHub:</dt>
+                <dd class="col-9">
+                    <a href="https://github.com/alexusmai/vue-laravel-file-manager" target="_blank" class="pr-3">Frontend</a>
+                    <a href="https://github.com/alexusmai/laravel-file-manager" target="_blank">Backend</a>
+                </dd>
+
                 <dt class="col-3">{{ lang.modal.about.site }}:</dt>
                 <dd class="col-9"><a href="http://webmai.ru/projects/file-manager" target="_blank">webmai.ru</a></dd>
             </dl>

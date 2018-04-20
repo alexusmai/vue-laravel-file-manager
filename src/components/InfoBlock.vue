@@ -125,6 +125,7 @@ export default {
 
         .text-right > span {
             padding-left: 0.5rem;
+            cursor: pointer;
         }
     }
 </style>
