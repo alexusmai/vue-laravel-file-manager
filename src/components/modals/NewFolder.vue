@@ -66,8 +66,8 @@ export default {
       this.$store.dispatch('fm/createDirectory', this.directoryName).then((response) => {
         // if new directory created successfully
         if (response.data.result.status === 'success') {
-          // clear directory name
-          this.directoryName = '';
+          // close modal window
+          this.hideModal();
         }
       });
     },
