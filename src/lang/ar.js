@@ -1,8 +1,8 @@
 /**
- * English translate
+ * Arabic translate - D34DlyM4N(https://github.com/D34DlyM4N)
  * @type Object
  */
-const en = {
+const ar = {
   btn: {
     about: 'حول',
     back: 'رجوع',
@@ -114,4 +114,4 @@ const en = {
   },
 };
 
-export default en;
+export default ar;

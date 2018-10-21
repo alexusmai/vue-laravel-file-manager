@@ -299,6 +299,9 @@ export default {
      * @returns {*|boolean}
      */
     canView(extension) {
+      // extension not found
+      if (!extension) return false;
+
       const img = ['png', 'jpg', 'jpeg', 'gif'];
 
       return img.includes(extension.toLowerCase());

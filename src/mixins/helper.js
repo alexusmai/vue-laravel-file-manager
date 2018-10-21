@@ -78,7 +78,6 @@ export default {
         'text/html': 'fa-file-code',
         'text/css': 'fa-file-code',
 
-
         // audio
         'audio/midi': 'fa-file-audio',
         'audio/mpeg': 'fa-file-audio',
@@ -203,7 +202,6 @@ export default {
         '7z': 'fa-file-archive',
         'tar.gz': 'fa-file-archive',
 
-
         // application
         pdf: 'fa-file-pdf',
 
@@ -223,7 +221,7 @@ export default {
         potx: 'fa-file-powerpoint',
       };
 
-      if (extensionTypes[extension.toLowerCase()] !== undefined) {
+      if (extension && extensionTypes[extension.toLowerCase()] !== undefined) {
         return extensionTypes[extension.toLowerCase()];
       }
 

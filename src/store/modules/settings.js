@@ -1,5 +1,6 @@
 import ru from '../../lang/ru';
 import en from '../../lang/en';
+import ar from '../../lang/ar';
 
 const settings = {
   namespaced: true,
@@ -19,6 +20,7 @@ const settings = {
     translations: {
       ru: Object.freeze(ru),
       en: Object.freeze(en),
+      ar: Object.freeze(ar),
     },
 
     // full screen mode
