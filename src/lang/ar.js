@@ -1,5 +1,5 @@
 /**
- * English translate
+ * Arabic translate
  * @type Object
  */
 const en = {
@@ -114,4 +114,4 @@ const en = {
   },
 };
 
-export default en;
+export default ar;
