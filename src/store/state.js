@@ -8,7 +8,7 @@ export default {
 
   /**
    * Clipboard
-   * Type - copy || cut
+   * Operation type - copy || cut
    */
   clipboard: {
     type: null,
@@ -22,4 +22,7 @@ export default {
 
   // file callback for ckeditor, ...
   fileCallback: null,
+
+  // full screen mode
+  fullScreen: false,
 };

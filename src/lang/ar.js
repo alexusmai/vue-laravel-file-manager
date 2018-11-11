@@ -14,6 +14,7 @@ const ar = {
     edit: 'تعديل',
     forward: 'الى الامام',
     folder: 'مجلد جديد',
+    file: 'New file',
     fullScreen: 'ملء الشاشة',
     grid: 'شبكة',
     paste: 'لصق',
@@ -43,6 +44,9 @@ const ar = {
     select: 'اختيار',
     view: 'عرض',
     zip: 'ضغط',
+    edit: 'Edit',
+    audioPlay: 'Play',
+    videoPlay: 'Play',
   },
   info: {
     directories: 'المجلدات:',
@@ -64,15 +68,17 @@ const ar = {
     about: {
       developer: 'مطور',
       name: 'Laravel File Manager',
-      site: 'موقع',
       title: 'حول',
       version: 'الإصدار',
     },
     delete: {
-      confirmText: 'تأكيد الحذف!',
-      confirmLabel: 'حذف!',
       noSelected: 'لا شيء محدد!',
       title: 'حذف',
+    },
+    newFile: {
+      fieldName: 'File name',
+      fieldFeedback: 'File exists!',
+      title: 'Create new file',
     },
     newFolder: {
       fieldName: 'أسم المجلد',
@@ -110,6 +116,15 @@ const ar = {
       size: 'الحجم:',
       skip: 'تخطي',
       title: 'رفع الملفات',
+    },
+    editor: {
+      title: 'Editor',
+    },
+    audioPlayer: {
+      title: 'Audio player',
+    },
+    videoPlayer: {
+      title: 'Video player',
     },
   },
 };

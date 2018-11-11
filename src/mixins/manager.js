@@ -3,26 +3,42 @@ import EventBus from './../eventBus';
 
 export default {
   computed: {
+    /**
+     * Selected disk for this manager
+     * @returns {default.computed.selectedDisk|(function())|default.selectedDisk|null}
+     */
     selectedDisk() {
       return this.$store.state.fm[this.manager].selectedDisk;
     },
 
-    // Selected directory
+    /**
+     * Selected directory for this manager
+     * @returns {default.computed.selectedDirectory|(function())|default.selectedDirectory|null}
+     */
     selectedDirectory() {
       return this.$store.state.fm[this.manager].selectedDirectory;
     },
 
-    // files list for selected directory
+    /**
+     * Files list for selected directory
+     * @returns {*}
+     */
     files() {
       return this.$store.state.fm[this.manager].files;
     },
 
-    // directories list for selected directory
+    /**
+     * Directories list for selected directory
+     * @returns {*}
+     */
     directories() {
       return this.$store.state.fm[this.manager].directories;
     },
 
-    // selected files and folders
+    /**
+     * Selected files and folders
+     * @returns {default.computed.selected|(function())|selected|{directories, files}|string|*|boolean}
+     */
     selected() {
       return this.$store.state.fm[this.manager].selected;
     },
@@ -36,7 +52,9 @@ export default {
       this.$store.dispatch(`fm/${this.manager}/selectDirectory`, { path, history: true });
     },
 
-    // Level up directory
+    /**
+     * Level up directory
+     */
     levelUp() {
       // if this a not root directory
       if (this.selectedDirectory) {

@@ -1,7 +1,7 @@
 <template>
     <transition name="fm-modal">
-        <div class="fm-modal" v-on:click="hideModal">
-            <div class="modal-dialog modal-dialog-centered"
+        <div class="fm-modal" ref="fmModal" v-on:click="hideModal">
+            <div class="modal-dialog"
                  role="document"
                  v-bind:class="modalSize"
                  v-on:click.stop>
@@ -12,19 +12,24 @@
 </template>
 
 <script>
-import NewFolder from './NewFolder';
-import Upload from './Upload';
-import Delete from './Delete';
-import Clipboard from './Clipboard';
-import Status from './Status';
-import Rename from './Rename';
-import Properties from './Properties';
-import Preview from './Preview';
-import About from './About';
+import NewFile from './views/NewFile.vue';
+import NewFolder from './views/NewFolder.vue';
+import Upload from './views/Upload.vue';
+import Delete from './views/Delete.vue';
+import Clipboard from './views/Clipboard.vue';
+import Status from './views/Status.vue';
+import Rename from './views/Rename.vue';
+import Properties from './views/Properties.vue';
+import Preview from './views/Preview.vue';
+import TextEdit from './views/TextEdit.vue';
+import AudioPlayer from './views/AudioPlayer.vue';
+import VideoPlayer from './views/VideoPlayer.vue';
+import About from './views/About.vue';
 
 export default {
   name: 'Modal',
   components: {
+    NewFile,
     NewFolder,
     Upload,
     Delete,
@@ -33,7 +38,14 @@ export default {
     Rename,
     Properties,
     Preview,
+    TextEdit,
+    AudioPlayer,
+    VideoPlayer,
     About,
+  },
+  mounted() {
+    // set height
+    this.$store.commit('fm/modal/setModalBlockHeight', this.$refs.fmModal.offsetHeight);
   },
   computed: {
     /**
@@ -44,16 +56,22 @@ export default {
       return this.$store.state.fm.modal.modalName;
     },
 
-    // Modal size style
+    /**
+     * Modal size style
+     * @returns {{'modal-lg': boolean, 'modal-sm': boolean}}
+     */
     modalSize() {
       return {
-        'modal-lg': this.modalName === 'Preview',
+        'modal-xl': this.modalName === 'TextEdit',
+        'modal-lg': this.modalName === 'Preview' || this.modalName === 'VideoPlayer',
         'modal-sm': false,
       };
     },
   },
   methods: {
-    // Hide modal window
+    /**
+     * Hide modal window
+     */
     hideModal() {
       this.$store.commit('fm/modal/clearModal');
     },
@@ -76,6 +94,10 @@ export default {
         display: block;
         transition: opacity .4s ease;
         overflow: auto;
+
+        .modal-xl {
+            max-width: 98%;
+        }
     }
 
     .fm-modal-enter-active, .fm-modal-leave-active {

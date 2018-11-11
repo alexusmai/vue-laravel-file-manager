@@ -1,23 +1,4 @@
 export default {
-  computed: {
-    /**
-     * Selected translate
-     * @returns {*}
-     */
-    lang() {
-      // If selected translations exists
-      if (Object.prototype.hasOwnProperty.call(
-        this.$store.state.fm.settings.translations,
-        this.$store.state.fm.settings.lang)
-      ) {
-        return this.$store.state.fm.settings.translations[
-          this.$store.state.fm.settings.lang
-        ];
-      }
-      // default translate - en
-      return this.$store.state.fm.settings.translations.en;
-    },
-  },
   methods: {
     /**
      * Bytes to KB, MB, ..
@@ -27,7 +8,7 @@ export default {
     bytesToHuman(bytes) {
       const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
-      if (bytes === 0) return 'n/a';
+      if (bytes === 0) return '0 Bytes';
 
       const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
 

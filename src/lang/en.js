@@ -14,6 +14,7 @@ const en = {
     edit: 'Edit',
     forward: 'Forward',
     folder: 'New folder',
+    file: 'New file',
     fullScreen: 'Full screen',
     grid: 'Grid',
     paste: 'Paste',
@@ -43,6 +44,9 @@ const en = {
     select: 'Select',
     view: 'View',
     zip: 'Compress',
+    edit: 'Edit',
+    audioPlay: 'Play',
+    videoPlay: 'Play',
   },
   info: {
     directories: 'Folders:',
@@ -64,15 +68,17 @@ const en = {
     about: {
       developer: 'Developer',
       name: 'Laravel File Manager',
-      site: 'Site',
       title: 'About',
       version: 'Version',
     },
     delete: {
-      confirmText: 'Confirm delete!',
-      confirmLabel: 'Delete!',
       noSelected: 'Nothing selected!',
       title: 'Delete',
+    },
+    newFile: {
+      fieldName: 'File name',
+      fieldFeedback: 'File exists!',
+      title: 'Create new file',
     },
     newFolder: {
       fieldName: 'Folder name',
@@ -110,6 +116,15 @@ const en = {
       size: 'Size:',
       skip: 'Skip',
       title: 'Upload files',
+    },
+    editor: {
+      title: 'Editor',
+    },
+    audioPlayer: {
+      title: 'Audio player',
+    },
+    videoPlayer: {
+      title: 'Video player',
     },
   },
 };

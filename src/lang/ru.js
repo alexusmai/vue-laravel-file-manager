@@ -14,6 +14,7 @@ const ru = {
     edit: 'Редактировать',
     forward: 'Вперед',
     folder: 'Новая папка',
+    file: 'Новый файл',
     fullScreen: 'На весь экран',
     grid: 'Сетка',
     paste: 'Вставить',
@@ -43,6 +44,9 @@ const ru = {
     select: 'Выбрать',
     view: 'Просмотр',
     zip: 'Сжать',
+    edit: 'Редактировать',
+    audioPlay: 'Воспроизвести',
+    videoPlay: 'Воспроизвести',
   },
   info: {
     directories: 'Папок:',
@@ -64,15 +68,17 @@ const ru = {
     about: {
       developer: 'Разработчик',
       name: 'Laravel File Manager',
-      site: 'Сайт',
       title: 'О программе',
       version: 'Версия',
     },
     delete: {
-      confirmText: 'Подтвердите удаление!',
-      confirmLabel: 'Удалить!',
       noSelected: 'Ничего не выбрано!',
       title: 'Удалить',
+    },
+    newFile: {
+      fieldName: 'Имя файла',
+      fieldFeedback: 'Такой файл уже существует!',
+      title: 'Создать новый файл',
     },
     newFolder: {
       fieldName: 'Имя папки',
@@ -110,6 +116,15 @@ const ru = {
       size: 'Размер:',
       skip: 'Пропустить',
       title: 'Загрузить файлы',
+    },
+    editor: {
+      title: 'Редактор',
+    },
+    audioPlayer: {
+      title: 'Аудиоплеер',
+    },
+    videoPlayer: {
+      title: 'Видеоплеер',
     },
   },
 };

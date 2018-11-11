@@ -11,10 +11,10 @@
 
 <script>
 // Components
-import DiskList from '../DiskList';
-import Breadcrumb from '../Breadcrumb';
-import TableView from './TableView';
-import GridView from './GridView';
+import DiskList from './DiskList.vue';
+import Breadcrumb from './Breadcrumb.vue';
+import TableView from './TableView.vue';
+import GridView from './GridView.vue';
 
 export default {
   name: 'Manager',
@@ -28,7 +28,10 @@ export default {
     manager: { type: String, required: true },
   },
   computed: {
-    // view type - grid or table
+    /**
+     * view type - grid or table
+     * @returns {default.computed.viewType|(function())|string}
+     */
     viewType() {
       return this.$store.state.fm[this.manager].viewType;
     },

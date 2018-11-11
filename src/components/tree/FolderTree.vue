@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Branch from './Branch';
+import Branch from './Branch.vue';
 
 export default {
   name: 'FolderTree',
@@ -16,7 +16,10 @@ export default {
     branch: Branch,
   },
   computed: {
-    // Selected Disk
+    /**
+     * Selected Disk
+     * @returns {*}
+     */
     selectedDisk() {
       return this.$store.getters['fm/selectedDisk'];
     },
