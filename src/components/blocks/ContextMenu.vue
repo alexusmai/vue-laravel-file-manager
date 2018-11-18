@@ -1,10 +1,10 @@
 <template>
-    <div class="fm-context-menu"
-         tabindex="-1"
-         ref="contextMenu"
+    <div ref="contextMenu"
          v-if="menuVisible"
          v-bind:style="menuStyle"
-         v-on:blur="closeMenu">
+         v-on:blur="closeMenu"
+         class="fm-context-menu"
+         tabindex="-1">
         <ul v-for="(group, index) in menu"
             v-bind:key="`g-${index}`"
             class="list-unstyled">
@@ -23,11 +23,13 @@
 /* eslint-disable no-param-reassign */
 import EventBus from './../../eventBus';
 import translate from '../../mixins/translate';
-import contextMenu from './../../mixins/context-menu';
+import contextMenu from './mixins/contextMenu';
+import contextMenuRules from './mixins/contextMenuRules';
+import contextMenuActions from './mixins/contextMenuActions';
 
 export default {
   name: 'ContextMenu',
-  mixins: [translate, contextMenu],
+  mixins: [translate, contextMenu, contextMenuRules, contextMenuActions],
   data() {
     return {
       menuVisible: false,

@@ -24,6 +24,8 @@ import Preview from './views/Preview.vue';
 import TextEdit from './views/TextEdit.vue';
 import AudioPlayer from './views/AudioPlayer.vue';
 import VideoPlayer from './views/VideoPlayer.vue';
+import Zip from './views/Zip.vue';
+import Unzip from './views/Unzip.vue';
 import About from './views/About.vue';
 
 export default {
@@ -41,6 +43,8 @@ export default {
     TextEdit,
     AudioPlayer,
     VideoPlayer,
+    Zip,
+    Unzip,
     About,
   },
   mounted() {
@@ -62,8 +66,8 @@ export default {
      */
     modalSize() {
       return {
-        'modal-xl': this.modalName === 'TextEdit',
-        'modal-lg': this.modalName === 'Preview' || this.modalName === 'VideoPlayer',
+        'modal-xl': this.modalName === 'Preview' || this.modalName === 'TextEdit',
+        'modal-lg': this.modalName === 'VideoPlayer',
         'modal-sm': false,
       };
     },
@@ -96,7 +100,7 @@ export default {
         overflow: auto;
 
         .modal-xl {
-            max-width: 98%;
+            max-width: 96%;
         }
     }
 

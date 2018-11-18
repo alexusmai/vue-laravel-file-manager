@@ -1,5 +1,14 @@
 export default {
   /**
+   * Get a list of disks
+   * @param state
+   * @returns {string[]}
+   */
+  diskList(state) {
+    return Object.keys(state.disks);
+  },
+
+  /**
    * Selected disk for active manager
    * @param state
    * @returns {selectedDisk|null|*|computed.selectedDisk}

@@ -8,22 +8,7 @@
         </div>
         <div class="modal-body">
             <div v-if="selectedItems.length">
-                <div class="d-flex justify-content-between"
-                     v-for="(item, index) in selectedItems"
-                     v-bind:key="index">
-                    <div class="w-75 text-truncate">
-                        <span v-if="item.type === 'dir'">
-                            <i class="far fa-folder"></i>{{ item.basename }}
-                        </span>
-                        <span v-else>
-                            <i class="far" v-bind:class="extensionToIcon(item.extension)">
-                            </i> {{ item.basename }}
-                        </span>
-                    </div>
-                    <div class="text-right" v-if="item.type === 'file'">
-                        {{ bytesToHuman(item.size) }}
-                    </div>
-                </div>
+                <selected-file-list></selected-file-list>
             </div>
             <div v-else>
                 <span class="text-danger">{{ lang.modal.delete.noSelected }}</span>
@@ -38,13 +23,14 @@
 </template>
 
 <script>
+import SelectedFileList from '../additions/SelectedFileList.vue';
 import modal from './../../../mixins/modal';
 import translate from './../../../mixins/translate';
-import helper from './../../../mixins/helper';
 
 export default {
   name: 'Delete',
-  mixins: [modal, translate, helper],
+  mixins: [modal, translate],
+  components: { SelectedFileList },
   computed: {
     /**
      * Files and folders for deleting
@@ -65,27 +51,11 @@ export default {
         type: item.type,
       }));
 
-      this.$store.dispatch('fm/delete', items).then((response) => {
-        // if deleted - hide modal
-        if (response.data.result.status === 'success') {
-          // close modal window
-          this.hideModal();
-        }
+      this.$store.dispatch('fm/delete', items).then(() => {
+        // close modal window
+        this.hideModal();
       });
     },
   },
 };
 </script>
-
-<style lang="scss">
-    .fm-modal-delete {
-
-        .modal-body .far {
-            padding-right: 0.5rem;
-        }
-
-        .d-flex label {
-            margin-bottom: 0;
-        }
-    }
-</style>

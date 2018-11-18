@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <video ref="plyrVideo" controls></video>
+            <video ref="fmVideo" controls></video>
         </div>
     </div>
 </template>
@@ -30,7 +30,7 @@ export default {
   },
   mounted() {
     // initiate video player
-    this.player = new Plyr(this.$refs.plyrVideo);
+    this.player = new Plyr(this.$refs.fmVideo);
     // load source
     this.player.source = {
       type: 'video',

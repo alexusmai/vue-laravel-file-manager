@@ -7,24 +7,25 @@ export default {
    * Get initiation data from server
    * @param state
    * @param commit
+   * @param getters
    * @param dispatch
    */
-  initializeApp({ state, commit, dispatch }) {
+  initializeApp({ state, commit, getters, dispatch }) {
     GET.initialize().then((response) => {
       if (response.data.result.status === 'success') {
         // set app settings
         commit('settings/initSettings', response.data.config);
 
-        // set disk list
-        commit('setDiskList', response.data.config.diskList);
+        // set disks
+        commit('setDisks', response.data.config.disks);
 
         const leftDisk = response.data.config.leftDisk
           ? response.data.config.leftDisk
-          : response.data.config.diskList[0];
+          : getters.diskList[0];
 
         const rightDisk = response.data.config.rightDisk
           ? response.data.config.rightDisk
-          : response.data.config.diskList[0];
+          : getters.diskList[0];
 
         // left manager - set default disk
         commit('left/setDisk', leftDisk);
@@ -195,20 +196,14 @@ export default {
    * @returns {Promise}
    */
   upload({ getters, commit, dispatch }, { files, overwrite }) {
-    // create new form data
-    const data = new FormData();
     // directory where files will be uploaded
     const selectedDirectory = getters.selectedDirectory;
 
-    // add disk name
+    // create new form data
+    const data = new FormData();
     data.append('disk', getters.selectedDisk);
-
-    // add path name
     data.append('path', selectedDirectory || '');
-
-    // upload settings
     data.append('overwrite', overwrite);
-
     // add file or files
     for (let i = 0; i < files.length; i += 1) {
       data.append('files[]', files[i]);
@@ -296,21 +291,14 @@ export default {
    * @param dispatch
    */
   paste({ state, commit, getters, dispatch }) {
-    // create new form data
-    const data = new FormData();
     // copy/cut to this folder
     const selectedDirectory = getters.selectedDirectory;
 
-    // add disk name
-    data.append('disk', getters.selectedDisk);
-
-    // add path name
-    data.append('path', selectedDirectory);
-
-    // add clipboard
-    data.append('clipboard', JSON.stringify(state.clipboard));
-
-    POST.paste(getters.selectedDisk, selectedDirectory, state.clipboard).then((response) => {
+    POST.paste(
+      getters.selectedDisk,
+      selectedDirectory,
+      state.clipboard,
+    ).then((response) => {
       // if the action was successful
       if (response.data.result.status === 'success') {
         // refresh content
@@ -357,6 +345,64 @@ export default {
       if (response.data.result.status === 'success') {
         state.fileCallback(response.data.url);
       }
+    });
+  },
+
+  /**
+   * Zip files and folders
+   * @param state
+   * @param getters
+   * @param dispatch
+   * @param name
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  zip({ state, getters, dispatch }, name) {
+    const selectedDirectory = getters.selectedDirectory;
+
+    // create new form data
+    const data = new FormData();
+    data.append('disk', getters.selectedDisk);
+    data.append('path', selectedDirectory || '');
+    data.append('name', name);
+    data.append('elements', JSON.stringify(state[state.activeManager].selected));
+
+    return POST.zip(data).then((response) => {
+      // if zipped successfully
+      if (response.data.result.status === 'success'
+          && selectedDirectory === getters.selectedDirectory
+      ) {
+        // refresh content
+        dispatch('refreshManagers');
+      }
+
+      return response;
+    });
+  },
+
+  /**
+   * Unzip selected archive
+   * @param getters
+   * @param dispatch
+   * @param folder
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  unzip({ getters, dispatch }, folder) {
+    const selectedDirectory = getters.selectedDirectory;
+
+    return POST.unzip({
+      disk: getters.selectedDisk,
+      path: getters.selectedItems[0].path,
+      folder,
+    }).then((response) => {
+      // if zipped successfully
+      if (response.data.result.status === 'success'
+          && selectedDirectory === getters.selectedDirectory
+      ) {
+        // refresh content
+        dispatch('refreshAll');
+      }
+
+      return response;
     });
   },
 

@@ -1,6 +1,6 @@
 import HTTP from './init-axios';
 
-const get = {
+export default {
   /**
    * Get configuration data from server
    * @returns {AxiosPromise<any>}
@@ -68,5 +68,3 @@ const get = {
     return HTTP.get('download', { params: { disk, path } });
   },
 };
-
-export default get;

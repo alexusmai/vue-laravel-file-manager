@@ -25,7 +25,7 @@ export default {
      * @returns {Array}
      */
     disks() {
-      return this.$store.state.fm.diskList;
+      return this.$store.getters['fm/diskList'];
     },
 
     /**

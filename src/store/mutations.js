@@ -1,12 +1,12 @@
 /* eslint-disable object-curly-newline */
 export default {
   /**
-   * Set disk list
+   * Set disks
    * @param state
-   * @param list
+   * @param disks
    */
-  setDiskList(state, list) {
-    state.diskList = list;
+  setDisks(state, disks) {
+    state.disks = disks;
   },
 
   /**

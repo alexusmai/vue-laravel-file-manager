@@ -44,6 +44,7 @@ const ar = {
     select: 'اختيار',
     view: 'عرض',
     zip: 'ضغط',
+    unzip: 'Unzip',
     edit: 'Edit',
     audioPlay: 'Play',
     videoPlay: 'Play',
@@ -125,6 +126,26 @@ const ar = {
     },
     videoPlayer: {
       title: 'Video player',
+    },
+    zip: {
+      title: 'Create archive',
+      fieldName: 'Archive name',
+      fieldFeedback: 'Archive exists!',
+    },
+    unzip: {
+      title: 'Unpack archive',
+      fieldName: 'Folder name',
+      fieldRadioName: 'Extract to:',
+      fieldRadio1: 'To current folder',
+      fieldRadio2: 'In a new folder',
+      fieldFeedback: 'Folder exists!',
+      warning: 'Attention! If the names match, the files will be overwritten!',
+    },
+    cropper: {
+      title: 'Cropping',
+      apply: 'Apply',
+      reset: 'Reset',
+      save: 'Save',
     },
   },
 };

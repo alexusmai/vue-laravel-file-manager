@@ -17,8 +17,8 @@ export default {
     files: [],
   },
 
-  // disk list
-  diskList: [],
+  // available disks
+  disks: [],
 
   // file callback for ckeditor, ...
   fileCallback: null,

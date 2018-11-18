@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <audio ref="plyrAudio" controls></audio>
+            <audio ref="fmAudio" controls></audio>
             <hr>
             <div class="d-flex justify-content-between py-2 px-2"
                  v-bind:class="playingIndex === index ? 'bg-light' : ''"
@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     // initiate player
-    this.player = new Plyr(this.$refs.plyrAudio, {
+    this.player = new Plyr(this.$refs.fmAudio, {
       speed: {
         selected: 1,
         options: [0.5, 1, 1.5],

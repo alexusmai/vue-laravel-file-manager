@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <codemirror ref="cm" v-model="code" :options="cmOptions"></codemirror>
+            <codemirror ref="fmCodeEditor" v-model="code" :options="cmOptions"></codemirror>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info"
@@ -62,7 +62,7 @@ export default {
       // add code
       this.code = response.data;
       // set size
-      this.$refs.cm.codemirror.setSize(null, this.editorHeight);
+      this.$refs.fmCodeEditor.codemirror.setSize(null, this.editorHeight);
     });
   },
   computed: {

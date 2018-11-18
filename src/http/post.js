@@ -1,6 +1,6 @@
 import HTTP from './init-axios';
 
-const post = {
+export default {
   /**
    * Create new file
    * @param disk
@@ -73,6 +73,22 @@ const post = {
   paste(disk, path, clipboard) {
     return HTTP.post('paste', { disk, path, clipboard });
   },
-};
 
-export default post;
+  /**
+   * Zip
+   * @param formData
+   * @returns {*}
+   */
+  zip(formData) {
+    return HTTP.post('zip', formData);
+  },
+
+  /**
+   * Unzip
+   * @returns {*}
+   * @param data
+   */
+  unzip(data) {
+    return HTTP.post('unzip', data);
+  },
+};

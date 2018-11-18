@@ -79,6 +79,14 @@ export default {
             name: 'paste',
             icon: 'far fa-clipboard',
           },
+          {
+            name: 'zip',
+            icon: 'far fa-file-archive',
+          },
+          {
+            name: 'unzip',
+            icon: 'far fa-file-archive',
+          },
         ], [
           {
             name: 'delete',
@@ -94,6 +102,9 @@ export default {
 
       // Image extensions for view and preview
       imageExtensions: ['png', 'jpg', 'jpeg', 'gif'],
+
+      // Image extensions for cropping
+      cropExtensions: ['png', 'jpg', 'jpeg'],
 
       // audio extensions for play
       audioExtensions: ['ogg', 'mp3', 'aac', 'wav'],

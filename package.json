@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "codemirror": "^5.41.0",
+    "cropperjs": "^1.4.3",
     "plyr": "^3.4.7",
     "vue": "^2.5.17",
     "vue-codemirror": "^4.0.5",
