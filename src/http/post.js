@@ -23,64 +23,57 @@ export default {
 
   /**
    * Create new directory
-   * @param disk
-   * @param path
-   * @param name
-   * @returns {AxiosPromise<any>}
+   * @param data
+   * @returns {*}
    */
-  createDirectory(disk, path, name) {
-    return HTTP.post('create-directory', { disk, path, name });
+  createDirectory(data) {
+    return HTTP.post('create-directory', data);
   },
 
   /**
    * Upload file
-   * @param formData
+   * @param data
    * @param config
    * @returns {AxiosPromise<any>}
    */
-  upload(formData, config) {
-    return HTTP.post('upload', formData, config);
+  upload(data, config) {
+    return HTTP.post('upload', data, config);
   },
 
   /**
    * Delete selected items
-   * @param disk
-   * @param items
-   * @returns {AxiosPromise<any>}
+   * @param data
+   * @returns {*}
    */
-  delete(disk, items) {
-    return HTTP.post('delete', { disk, items });
+  delete(data) {
+    return HTTP.post('delete', data);
   },
 
   /**
    * Rename file or folder
-   * @param disk
-   * @param newName
-   * @param oldName
-   * @returns {AxiosPromise<any>}
+   * @param data
+   * @returns {*}
    */
-  rename(disk, newName, oldName) {
-    return HTTP.post('rename', { disk, newName, oldName });
+  rename(data) {
+    return HTTP.post('rename', data);
   },
 
   /**
    * Copy / Cut files and folders
-   * @param disk
-   * @param path
-   * @param clipboard
-   * @returns {AxiosPromise<any>}
+   * @param data
+   * @returns {*}
    */
-  paste(disk, path, clipboard) {
-    return HTTP.post('paste', { disk, path, clipboard });
+  paste(data) {
+    return HTTP.post('paste', data);
   },
 
   /**
    * Zip
-   * @param formData
+   * @param data
    * @returns {*}
    */
-  zip(formData) {
-    return HTTP.post('zip', formData);
+  zip(data) {
+    return HTTP.post('zip', data);
   },
 
   /**

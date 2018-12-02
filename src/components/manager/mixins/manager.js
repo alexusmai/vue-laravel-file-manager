@@ -1,5 +1,5 @@
 // Event bus
-import EventBus from './../eventBus';
+import EventBus from './../../../eventBus';
 
 export default {
   computed: {

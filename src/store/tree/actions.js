@@ -1,4 +1,3 @@
-/* eslint-disable object-curly-newline */
 import GET from '../../http/get';
 
 export default {
@@ -75,7 +74,9 @@ export default {
    * @param dispatch
    * @param directories
    */
-  deleteFromTree({ state, commit, getters, dispatch }, directories) {
+  deleteFromTree({
+    state, commit, getters, dispatch,
+  }, directories) {
     directories.forEach((item) => {
       // find this directory in the tree
       const directoryIndex = getters.findDirectoryIndex(item.path);
@@ -169,7 +170,9 @@ export default {
    * @param path
    * @returns {*}
    */
-  showSubdirectories({ state, commit, getters, dispatch }, path) {
+  showSubdirectories({
+    state, commit, getters, dispatch,
+  }, path) {
     const promise = Promise.resolve();
     // find parent directory index
     const parentDirectoryIndex = getters.findDirectoryIndex(path);

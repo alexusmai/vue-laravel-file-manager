@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 
 export default {

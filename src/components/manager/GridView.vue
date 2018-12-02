@@ -53,8 +53,7 @@
 <script>
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
-import managerHelper from './../../mixins/manager';
-import { apiURL } from '../../http/helper';
+import managerHelper from './mixins/manager';
 
 export default {
   name: 'grid-view',
@@ -104,7 +103,7 @@ export default {
      * @returns {string}
      */
     createImgUrl(path) {
-      return `${apiURL()}thumbnails?disk=${this.disk}&path=${path}`;
+      return `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${this.disk}&path=${path}`;
     },
   },
 };

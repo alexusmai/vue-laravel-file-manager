@@ -16,8 +16,7 @@
 
 <script>
 import Plyr from 'plyr';
-import { apiURL } from '../../../http/helper';
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 
 export default {
@@ -36,7 +35,7 @@ export default {
       type: 'video',
       title: this.videoFile.filename,
       sources: [{
-        src: `${apiURL()}stream-file?disk=${this.selectedDisk}&path=${encodeURIComponent(this.videoFile.path)}`,
+        src: `${this.$store.getters['fm/settings/baseUrl']}stream-file?disk=${this.selectedDisk}&path=${encodeURIComponent(this.videoFile.path)}`,
         type: `audio/${this.videoFile.extension}`,
       }],
     };

@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 export default {
   /**
    * Files count
@@ -61,9 +60,7 @@ export default {
    * @param state
    */
   selectedList(state) {
-    const selectedDirectories = state.directories.filter((directory) => {
-      return state.selected.directories.includes(directory.path);
-    });
+    const selectedDirectories = state.directories.filter(directory => state.selected.directories.includes(directory.path));
 
     const selectedFiles = state.files.filter(file => state.selected.files.includes(file.path));
 
@@ -87,15 +84,11 @@ export default {
    * Compare directories name
    * @param state
    */
-  directoryExist: state => (basename) => {
-    return state.directories.some(el => el.basename === basename);
-  },
+  directoryExist: state => basename => state.directories.some(el => el.basename === basename),
 
   /**
    * Compare files name
    * @param state
    */
-  fileExist: state => (basename) => {
-    return state.files.some(el => el.basename === basename);
-  },
+  fileExist: state => basename => state.files.some(el => el.basename === basename),
 };

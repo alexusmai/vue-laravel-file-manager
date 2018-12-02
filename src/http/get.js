@@ -44,9 +44,9 @@ export default {
    * @param path
    * @returns {AxiosPromise<any>}
    */
-  properties(disk, path) {
+  /* properties(disk, path) {
     return HTTP.get('properties', { params: { disk, path } });
-  },
+  }, */
 
   /**
    * URL

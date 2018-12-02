@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import store from './../store';
 import HTTP from './init-axios';
 import EventBus from './../eventBus';
@@ -7,9 +8,22 @@ import EventBus from './../eventBus';
  */
 function requestInterceptor() {
   HTTP.interceptors.request.use((config) => {
+    // overwrite base url
+    if (store.getters['fm/settings/baseUrl'] !== config.baseURL) {
+      config.baseURL = store.getters['fm/settings/baseUrl'];
+    }
+
+    // overwrite headers
+    const newHeaders = store.state.fm.settings.headers;
+
+    if (newHeaders) {
+      Object.keys(newHeaders)
+        .forEach((key) => { config.headers[key] = newHeaders[key]; });
+    }
+
     // loading spinner +
     store.commit('fm/messages/addLoading');
-    // Do something before request is sent
+
     return config;
   }, (error) => {
     // loading spinner -

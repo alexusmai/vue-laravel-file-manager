@@ -70,7 +70,7 @@
                     <td class="fm-content-item unselectable">
                         <i class="far"
                            v-bind:class="extensionToIcon(file.extension)"></i>
-                        {{ file.filename }}
+                        {{ file.filename ? file.filename : file.basename }}
                     </td>
                     <td>{{ bytesToHuman(file.size) }}</td>
                     <td>
@@ -88,7 +88,7 @@
 <script>
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
-import managerHelper from './../../mixins/manager';
+import managerHelper from './mixins/manager';
 
 export default {
   name: 'table-view',

@@ -28,15 +28,19 @@
                     </a>
                 </dd>
 
-                <dt class="col-3">License:</dt>
-                <dd class="col-9">MIT License</dd>
+                <dt class="col-3">Home:</dt>
+                <dd class="col-9">
+                    <a href="http://webmai.ru/projects/file-manager" target="_blank">
+                        Laravel File Manager (RU)
+                    </a>
+                </dd>
             </dl>
         </div>
     </div>
 </template>
 
 <script>
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 
 export default {

@@ -66,6 +66,9 @@ export default {
     }),
   },
   created() {
+    // init base url
+    this.$store.commit('fm/settings/initBaseUrl');
+
     // add axios request interceptor
     requestInterceptor();
 

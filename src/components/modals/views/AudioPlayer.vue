@@ -39,8 +39,7 @@
 
 <script>
 import Plyr from 'plyr';
-import { apiURL } from '../../../http/helper';
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 
 export default {
@@ -129,7 +128,7 @@ export default {
         type: 'audio',
         title: this.audioFiles[index].filename,
         sources: [{
-          src: `${apiURL()}stream-file?disk=${this.selectedDisk}&path=${encodeURIComponent(this.audioFiles[index].path)}`,
+          src: `${this.$store.getters['fm/settings/baseUrl']}stream-file?disk=${this.selectedDisk}&path=${encodeURIComponent(this.audioFiles[index].path)}`,
           type: `audio/${this.audioFiles[index].extension}`,
         }],
       };

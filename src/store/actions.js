@@ -113,17 +113,18 @@ export default {
     const selectedDirectory = getters.selectedDirectory;
 
     // create new file, server side
-    return POST.createFile(getters.selectedDisk, selectedDirectory, fileName).then((response) => {
+    return POST.createFile(getters.selectedDisk, selectedDirectory, fileName)
+      .then((response) => {
       // update file list
-      dispatch('updateContent', {
-        response,
-        oldDir: selectedDirectory,
-        commitName: 'addNewFile',
-        type: 'file',
-      });
+        dispatch('updateContent', {
+          response,
+          oldDir: selectedDirectory,
+          commitName: 'addNewFile',
+          type: 'file',
+        });
 
-      return response;
-    });
+        return response;
+      });
   },
 
   /**
@@ -145,14 +146,11 @@ export default {
    * @returns {PromiseLike | Promise}
    */
   updateFile({ getters, dispatch }, formData) {
-    // directory for updated file
-    const selectedDirectory = getters.selectedDirectory;
-
     return POST.updateFile(formData).then((response) => {
       // update file list
       dispatch('updateContent', {
         response,
-        oldDir: selectedDirectory,
+        oldDir: getters.selectedDirectory,
         commitName: 'updateFile',
         type: 'file',
       });
@@ -163,17 +161,21 @@ export default {
 
   /**
    * Create new directory
-   * @param state
+   * @param getters
    * @param dispatch
-   * @param folderName
-   * @returns {Promise}
+   * @param name
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
    */
-  createDirectory({ getters, dispatch }, folderName) {
+  createDirectory({ getters, dispatch }, name) {
     // directory for new folder
     const selectedDirectory = getters.selectedDirectory;
 
     // create new directory, server side
-    return POST.createDirectory(getters.selectedDisk, selectedDirectory, folderName).then((response) => {
+    return POST.createDirectory({
+      disk: getters.selectedDisk,
+      path: selectedDirectory,
+      name,
+    }).then((response) => {
       // update file list
       dispatch('updateContent', {
         response,
@@ -244,10 +246,13 @@ export default {
    * @param getters
    * @param dispatch
    * @param items
-   * @returns {Promise}
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
    */
   delete({ state, getters, dispatch }, items) {
-    return POST.delete(getters.selectedDisk, items).then((response) => {
+    return POST.delete({
+      disk: getters.selectedDisk,
+      items,
+    }).then((response) => {
       // if all items deleted successfully
       if (response.data.result.status === 'success') {
         // refresh content
@@ -265,25 +270,6 @@ export default {
   },
 
   /**
-   * Add selected items to clipboard
-   * @param state
-   * @param commit
-   * @param getters
-   * @param type
-   */
-  toClipboard({ state, commit, getters }, type) {
-    // if files are selected
-    if (getters[`${state.activeManager}/selectedCount`]) {
-      commit('setClipboard', {
-        type,
-        disk: state[state.activeManager].selectedDisk,
-        directories: state[state.activeManager].selected.directories.map(item => item),
-        files: state[state.activeManager].selected.files.map(item => item),
-      });
-    }
-  },
-
-  /**
    * Paste files and folders
    * @param state
    * @param commit
@@ -291,14 +277,11 @@ export default {
    * @param dispatch
    */
   paste({ state, commit, getters, dispatch }) {
-    // copy/cut to this folder
-    const selectedDirectory = getters.selectedDirectory;
-
-    POST.paste(
-      getters.selectedDisk,
-      selectedDirectory,
-      state.clipboard,
-    ).then((response) => {
+    POST.paste({
+      disk: getters.selectedDisk,
+      path: getters.selectedDirectory,
+      clipboard: state.clipboard,
+    }).then((response) => {
       // if the action was successful
       if (response.data.result.status === 'success') {
         // refresh content
@@ -322,7 +305,11 @@ export default {
    * @returns {Promise}
    */
   rename({ getters, dispatch }, { type, newName, oldName }) {
-    return POST.rename(getters.selectedDisk, newName, oldName).then((response) => {
+    return POST.rename({
+      disk: getters.selectedDisk,
+      newName,
+      oldName,
+    }).then((response) => {
       // refresh content
       if (type === 'dir') {
         dispatch('refreshAll');
@@ -335,6 +322,7 @@ export default {
   },
 
   /**
+   * TODO
    * Get file url
    * @param state
    * @param disk
@@ -359,14 +347,12 @@ export default {
   zip({ state, getters, dispatch }, name) {
     const selectedDirectory = getters.selectedDirectory;
 
-    // create new form data
-    const data = new FormData();
-    data.append('disk', getters.selectedDisk);
-    data.append('path', selectedDirectory || '');
-    data.append('name', name);
-    data.append('elements', JSON.stringify(state[state.activeManager].selected));
-
-    return POST.zip(data).then((response) => {
+    return POST.zip({
+      disk: getters.selectedDisk,
+      path: selectedDirectory,
+      name,
+      elements: state[state.activeManager].selected,
+    }).then((response) => {
       // if zipped successfully
       if (response.data.result.status === 'success'
           && selectedDirectory === getters.selectedDirectory
@@ -394,11 +380,11 @@ export default {
       path: getters.selectedItems[0].path,
       folder,
     }).then((response) => {
-      // if zipped successfully
+      // if unzipped successfully
       if (response.data.result.status === 'success'
           && selectedDirectory === getters.selectedDirectory
       ) {
-        // refresh content
+        // refresh
         dispatch('refreshAll');
       }
 
@@ -406,9 +392,24 @@ export default {
     });
   },
 
-  /** *********************************************************************************************
-   * Helper functions
+  /**
+   * Add selected items to clipboard
+   * @param state
+   * @param commit
+   * @param getters
+   * @param type
    */
+  toClipboard({ state, commit, getters }, type) {
+    // if files are selected
+    if (getters[`${state.activeManager}/selectedCount`]) {
+      commit('setClipboard', {
+        type,
+        disk: state[state.activeManager].selectedDisk,
+        directories: state[state.activeManager].selected.directories.slice(0),
+        files: state[state.activeManager].selected.files.slice(0),
+      });
+    }
+  },
 
   /**
    * Refresh content in the manager/s

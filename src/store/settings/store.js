@@ -1,6 +1,6 @@
 import mutations from './mutations';
 import getters from './getters';
-import actions from './actions';
+
 // languages
 import ru from './../../lang/ru';
 import en from '../../lang/en';
@@ -11,7 +11,13 @@ export default {
   state() {
     return {
       // App version
-      version: '1.0.3',
+      version: '2.0.0 Beta',
+
+      // this headers will be merged with default headers
+      headers: {},
+
+      // overwrite default URL
+      baseUrl: null,
 
       /**
        * File manager windows configuration
@@ -154,5 +160,4 @@ export default {
   },
   mutations,
   getters,
-  actions,
 };

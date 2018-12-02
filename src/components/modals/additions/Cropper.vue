@@ -280,6 +280,14 @@ export default {
             }
         }
 
+        .col-sm-3 {
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
         .cropper-preview {
             margin-bottom: 1rem;
             overflow: hidden;
@@ -307,7 +315,7 @@ export default {
             }
         }
 
-        .d-flex {
+        & > .d-flex {
             padding: 1rem;
             border-top: 1px solid #e9ecef;
         }

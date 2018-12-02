@@ -3,3 +3,4 @@
 
 # Editor directories and files
 /.idea/
+/.env.local

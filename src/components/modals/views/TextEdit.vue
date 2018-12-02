@@ -41,7 +41,7 @@ import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/go/go';
 import 'codemirror/mode/yaml/yaml';
 import 'codemirror/mode/properties/properties';
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 
 export default {

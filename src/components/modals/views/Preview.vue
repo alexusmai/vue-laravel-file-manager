@@ -37,10 +37,9 @@
 
 <script>
 import CropperModule from './../additions/Cropper.vue';
-import modal from './../../../mixins/modal';
+import modal from './../mixins/modal';
 import translate from './../../../mixins/translate';
 import helper from './../../../mixins/helper';
-import { apiURL } from '../../../http/helper';
 
 export default {
   name: 'Preview',
@@ -54,7 +53,7 @@ export default {
   },
   created() {
     // Create image URL
-    this.imgUrl = `${apiURL()}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}`;
+    this.imgUrl = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}`;
   },
   computed: {
     /**
@@ -109,10 +108,11 @@ export default {
             padding: 0;
 
             img {
+                max-width: 100%;
             }
         }
 
-        .d-flex {
+        & > .d-flex {
             padding: 1rem;
             border-top: 1px solid #e9ecef;
         }
