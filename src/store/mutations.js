@@ -1,11 +1,12 @@
+/* eslint-disable object-curly-newline */
 export default {
   /**
-   * Set disk list
+   * Set disks
    * @param state
-   * @param list
+   * @param disks
    */
-  setDiskList(state, list) {
-    state.diskList = list;
+  setDisks(state, disks) {
+    state.disks = disks;
   },
 
   /**
@@ -31,6 +32,7 @@ export default {
    */
   truncateClipboard(state, { type, path }) {
     const itemIndex = state.clipboard[type].indexOf(path);
+
     if (itemIndex !== -1) state.clipboard[type].splice(itemIndex, 1);
     if (!state.clipboard.directories.length && !state.clipboard.files.length) {
       state.clipboard.type = null;
@@ -65,4 +67,13 @@ export default {
   setFileCallBack(state, callback) {
     state.fileCallback = callback;
   },
+
+  /**
+   * Screen mode toggle - ON/OFF full screen
+   * @param state
+   */
+  screenToggle(state) {
+    state.fullScreen = !state.fullScreen;
+  },
 };
+

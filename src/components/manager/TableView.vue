@@ -70,7 +70,7 @@
                     <td class="fm-content-item unselectable">
                         <i class="far"
                            v-bind:class="extensionToIcon(file.extension)"></i>
-                        {{ file.filename }}
+                        {{ file.filename ? file.filename : file.basename }}
                     </td>
                     <td>{{ bytesToHuman(file.size) }}</td>
                     <td>
@@ -86,27 +86,28 @@
 </template>
 
 <script>
+import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
-import managerHelper from './../../mixins/manager';
+import managerHelper from './mixins/manager';
 
 export default {
   name: 'table-view',
-  mixins: [helper, managerHelper],
-  data() {
-    return {};
-  },
+  mixins: [translate, helper, managerHelper],
   props: {
     manager: { type: String, required: true },
   },
   computed: {
-    // sort settings
+    /**
+     * Sort settings
+     * @returns {*}
+     */
     sortSettings() {
       return this.$store.state.fm[this.manager].sort;
     },
   },
   methods: {
     /**
-     * Sort data
+     * Sort by field
      * @param field
      */
     sortBy(field) {

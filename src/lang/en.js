@@ -14,6 +14,7 @@ const en = {
     edit: 'Edit',
     forward: 'Forward',
     folder: 'New folder',
+    file: 'New file',
     fullScreen: 'Full screen',
     grid: 'Grid',
     paste: 'Paste',
@@ -42,7 +43,11 @@ const en = {
     rename: 'Rename',
     select: 'Select',
     view: 'View',
-    zip: 'Compress',
+    zip: 'Zip',
+    unzip: 'Unzip',
+    edit: 'Edit',
+    audioPlay: 'Play',
+    videoPlay: 'Play',
   },
   info: {
     directories: 'Folders:',
@@ -64,15 +69,17 @@ const en = {
     about: {
       developer: 'Developer',
       name: 'Laravel File Manager',
-      site: 'Site',
       title: 'About',
       version: 'Version',
     },
     delete: {
-      confirmText: 'Confirm delete!',
-      confirmLabel: 'Delete!',
       noSelected: 'Nothing selected!',
       title: 'Delete',
+    },
+    newFile: {
+      fieldName: 'File name',
+      fieldFeedback: 'File exists!',
+      title: 'Create new file',
     },
     newFolder: {
       fieldName: 'Folder name',
@@ -110,6 +117,35 @@ const en = {
       size: 'Size:',
       skip: 'Skip',
       title: 'Upload files',
+    },
+    editor: {
+      title: 'Editor',
+    },
+    audioPlayer: {
+      title: 'Audio player',
+    },
+    videoPlayer: {
+      title: 'Video player',
+    },
+    zip: {
+      title: 'Create archive',
+      fieldName: 'Archive name',
+      fieldFeedback: 'Archive exists!',
+    },
+    unzip: {
+      title: 'Unpack archive',
+      fieldName: 'Folder name',
+      fieldRadioName: 'Extract to:',
+      fieldRadio1: 'To current folder',
+      fieldRadio2: 'In a new folder',
+      fieldFeedback: 'Folder exists!',
+      warning: 'Attention! If the names match, the files will be overwritten!',
+    },
+    cropper: {
+      title: 'Cropping',
+      apply: 'Apply',
+      reset: 'Reset',
+      save: 'Save',
     },
   },
 };

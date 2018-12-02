@@ -1,24 +1,11 @@
-/* eslint-disable no-new,import/prefer-default-export */
+import '@babel/polyfill';
 import Vue from 'vue';
-import Vuex from 'vuex';
+import store from './store';
+import App from './FileManager.vue';
 
-// main store module
-import fm from './store/file-manager';
+Vue.config.productionTip = process.env.NODE_ENV === 'production';
 
-// main component
-import FileManager from './FileManager';
-
-Vue.use(Vuex);
-
-const store = new Vuex.Store({
-  modules: { fm },
-});
-
-Vue.config.productionTip = false;
-
-window.fm = new Vue({
-  el: '#fm',
+window.lfm = new Vue({
   store,
-  components: { FileManager },
-  template: '<FileManager/>',
-});
+  render: h => h(App),
+}).$mount('#app');

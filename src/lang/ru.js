@@ -14,6 +14,7 @@ const ru = {
     edit: 'Редактировать',
     forward: 'Вперед',
     folder: 'Новая папка',
+    file: 'Новый файл',
     fullScreen: 'На весь экран',
     grid: 'Сетка',
     paste: 'Вставить',
@@ -42,7 +43,11 @@ const ru = {
     rename: 'Переименовать',
     select: 'Выбрать',
     view: 'Просмотр',
-    zip: 'Сжать',
+    zip: 'Архивировать',
+    unzip: 'Разархивировать',
+    edit: 'Редактировать',
+    audioPlay: 'Воспроизвести',
+    videoPlay: 'Воспроизвести',
   },
   info: {
     directories: 'Папок:',
@@ -64,15 +69,17 @@ const ru = {
     about: {
       developer: 'Разработчик',
       name: 'Laravel File Manager',
-      site: 'Сайт',
       title: 'О программе',
       version: 'Версия',
     },
     delete: {
-      confirmText: 'Подтвердите удаление!',
-      confirmLabel: 'Удалить!',
       noSelected: 'Ничего не выбрано!',
       title: 'Удалить',
+    },
+    newFile: {
+      fieldName: 'Имя файла',
+      fieldFeedback: 'Такой файл уже существует!',
+      title: 'Создать новый файл',
     },
     newFolder: {
       fieldName: 'Имя папки',
@@ -110,6 +117,35 @@ const ru = {
       size: 'Размер:',
       skip: 'Пропустить',
       title: 'Загрузить файлы',
+    },
+    editor: {
+      title: 'Редактор',
+    },
+    audioPlayer: {
+      title: 'Аудиоплеер',
+    },
+    videoPlayer: {
+      title: 'Видеоплеер',
+    },
+    zip: {
+      title: 'Создать архив',
+      fieldName: 'Имя архива',
+      fieldFeedback: 'Такой файл уже существует!',
+    },
+    unzip: {
+      title: 'Распаковать архив',
+      fieldName: 'Имя папки',
+      fieldRadioName: 'Извлечь в:',
+      fieldRadio1: 'В текущую папку',
+      fieldRadio2: 'В новую папку',
+      fieldFeedback: 'Папка существует!',
+      warning: 'Внимание! При совпадении имен файлы будут перезаписаны!',
+    },
+    cropper: {
+      title: 'Обрезка',
+      apply: 'Применить',
+      reset: 'Сбросить',
+      save: 'Сохранить',
     },
   },
 };

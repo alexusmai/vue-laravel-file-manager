@@ -1,54 +1,57 @@
-/* eslint-disable max-len */
-import GET from '../http/get-queries';
-import POST from '../http/post-queries';
+/* eslint-disable max-len,prefer-destructuring,object-curly-newline */
+import GET from '../http/get';
+import POST from '../http/post';
 
 export default {
   /**
-   * Get init data from server
-   * @param context
+   * Get initiation data from server
+   * @param state
+   * @param commit
+   * @param getters
+   * @param dispatch
    */
-  initializeApp(context) {
+  initializeApp({ state, commit, getters, dispatch }) {
     GET.initialize().then((response) => {
       if (response.data.result.status === 'success') {
         // set app settings
-        context.commit('settings/initSettings', response.data.config);
+        commit('settings/initSettings', response.data.config);
 
-        // set disk list
-        context.commit('setDiskList', response.data.config.diskList);
+        // set disks
+        commit('setDisks', response.data.config.disks);
 
         const leftDisk = response.data.config.leftDisk
           ? response.data.config.leftDisk
-          : response.data.config.diskList[0];
+          : getters.diskList[0];
 
         const rightDisk = response.data.config.rightDisk
           ? response.data.config.rightDisk
-          : response.data.config.diskList[0];
+          : getters.diskList[0];
 
         // left manager - set default disk
-        context.commit('left/setDisk', leftDisk);
+        commit('left/setDisk', leftDisk);
 
         // load content to the left file manager
-        context.dispatch('getLoadContent', {
+        dispatch('getLoadContent', {
           manager: 'left',
           disk: leftDisk,
           path: null,
         });
 
         // initialize the app depending on the settings
-        if (context.state.settings.windowsConfig === 3) {
+        if (state.settings.windowsConfig === 3) {
           // if selected left and right managers
-          context.commit('right/setDisk', rightDisk);
+          commit('right/setDisk', rightDisk);
 
           // load content to the right file manager
-          context.dispatch('getLoadContent', {
+          dispatch('getLoadContent', {
             manager: 'right',
             disk: rightDisk,
             path: null,
           });
-        } else if (context.state.settings.windowsConfig === 2) {
+        } else if (state.settings.windowsConfig === 2) {
           // if selected left manager and directories tree
           // init directories tree
-          context.dispatch('tree/initTree', leftDisk);
+          dispatch('tree/initTree', leftDisk);
         }
       }
     });
@@ -69,128 +72,117 @@ export default {
     });
   },
 
-
   /**
-   * SelectDisk
-   * @param context
+   * Select disk
+   * @param state
+   * @param commit
+   * @param dispatch
    * @param disk
    * @param manager
    */
-  selectDisk(context, { disk, manager }) {
+  selectDisk({ state, commit, dispatch }, { disk, manager }) {
     GET.selectDisk(disk).then((response) => {
       // if disk exist => change disk
       if (response.data.result.status === 'success') {
         // set disk name
-        context.commit(`${manager}/setDisk`, disk);
+        commit(`${manager}/setDisk`, disk);
 
         // reset history
-        context.commit(`${manager}/resetHistory`);
+        commit(`${manager}/resetHistory`);
 
         // reinitialize tree if directories tree is shown
-        if (context.state.settings.windowsConfig === 2) {
-          context.dispatch('tree/initTree', disk);
+        if (state.settings.windowsConfig === 2) {
+          dispatch('tree/initTree', disk);
         }
 
         // download content for root path
-        context.dispatch(`${manager}/selectDirectory`, { path: null, history: false });
+        dispatch(`${manager}/selectDirectory`, { path: null, history: false });
       }
     });
   },
 
   /**
-   * Refresh All
-   * @param context
+   * Create new file
+   * @param getters
+   * @param dispatch
+   * @param fileName
+   * @returns {Promise}
    */
-  refreshAll(context) {
-    if (context.state.settings.windowsConfig === 2) {
-      // refresh tree
-      return context.dispatch('tree/initTree', context.state.left.selectedDisk).then(() => Promise.all([
-        // reopen folders if need
-        context.dispatch('tree/reopenPath', context.getters.selectedDirectory),
-        // refresh manager/s
-        context.dispatch('refreshManagers'),
-      ]));
-    }
-    // refresh manager/s
-    return context.dispatch('refreshManagers');
+  createFile({ getters, dispatch }, fileName) {
+    // directory for new file
+    const selectedDirectory = getters.selectedDirectory;
+
+    // create new file, server side
+    return POST.createFile(getters.selectedDisk, selectedDirectory, fileName)
+      .then((response) => {
+      // update file list
+        dispatch('updateContent', {
+          response,
+          oldDir: selectedDirectory,
+          commitName: 'addNewFile',
+          type: 'file',
+        });
+
+        return response;
+      });
   },
 
   /**
-   * Refresh content in the manager/s
+   * Get file content
    * @param context
+   * @param disk
+   * @param path
+   * @returns {*}
    */
-  refreshManagers(context) {
-    // select what needs to be an updated
-    if (context.rootState.fm.settings.windowsConfig === 3) {
-      return Promise.all([
-        // left manager
-        context.dispatch('left/refreshDirectory'),
-        // right manager
-        context.dispatch('right/refreshDirectory'),
-      ]);
-    }
+  getFile(context, { disk, path }) {
+    return GET.getFile(disk, path);
+  },
 
-    // only left manager
-    return context.dispatch('left/refreshDirectory');
+  /**
+   * Update file
+   * @param getters
+   * @param dispatch
+   * @param formData
+   * @returns {PromiseLike | Promise}
+   */
+  updateFile({ getters, dispatch }, formData) {
+    return POST.updateFile(formData).then((response) => {
+      // update file list
+      dispatch('updateContent', {
+        response,
+        oldDir: getters.selectedDirectory,
+        commitName: 'updateFile',
+        type: 'file',
+      });
+
+      return response;
+    });
   },
 
   /**
    * Create new directory
-   * @param context
-   * @param folderName
+   * @param getters
+   * @param dispatch
+   * @param name
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
    */
-  createDirectory(context, folderName) {
+  createDirectory({ getters, dispatch }, name) {
     // directory for new folder
-    const selectedDirectory = context.getters.selectedDirectory;
+    const selectedDirectory = getters.selectedDirectory;
 
     // create new directory, server side
-    return POST.createDirectory(
-      context.getters.selectedDisk,
-      selectedDirectory,
-      folderName,
-    ).then((response) => {
-      // if folder created successfully
-      if (
-        response.data.result.status === 'success'
-        && selectedDirectory === context.getters.selectedDirectory
-      ) {
-        // active manager name
-        const activeManager = context.state.activeManager;
-
-        // add new folder in to the folders list
-        context.commit(
-          `${activeManager}/addNewDirectory`,
-          response.data.directory,
-        );
-
-        // repeat sort
-        context.dispatch(`${activeManager}/sortBy`, {
-          field: context.state[activeManager].sort.field,
-          direction: context.state[activeManager].sort.direction,
-        });
-
-        // if tree module is showing
-        if (context.state.settings.windowsConfig === 2) {
-          // update tree module
-          context.dispatch('tree/addToTree',
-            {
-              parentPath: selectedDirectory,
-              newDirectory: response.data.tree,
-            });
-
-          // if showing two window manager
-        } else if (context.state.settings.windowsConfig === 3) {
-          // add a new folder if in the another manager showing the same folder
-          if (context.state.left.selectedDirectory === context.state.right.selectedDirectory
-            && context.state.left.selectedDisk === context.state.right.selectedDisk) {
-            // add new folder in folders list (inactive manager)
-            context.commit(
-              `${context.getters.inactiveManager}/addNewDirectory`,
-              response.data.directory,
-            );
-          }
-        }
-      }
+    return POST.createDirectory({
+      disk: getters.selectedDisk,
+      path: selectedDirectory,
+      name,
+    }).then((response) => {
+      // update file list
+      dispatch('updateContent', {
+        response,
+        oldDir: selectedDirectory,
+        commitName: 'addNewDirectory',
+        type: 'directory',
+      });
 
       return response;
     });
@@ -198,25 +190,22 @@ export default {
 
   /**
    * Upload file or files
-   * @param context
+   * @param getters
+   * @param commit
+   * @param dispatch
    * @param files
    * @param overwrite
+   * @returns {Promise}
    */
-  upload(context, { files, overwrite }) {
+  upload({ getters, commit, dispatch }, { files, overwrite }) {
+    // directory where files will be uploaded
+    const selectedDirectory = getters.selectedDirectory;
+
     // create new form data
     const data = new FormData();
-    // directory where files will be uploaded
-    const selectedDirectory = context.getters.selectedDirectory;
-
-    // add disk name
-    data.append('disk', context.getters.selectedDisk);
-
-    // add path name
+    data.append('disk', getters.selectedDisk);
     data.append('path', selectedDirectory || '');
-
-    // upload settings
     data.append('overwrite', overwrite);
-
     // add file or files
     for (let i = 0; i < files.length; i += 1) {
       data.append('files[]', files[i]);
@@ -226,51 +215,177 @@ export default {
     const config = {
       onUploadProgress(progressEvent) {
         const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        context.commit('messages/setProgress', progress);
+        commit('messages/setProgress', progress);
       },
     };
 
     // upload files
     return POST.upload(data, config).then((response) => {
       // clear progress
-      context.commit('messages/clearProgress');
+      commit('messages/clearProgress');
 
       // if files uploaded successfully
       if (
         response.data.result.status === 'success'
-        && selectedDirectory === context.getters.selectedDirectory
+        && selectedDirectory === getters.selectedDirectory
       ) {
         // refresh content
-        context.dispatch('refreshManagers');
+        dispatch('refreshManagers');
       }
 
       return response;
     }).catch(() => {
       // clear progress
-      context.commit('messages/clearProgress');
+      commit('messages/clearProgress');
     });
   },
 
   /**
    * Delete selected files and folders
-   * @param context
+   * @param state
+   * @param getters
+   * @param dispatch
    * @param items
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
    */
-  delete(context, items) {
-    return POST.delete(
-      context.getters.selectedDisk,
+  delete({ state, getters, dispatch }, items) {
+    return POST.delete({
+      disk: getters.selectedDisk,
       items,
-    ).then((response) => {
+    }).then((response) => {
       // if all items deleted successfully
       if (response.data.result.status === 'success') {
         // refresh content
-        context.dispatch('refreshManagers');
+        dispatch('refreshManagers');
 
         // delete directories from tree
-        if (context.state.settings.windowsConfig === 2) {
+        if (state.settings.windowsConfig === 2) {
           const onlyDir = items.filter(item => item.type === 'dir');
-          context.dispatch('tree/deleteFromTree', onlyDir);
+          dispatch('tree/deleteFromTree', onlyDir);
         }
+      }
+
+      return response;
+    });
+  },
+
+  /**
+   * Paste files and folders
+   * @param state
+   * @param commit
+   * @param getters
+   * @param dispatch
+   */
+  paste({ state, commit, getters, dispatch }) {
+    POST.paste({
+      disk: getters.selectedDisk,
+      path: getters.selectedDirectory,
+      clipboard: state.clipboard,
+    }).then((response) => {
+      // if the action was successful
+      if (response.data.result.status === 'success') {
+        // refresh content
+        dispatch('refreshAll');
+
+        // if action - cut - clear clipboard
+        if (state.clipboard.type === 'cut') {
+          commit('resetClipboard');
+        }
+      }
+    });
+  },
+
+  /**
+   * Rename file or folder
+   * @param getters
+   * @param dispatch
+   * @param type
+   * @param newName
+   * @param oldName
+   * @returns {Promise}
+   */
+  rename({ getters, dispatch }, { type, newName, oldName }) {
+    return POST.rename({
+      disk: getters.selectedDisk,
+      newName,
+      oldName,
+    }).then((response) => {
+      // refresh content
+      if (type === 'dir') {
+        dispatch('refreshAll');
+      } else {
+        dispatch('refreshManagers');
+      }
+
+      return response;
+    });
+  },
+
+  /**
+   * TODO
+   * Get file url
+   * @param state
+   * @param disk
+   * @param path
+   */
+  url({ state }, { disk, path }) {
+    GET.url(disk, path).then((response) => {
+      if (response.data.result.status === 'success') {
+        state.fileCallback(response.data.url);
+      }
+    });
+  },
+
+  /**
+   * Zip files and folders
+   * @param state
+   * @param getters
+   * @param dispatch
+   * @param name
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  zip({ state, getters, dispatch }, name) {
+    const selectedDirectory = getters.selectedDirectory;
+
+    return POST.zip({
+      disk: getters.selectedDisk,
+      path: selectedDirectory,
+      name,
+      elements: state[state.activeManager].selected,
+    }).then((response) => {
+      // if zipped successfully
+      if (response.data.result.status === 'success'
+          && selectedDirectory === getters.selectedDirectory
+      ) {
+        // refresh content
+        dispatch('refreshManagers');
+      }
+
+      return response;
+    });
+  },
+
+  /**
+   * Unzip selected archive
+   * @param getters
+   * @param dispatch
+   * @param folder
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  unzip({ getters, dispatch }, folder) {
+    const selectedDirectory = getters.selectedDirectory;
+
+    return POST.unzip({
+      disk: getters.selectedDisk,
+      path: getters.selectedItems[0].path,
+      folder,
+    }).then((response) => {
+      // if unzipped successfully
+      if (response.data.result.status === 'success'
+          && selectedDirectory === getters.selectedDirectory
+      ) {
+        // refresh
+        dispatch('refreshAll');
       }
 
       return response;
@@ -279,95 +394,119 @@ export default {
 
   /**
    * Add selected items to clipboard
-   * @param context
+   * @param state
+   * @param commit
+   * @param getters
    * @param type
    */
-  toClipboard(context, type) {
-    const activeManager = context.state.activeManager;
-
-    if (context.getters[`${activeManager}/selectedCount`]) {
-      context.commit('setClipboard', {
+  toClipboard({ state, commit, getters }, type) {
+    // if files are selected
+    if (getters[`${state.activeManager}/selectedCount`]) {
+      commit('setClipboard', {
         type,
-        disk: context.state[activeManager].selectedDisk,
-        directories: context.state[activeManager].selected.directories.map(item => item),
-        files: context.state[activeManager].selected.files.map(item => item),
+        disk: state[state.activeManager].selectedDisk,
+        directories: state[state.activeManager].selected.directories.slice(0),
+        files: state[state.activeManager].selected.files.slice(0),
       });
     }
   },
 
   /**
-   * Paste files and folders
-   * @param context
+   * Refresh content in the manager/s
+   * @param dispatch
+   * @param state
+   * @returns {*}
    */
-  paste(context) {
-    // create new form data
-    const data = new FormData();
-    // copy/cut to this folder
-    const selectedDirectory = context.getters.selectedDirectory;
+  refreshManagers({ dispatch, state }) {
+    // select what needs to be an updated
+    if (state.settings.windowsConfig === 3) {
+      return Promise.all([
+        // left manager
+        dispatch('left/refreshDirectory'),
+        // right manager
+        dispatch('right/refreshDirectory'),
+      ]);
+    }
 
-    // add disk name
-    data.append('disk', context.getters.selectedDisk);
+    // only left manager
+    return dispatch('left/refreshDirectory');
+  },
 
-    // add path name
-    data.append('path', selectedDirectory);
+  /**
+   * Refresh All
+   * @param state
+   * @param getters
+   * @param dispatch
+   * @returns {*}
+   */
+  refreshAll({ state, getters, dispatch }) {
+    if (state.settings.windowsConfig === 2) {
+      // refresh tree
+      return dispatch('tree/initTree', state.left.selectedDisk).then(() => Promise.all([
+        // reopen folders if need
+        dispatch('tree/reopenPath', getters.selectedDirectory),
+        // refresh manager/s
+        dispatch('refreshManagers'),
+      ]));
+    }
+    // refresh manager/s
+    return dispatch('refreshManagers');
+  },
 
-    // add clipboard
-    data.append('clipboard', JSON.stringify(context.state.clipboard));
-
-    POST.paste(
-      context.getters.selectedDisk,
-      selectedDirectory,
-      context.state.clipboard,
-    ).then((response) => {
-      // if the action was successful
-      if (response.data.result.status === 'success') {
-        // refresh content
-        context.dispatch('refreshAll');
-
-        // if action - cut - clear clipboard
-        if (context.state.clipboard.type === 'cut') {
-          context.commit('resetClipboard');
-        }
-      }
+  /**
+   * Repeat sorting
+   * @param state
+   * @param dispatch
+   * @param manager
+   */
+  repeatSort({ state, dispatch }, manager) {
+    dispatch(`${manager}/sortBy`, {
+      field: state[manager].sort.field,
+      direction: state[manager].sort.direction,
     });
   },
 
   /**
-   * Rename file or folder
-   * @param context
+   * Update content - files, folders after create or update
+   * @param state
+   * @param commit
+   * @param getters
+   * @param dispatch
+   * @param response
+   * @param oldDir
+   * @param commitName
    * @param type
-   * @param newName
-   * @param oldName
-   * @returns {Promise<T>}
    */
-  rename(context, { type, newName, oldName }) {
-    return POST.rename(
-      context.getters.selectedDisk,
-      newName,
-      oldName,
-    ).then((response) => {
-      // refresh content
-      if (type === 'dir') {
-        context.dispatch('refreshAll');
-      } else {
-        context.dispatch('refreshManagers');
-      }
+  updateContent({ state, commit, getters, dispatch }, { response, oldDir, commitName, type }) {
+    // if operation success
+    if (
+      response.data.result.status === 'success' &&
+      oldDir === getters.selectedDirectory
+    ) {
+      // add/update file/folder in to the files/folders list
+      commit(`${state.activeManager}/${commitName}`, response.data[type]);
+      // repeat sort
+      dispatch('repeatSort', state.activeManager);
 
-      return response;
-    });
-  },
+      // if tree module is showing
+      if (type === 'directory' && state.settings.windowsConfig === 2) {
+        // update tree module
+        dispatch('tree/addToTree', {
+          parentPath: oldDir,
+          newDirectory: response.data.tree,
+        });
 
-  /**
-   * Get file url
-   * @param context
-   * @param disk
-   * @param path
-   */
-  url(context, { disk, path }) {
-    GET.url(disk, path).then((response) => {
-      if (response.data.result.status === 'success') {
-        context.state.fileCallback(response.data.url);
+        // if both managers show the same folder
+      } else if (
+        state.settings.windowsConfig === 3 &&
+        state.left.selectedDirectory === state.right.selectedDirectory &&
+        state.left.selectedDisk === state.right.selectedDisk
+      ) {
+        // add/update file/folder in to the files/folders list (inactive manager)
+        commit(`${getters.inactiveManager}/${commitName}`, response.data[type]);
+        // repeat sort
+        dispatch('repeatSort', getters.inactiveManager);
       }
-    });
+    }
   },
 };

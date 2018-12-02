@@ -8,7 +8,7 @@ export default {
 
   /**
    * Clipboard
-   * Type - copy || cut
+   * Operation type - copy || cut
    */
   clipboard: {
     type: null,
@@ -17,9 +17,12 @@ export default {
     files: [],
   },
 
-  // disk list
-  diskList: [],
+  // available disks
+  disks: [],
 
   // file callback for ckeditor, ...
   fileCallback: null,
+
+  // full screen mode
+  fullScreen: false,
 };

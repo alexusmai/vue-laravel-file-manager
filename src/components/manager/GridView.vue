@@ -51,12 +51,13 @@
 </template>
 
 <script>
+import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
-import manager from './../../mixins/manager';
+import managerHelper from './mixins/manager';
 
 export default {
   name: 'grid-view',
-  mixins: [helper, manager],
+  mixins: [translate, helper, managerHelper],
   data() {
     return {
       disk: '',
@@ -74,19 +75,26 @@ export default {
       this.disk = this.selectedDisk;
     }
   },
+  computed: {
+    /**
+     * Image extensions list
+     * @returns {*}
+     */
+    imageExtensions() {
+      return this.$store.state.fm.settings.imageExtensions;
+    },
+  },
   methods: {
     /**
      * Check file extension (image or no)
      * @param extension
-     * @returns {*|boolean}
+     * @returns {boolean}
      */
     thisImage(extension) {
       // extension not found
       if (!extension) return false;
 
-      const img = ['png', 'jpg', 'jpeg', 'gif'];
-
-      return img.includes(extension.toLowerCase());
+      return this.imageExtensions.includes(extension.toLowerCase());
     },
 
     /**
@@ -95,7 +103,7 @@ export default {
      * @returns {string}
      */
     createImgUrl(path) {
-      return `${location.protocol}//${location.hostname}/file-manager/thumbnails?disk=${this.disk}&path=${path}`;
+      return `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${this.disk}&path=${path}`;
     },
   },
 };

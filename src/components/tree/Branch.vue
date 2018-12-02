@@ -35,11 +35,13 @@ export default {
     parentId: { type: Number, required: true },
   },
   computed: {
-    // Subdirectories for selected parent
+    /**
+     * Subdirectories for selected parent
+     * @returns {*}
+     */
     subDirectories() {
       return this.$store.state.fm.tree.directories.filter(item => item.parentId === this.parentId);
     },
-
   },
   methods: {
     /**

@@ -6,6 +6,14 @@
 
 ![Laravel File Manager](https://raw.github.com/alexusmai/vue-laravel-file-manager/master/src/assets/laravel-file-manager.gif?raw=true)
 
+# v 2.0.0
+
+* Audio player (mp3, ogg, wav, aac), Video player (webm, mp4) - ([Plyr](https://github.com/sampotts/plyr))
+* Code editor - ([Code Mirror](https://github.com/codemirror/codemirror))
+* Image cropper - ([Cropper.js](https://github.com/fengyuanchen/cropperjs))
+* Zip / Unzip - only for local disks
+
+
 ## Installation
 
 ### NPM
@@ -40,6 +48,30 @@ Vue.use(FileManager, {store});
 ```
 
 `The application store module will be registered under the name 'fm'`
+
+You can overwrite some default settings
+
+```
+Vue.use(FileManager, {
+    store, // required
+    
+    // not required params
+    headers: {'Authorization': 'Bearer ...'}, // add header
+    // OR
+    headers: {'X-CSRF-TOKEN': 'token'}, // overwrite default header Axios
+    baseUrl: 'http://my_url:80/file-manager/', // overwrite base url Axios
+    windowsConfig: 2,
+    lang: 'de',     // set language
+    translation: {  // add new translation
+        name: de,
+        content: {
+            about: 'Über',
+            back: 'Zurück',
+            ... see lang file structure
+        },
+    },
+}
+```
 
 Now vue component is registered and you can use it in your app
 ```

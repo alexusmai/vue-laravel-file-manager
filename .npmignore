@@ -1,17 +1,2 @@
-#dirs
-build/
-config/
-dist/
-
-#linters
-.eslintrc*
-.eslintignore
-
-.postcssrc.js
-
-#babel
-.babelrc
-
-#editor settings
-.idea
-.editorconfig
+/.idea/
+/tests/

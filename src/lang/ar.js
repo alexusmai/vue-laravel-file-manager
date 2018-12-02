@@ -14,6 +14,7 @@ const ar = {
     edit: 'تعديل',
     forward: 'الى الامام',
     folder: 'مجلد جديد',
+    file: 'New file',
     fullScreen: 'ملء الشاشة',
     grid: 'شبكة',
     paste: 'لصق',
@@ -43,6 +44,10 @@ const ar = {
     select: 'اختيار',
     view: 'عرض',
     zip: 'ضغط',
+    unzip: 'Unzip',
+    edit: 'Edit',
+    audioPlay: 'Play',
+    videoPlay: 'Play',
   },
   info: {
     directories: 'المجلدات:',
@@ -64,15 +69,17 @@ const ar = {
     about: {
       developer: 'مطور',
       name: 'Laravel File Manager',
-      site: 'موقع',
       title: 'حول',
       version: 'الإصدار',
     },
     delete: {
-      confirmText: 'تأكيد الحذف!',
-      confirmLabel: 'حذف!',
       noSelected: 'لا شيء محدد!',
       title: 'حذف',
+    },
+    newFile: {
+      fieldName: 'File name',
+      fieldFeedback: 'File exists!',
+      title: 'Create new file',
     },
     newFolder: {
       fieldName: 'أسم المجلد',
@@ -110,6 +117,35 @@ const ar = {
       size: 'الحجم:',
       skip: 'تخطي',
       title: 'رفع الملفات',
+    },
+    editor: {
+      title: 'Editor',
+    },
+    audioPlayer: {
+      title: 'Audio player',
+    },
+    videoPlayer: {
+      title: 'Video player',
+    },
+    zip: {
+      title: 'Create archive',
+      fieldName: 'Archive name',
+      fieldFeedback: 'Archive exists!',
+    },
+    unzip: {
+      title: 'Unpack archive',
+      fieldName: 'Folder name',
+      fieldRadioName: 'Extract to:',
+      fieldRadio1: 'To current folder',
+      fieldRadio2: 'In a new folder',
+      fieldFeedback: 'Folder exists!',
+      warning: 'Attention! If the names match, the files will be overwritten!',
+    },
+    cropper: {
+      title: 'Cropping',
+      apply: 'Apply',
+      reset: 'Reset',
+      save: 'Save',
     },
   },
 };
