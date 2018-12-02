@@ -11,7 +11,7 @@ export default {
   state() {
     return {
       // App version
-      version: '2.0.0 Beta',
+      version: '2.0.1',
 
       // this headers will be merged with default headers
       headers: {},
