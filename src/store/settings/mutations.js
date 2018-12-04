@@ -35,8 +35,12 @@ export default {
    */
   initBaseUrl(state) {
     if (!state.baseUrl) {
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development' && process.env.VUE_APP_AXIOS_BASE_URL) {
+        // vue .env
         state.baseUrl = process.env.VUE_APP_AXIOS_BASE_URL;
+      } else if (process.env.NODE_ENV === 'development' && process.env.MIX_LFM_BASE_URL) {
+        // laravel .env
+        state.baseUrl = process.env.MIX_LFM_BASE_URL;
       } else {
         let baseUrl = `${window.location.protocol}//${window.location.hostname}`;
 
