@@ -31,10 +31,11 @@
 </template>
 
 <script>
-/* eslint-disable import/no-duplicates */
+/* eslint-disable import/no-duplicates, no-param-reassign */
 import { mapState } from 'vuex';
-// Axios interceptors
-import { requestInterceptor, responseInterceptor } from './http/interceptors';
+// Axios
+import HTTP from './http/init-axios';
+import EventBus from './eventBus';
 // Components
 import Navbar from './components/blocks/Navbar.vue';
 import FolderTree from './components/tree/FolderTree.vue';
@@ -70,10 +71,10 @@ export default {
     this.$store.commit('fm/settings/initBaseUrl');
 
     // add axios request interceptor
-    requestInterceptor();
+    this.requestInterceptor();
 
     // add axios response interceptor
-    responseInterceptor();
+    this.responseInterceptor();
 
     // initialize app settings
     this.$store.dispatch('fm/initializeApp');
@@ -91,6 +92,84 @@ export default {
     */
   },
   methods: {
+    /**
+     * Add axios request interceptor
+     */
+    requestInterceptor() {
+      HTTP.interceptors.request.use((config) => {
+        // overwrite base url
+        if (this.$store.getters['fm/settings/baseUrl'] !== config.baseURL) {
+          config.baseURL = this.$store.getters['fm/settings/baseUrl'];
+        }
+
+        // overwrite headers
+        const newHeaders = this.$store.state.fm.settings.headers;
+
+        if (newHeaders) {
+          Object.keys(newHeaders)
+            .forEach((key) => { config.headers[key] = newHeaders[key]; });
+        }
+
+        // loading spinner +
+        this.$store.commit('fm/messages/addLoading');
+
+        return config;
+      }, (error) => {
+        // loading spinner -
+        this.$store.commit('fm/messages/subtractLoading');
+        // Do something with request error
+        return Promise.reject(error);
+      });
+    },
+
+    /**
+     * Add axios response interceptor
+     */
+    responseInterceptor() {
+      HTTP.interceptors.response.use((response) => {
+        // loading spinner -
+        this.$store.commit('fm/messages/subtractLoading');
+
+        // create notification, if find message text
+        if (Object.prototype.hasOwnProperty.call(response.data, 'result')) {
+          if (response.data.result.message) {
+            // show notification
+            EventBus.$emit('addNotification', response.data.result);
+
+            // set action result
+            this.$store.commit('fm/messages/setActionResult', response.data.result);
+          }
+        }
+
+        return response;
+      }, (error) => {
+        // loading spinner -
+        this.$store.commit('fm/messages/subtractLoading');
+
+        // set error message
+        this.$store.commit('fm/messages/setError', error);
+
+        const errorMessage = {
+          status: 'error',
+          message: '',
+        };
+
+        // add message
+        if (error.response) {
+          errorMessage.message = error.response.data.message || error.response.statusText;
+        } else if (error.request) {
+          errorMessage.message = error.request.statusText || 'Network error';
+        } else {
+          errorMessage.message = error.message;
+        }
+
+        // show notification
+        EventBus.$emit('addNotification', errorMessage);
+
+        return Promise.reject(error);
+      });
+    },
+
     /**
      * Select manager (when shown 2 file manager windows)
      * @param managerName
