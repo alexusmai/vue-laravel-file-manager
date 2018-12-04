@@ -73,6 +73,12 @@ Vue.use(FileManager, {
 }
 ```
 
+In development mode you can change base url for application -  add this param in your laravel .env file
+
+```
+MIX_LFM_BASE_URL=http://my-url.loc/file-manager/
+```
+
 Now vue component is registered and you can use it in your app
 ```
 <file-manager></file-manager>
