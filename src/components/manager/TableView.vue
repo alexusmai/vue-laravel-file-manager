@@ -66,6 +66,7 @@
                     v-bind:key="`f-${index}`"
                     v-bind:class="{'table-info': checkSelect('files', file.path)}"
                     v-on:click="selectItem('files', file.path, $event)"
+                    v-on:dblclick="selectAction(file.path, file.extension)"
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
                     <td class="fm-content-item unselectable">
                         <i class="far"
