@@ -322,7 +322,6 @@ export default {
   },
 
   /**
-   * TODO
    * Get file url
    * @param state
    * @param disk
