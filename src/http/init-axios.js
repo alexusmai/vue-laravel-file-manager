@@ -14,6 +14,7 @@ function createHeaders() {
     const token = document.head.querySelector('meta[name="csrf-token"]');
 
     if (!token) {
+      // eslint-disable-next-line
       console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
     }
 
