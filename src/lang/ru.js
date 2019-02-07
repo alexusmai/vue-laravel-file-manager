@@ -97,6 +97,10 @@ const ru = {
       size: 'Размер',
       title: 'Свойства',
       type: 'Тип',
+      access: 'Доступ',
+      access_0: 'Нет доступа',
+      access_1: 'Только чтение',
+      access_2: 'Чтение и Запись',
     },
     rename: {
       directoryExist: 'Папка существует',

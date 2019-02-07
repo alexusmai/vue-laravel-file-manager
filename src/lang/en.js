@@ -97,6 +97,10 @@ const en = {
       size: 'Size',
       title: 'Properties',
       type: 'Type',
+      access: 'Access',
+      access_0: 'Access denied',
+      access_1: 'Only Read',
+      access_2: 'Read and Write',
     },
     rename: {
       directoryExist: 'Directory exists',
