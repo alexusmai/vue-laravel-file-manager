@@ -63,5 +63,6 @@ export default {
   initSettings(state, data) {
     if (!state.lang) state.lang = data.lang;
     if (!state.windowsConfig) state.windowsConfig = data.windowsConfig;
+    state.acl = data.acl;
   },
 };

@@ -10,8 +10,11 @@ export default {
   namespaced: true,
   state() {
     return {
+      // ACL
+      acl: null,
+
       // App version
-      version: '2.0.6',
+      version: '2.1.0',
 
       // this headers will be merged with default headers
       headers: {},
