@@ -17,7 +17,8 @@
                  v-on:dblclick.stop="selectDirectory(directory.path)"
                  v-on:contextmenu.prevent="contextMenu(directory, $event)">
                 <div class="fm-item-icon">
-                    <i class="far fa-folder fa-5x pb-2"></i>
+                    <i class="fa-5x pb-2"
+                       v-bind:class="(acl && directory.acl === 0) ? 'fas fa-unlock-alt' : 'far fa-folder'"></i>
                 </div>
                 <div class="fm-item-info">{{ directory.basename }}</div>
             </div>
@@ -31,7 +32,10 @@
                  v-on:dblclick="selectAction(file.path, file.extension)"
                  v-on:contextmenu.prevent="contextMenu(file, $event)">
                 <div class="fm-item-icon">
-                    <template v-if="thisImage(file.extension)">
+                    <template v-if="acl && file.acl === 0">
+                        <i class="fas fa-unlock-alt fa-5x pb-2"></i>
+                    </template>
+                    <template v-else-if="thisImage(file.extension)">
                         <img class="img-thumbnail"
                              v-bind:alt="file.filename"
                              v-bind:src="createImgUrl(file.path)">

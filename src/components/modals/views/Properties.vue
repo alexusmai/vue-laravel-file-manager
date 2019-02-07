@@ -26,6 +26,11 @@
                     <dt class="col-3">{{ lang.modal.properties.modified }}:</dt>
                     <dd class="col-9">{{ timestampToDate(selectedItem.timestamp) }}</dd>
                 </template>
+
+                <template v-if="selectedItem.hasOwnProperty('acl')">
+                    <dt class="col-3">{{ lang.modal.properties.access }}:</dt>
+                    <dd class="col-9">{{ lang.modal.properties['access_' + selectedItem.acl] }}</dd>
+                </template>
             </dl>
         </div>
     </div>

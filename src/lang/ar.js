@@ -97,6 +97,10 @@ const ar = {
       size: 'حجم',
       title: 'خصائص',
       type: 'نوع',
+      access: 'Access',
+      access_0: 'Access denied',
+      access_1: 'Only Read',
+      access_2: 'Read and Write',
     },
     rename: {
       directoryExist: 'المجلد موجود',

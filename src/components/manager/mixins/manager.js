@@ -42,6 +42,13 @@ export default {
     selected() {
       return this.$store.state.fm[this.manager].selected;
     },
+
+    /**
+     * ACL On/Off
+     */
+    acl() {
+      return this.$store.state.fm.settings.acl;
+    },
   },
   methods: {
     /**

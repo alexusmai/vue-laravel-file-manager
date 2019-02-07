@@ -53,6 +53,7 @@
                     v-on:click="selectItem('directories', directory.path, $event)"
                     v-on:contextmenu.prevent="contextMenu(directory, $event)">
                     <td class="fm-content-item unselectable"
+                        v-bind:class="(acl && directory.acl === 0) ? 'text-hidden' : ''"
                         v-on:dblclick="selectDirectory(directory.path)">
                         <i class="far fa-folder"></i> {{ directory.basename }}
                     </td>
@@ -68,7 +69,8 @@
                     v-on:click="selectItem('files', file.path, $event)"
                     v-on:dblclick="selectAction(file.path, file.extension)"
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
-                    <td class="fm-content-item unselectable">
+                    <td class="fm-content-item unselectable"
+                        v-bind:class="(acl && file.acl === 0) ? 'text-hidden' : ''">
                         <i class="far"
                            v-bind:class="extensionToIcon(file.extension)"></i>
                         {{ file.filename ? file.filename : file.basename }}
@@ -157,6 +159,10 @@ export default {
 
         .fm-content-item {
             cursor: pointer;
+        }
+
+        .text-hidden {
+            color: #cdcdcd;
         }
     }
 </style>
