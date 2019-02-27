@@ -2,7 +2,7 @@
   <div class="fm d-flex flex-column"
        v-bind:class="{ 'fm-full-screen': fullScreen }">
     <navbar></navbar>
-    <div class="row fm-body">
+    <div class="fm-body">
       <notification></notification>
       <context-menu></context-menu>
       <modal v-if="showModal"></modal>
@@ -204,7 +204,10 @@ export default {
     }
 
     .fm-body {
+      display: flex;
       height: 100%;
+      margin-right: -15px;
+      margin-left: -15px;
       position: relative;
       padding-top: 1rem;
       padding-bottom: 1rem;
