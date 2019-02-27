@@ -1,5 +1,5 @@
 <template>
-    <div class="row justify-content-between fm-info-block">
+    <div class="justify-content-between fm-info-block">
         <div class="col-auto">
             <span v-show="selectedCount">
                 {{ `${lang.info.selected} ${selectedCount}` }}
@@ -146,6 +146,9 @@ export default {
 
 <style lang="scss">
     .fm-info-block {
+        display: flex;
+        margin-right: -15px;
+        margin-left: -15px;
         padding-top: 0.2rem;
         padding-bottom: 0.4rem;
         border-bottom: 1px solid #6d757d;
