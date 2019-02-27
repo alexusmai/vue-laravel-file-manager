@@ -14,7 +14,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.1.1',
+      version: '2.1.4',
 
       // this headers will be merged with default headers
       headers: {},

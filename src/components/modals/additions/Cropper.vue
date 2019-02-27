@@ -272,6 +272,10 @@ export default {
     .fm-additions-cropper {
         overflow: hidden;
 
+        & > .row {
+            flex-wrap: nowrap;
+        }
+
         .cropper-block {
             overflow: hidden;
 
