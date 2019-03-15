@@ -34,8 +34,8 @@ export default {
     return {
       menuVisible: false,
       menuStyle: {
-        top: 0,
-        left: 0,
+        top: this.menuY,
+        left: this.menuX,
       },
     };
   },
