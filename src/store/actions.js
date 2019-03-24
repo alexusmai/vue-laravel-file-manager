@@ -19,13 +19,26 @@ export default {
         // set disks
         commit('setDisks', response.data.config.disks);
 
-        const leftDisk = response.data.config.leftDisk
+        let leftDisk = response.data.config.leftDisk
           ? response.data.config.leftDisk
           : getters.diskList[0];
 
-        const rightDisk = response.data.config.rightDisk
+        let rightDisk = response.data.config.rightDisk
           ? response.data.config.rightDisk
           : getters.diskList[0];
+
+        // find disk settings in URL
+        if (window.location.search) {
+          const params = new URLSearchParams(window.location.search);
+
+          if (params.get('leftDisk')) {
+            leftDisk = params.get('leftDisk');
+          }
+
+          if (params.get('rightDisk')) {
+            rightDisk = params.get('rightDisk');
+          }
+        }
 
         // left manager - set default disk
         commit('left/setDisk', leftDisk);
