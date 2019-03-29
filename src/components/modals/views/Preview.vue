@@ -13,7 +13,7 @@
             <template v-if="showCropperModule">
                 <cropper-module v-bind:imgUrl="imgUrl"
                                 v-bind:maxHeight="maxHeight"
-                                v-on:closeCropper="() => {showCropperModule = false; setImgUrl();}"></cropper-module>
+                                v-on:closeCropper="closeCropper"></cropper-module>
             </template>
             <template v-else>
                 <img v-bind:src="imgUrl"
@@ -98,8 +98,12 @@ export default {
       return this.$store.state.fm.settings.cropExtensions.includes(extension.toLowerCase());
     },
     setImgUrl() {
-	  this.imgUrl = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}&v=${+new Date}`;
-    }
+	  this.imgUrl = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}&v=${this.selectedItem.timestamp}`;
+    },
+	closeCropper() {
+      this.showCropperModule = false;
+      this.setImgUrl();
+	},
   },
 };
 </script>
