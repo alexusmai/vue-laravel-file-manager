@@ -36,15 +36,16 @@
                             disabled
                             v-if="uploading"
                             v-bind:title="lang.btn.upload">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-upload"></i>
                     </button>
                     <button type="button" class="btn btn-secondary"
                             v-else
                             v-on:click="showModal('Upload')"
                             v-bind:title="lang.btn.upload">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-upload"></i>
                     </button>
                     <button type="button" class="btn btn-secondary"
+                            v-bind:disabled="!isAnyItemSelected"
                             v-on:click="showModal('Delete')"
                             v-bind:title="lang.btn.delete">
                         <i class="fas fa-trash-alt"></i>
@@ -52,11 +53,13 @@
                 </div>
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-secondary"
+                            v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
                             v-on:click="toClipboard('copy')">
                         <i class="fas fa-copy"></i>
                     </button>
                     <button type="button" class="btn btn-secondary"
+                            v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.cut"
                             v-on:click="toClipboard('cut')">
                         <i class="fas fa-cut"></i>
@@ -106,6 +109,7 @@
 
 <script>
 import translate from './../../mixins/translate';
+import EventBus from './../../eventBus';
 
 export default {
   mixins: [translate],
@@ -133,6 +137,15 @@ export default {
     forwardDisabled() {
       return this.$store.state.fm[this.activeManager].historyPointer ===
           this.$store.state.fm[this.activeManager].history.length - 1;
+    },
+
+    /**
+     * Is any files or directories selected?
+     * @returns {boolean}
+     */
+    isAnyItemSelected() {
+      return this.$store.state.fm[this.activeManager].selected.files.length > 0 ||
+          this.$store.state.fm[this.activeManager].selected.directories.length > 0;
     },
 
     /**
@@ -195,6 +208,13 @@ export default {
      */
     toClipboard(type) {
       this.$store.dispatch('fm/toClipboard', type);
+
+      // show notification
+      if(type === 'cut') {
+          EventBus.$emit('addNotification', {status: 'success', message: 'Cut to clipboard!'});
+      } else if(type === 'copy') {
+          EventBus.$emit('addNotification', {status: 'success', message: 'Copied to clipboard!'});
+      }
     },
 
     /**
