@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-if="!isRootPath">
                     <td colspan="4" class="fm-content-item" v-on:click="levelUp">
                         <i class="fas fa-level-up-alt"></i>
                     </td>

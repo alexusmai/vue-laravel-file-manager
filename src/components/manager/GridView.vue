@@ -1,7 +1,7 @@
 <template>
     <div class="fm-grid">
         <div class="d-flex align-content-start flex-wrap">
-            <div class="fm-grid-item text-center" v-on:click="levelUp">
+            <div class="fm-grid-item text-center" v-on:click="levelUp" v-if="!isRootPath">
                 <div class="fm-item-icon">
                     <i class="fas fa-level-up-alt fa-5x pb-2"></i>
                 </div>
