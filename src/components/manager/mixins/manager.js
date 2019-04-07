@@ -49,6 +49,13 @@ export default {
     acl() {
       return this.$store.state.fm.settings.acl;
     },
+
+    /**
+    * Check if current path is at root level
+    */
+    isRootPath() {
+      return this.$store.state.fm[this.manager].selectedDirectory === null;
+    }
   },
   methods: {
     /**
