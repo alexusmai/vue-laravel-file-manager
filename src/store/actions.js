@@ -336,16 +336,13 @@ export default {
 
   /**
    * Get file url
-   * @param state
+   * @param store
    * @param disk
    * @param path
+   * @returns {Promise}
    */
-  url({ state }, { disk, path }) {
-    GET.url(disk, path).then((response) => {
-      if (response.data.result.status === 'success') {
-        state.fileCallback(response.data.url);
-      }
-    });
+  url(store, { disk, path }) {
+    return GET.url(disk, path);
   },
 
   /**

@@ -1,7 +1,7 @@
 <template>
     <div class="fm-grid">
         <div class="d-flex align-content-start flex-wrap">
-            <div class="fm-grid-item text-center" v-on:click="levelUp">
+            <div v-if="!isRootPath" v-on:click="levelUp" class="fm-grid-item text-center" >
                 <div class="fm-item-icon">
                     <i class="fas fa-level-up-alt fa-5x pb-2"></i>
                 </div>
@@ -38,7 +38,7 @@
                     <template v-else-if="thisImage(file.extension)">
                         <img class="img-thumbnail"
                              v-bind:alt="file.filename"
-                             v-bind:src="createImgUrl(file.path)">
+                             v-bind:src="createImgUrl(file.path, file.timestamp)">
                     </template>
                     <template v-else>
                         <i class="far fa-5x pb-2"
@@ -105,10 +105,11 @@ export default {
     /**
      * Create url for image
      * @param path
+     * @param timestamp
      * @returns {string}
      */
-    createImgUrl(path) {
-      return `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${this.disk}&path=${path}`;
+    createImgUrl(path, timestamp) {
+      return `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${this.disk}&path=${path}&v=${timestamp}`;
     },
   },
 };

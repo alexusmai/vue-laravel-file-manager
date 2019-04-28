@@ -1,4 +1,4 @@
-import HTTP from './init-axios';
+import HTTP from './axios';
 
 export default {
   /**

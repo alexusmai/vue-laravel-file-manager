@@ -49,6 +49,14 @@ export default {
     acl() {
       return this.$store.state.fm.settings.acl;
     },
+
+    /**
+     * Check if current path is at root level
+     * @return {boolean}
+     */
+    isRootPath() {
+      return this.$store.state.fm[this.manager].selectedDirectory === null;
+    },
   },
   methods: {
     /**
@@ -142,6 +150,10 @@ export default {
         this.$store.dispatch('fm/url', {
           disk: this.selectedDisk,
           path,
+        }).then((response) => {
+          if (response.data.result.status === 'success') {
+            this.$store.state.fm.fileCallback(response.data.url);
+          }
         });
 
         return;
