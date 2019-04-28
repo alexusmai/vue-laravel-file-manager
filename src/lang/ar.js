@@ -97,6 +97,7 @@ const ar = {
       size: 'حجم',
       title: 'خصائص',
       type: 'نوع',
+      url: 'رابط',
       access: 'التمكن من',
       access_0: 'تم الرفض',
       access_1: 'قراءة فقط',
@@ -151,6 +152,10 @@ const ar = {
       reset: 'اعادة تعين',
       save: 'حفظ',
     },
+  },
+  notifications: {
+    cutToClipboard: 'قص إلى الحافظة!',
+    copyToClipboard: 'نسخ إلى الحافظة!',
   },
 };
 

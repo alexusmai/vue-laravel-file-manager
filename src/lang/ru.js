@@ -97,6 +97,7 @@ const ru = {
       size: 'Размер',
       title: 'Свойства',
       type: 'Тип',
+      url: 'URL',
       access: 'Доступ',
       access_0: 'Нет доступа',
       access_1: 'Только чтение',
@@ -151,6 +152,10 @@ const ru = {
       reset: 'Сбросить',
       save: 'Сохранить',
     },
+  },
+  notifications: {
+    cutToClipboard: 'Вырезано!',
+    copyToClipboard: 'Скопировано!',
   },
 };
 

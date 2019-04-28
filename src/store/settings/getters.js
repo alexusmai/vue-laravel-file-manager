@@ -7,4 +7,13 @@ export default {
   baseUrl(state) {
     return state.baseUrl;
   },
+
+  /**
+   * Headers
+   * @param state
+   * @return {*}
+   */
+  headers(state) {
+    return state.headers;
+  },
 };

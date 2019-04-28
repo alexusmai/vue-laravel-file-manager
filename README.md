@@ -56,9 +56,17 @@ Vue.use(FileManager, {
     store, // required
     
     // not required params
-    headers: {'Authorization': 'Bearer ...'}, // add header
-    // OR
-    headers: {'X-CSRF-TOKEN': 'token'}, // overwrite default header Axios
+    
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ...'
+    },
+    // default headers example
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': 'set laravel csrf token here...'
+    },
+    
     baseUrl: 'http://my_url:80/file-manager/', // overwrite base url Axios
     windowsConfig: 2,
     lang: 'de',     // set language
@@ -73,12 +81,6 @@ Vue.use(FileManager, {
 }
 ```
 
-In development mode you can change base url for application -  add this param in your laravel .env file
-
-```
-MIX_LFM_BASE_URL=http://my-url.loc/file-manager/
-```
-
 Now vue component is registered and you can use it in your app
 ```
 <file-manager></file-manager>
@@ -91,6 +93,16 @@ Don't forget add a csrf token to head block in your Laravel view and add bootstr
 <!-- Example -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+```
+
+You can use [environment variables](https://laravel.com/docs/mix#environment-variables)
+
+```
+// set baseUrl
+MIX_LFM_BASE_URL=http://my-url.loc/file-manager/
+
+// if you don't want to use csrf-token - you can off it
+MIX_LFM_CSRF_TOKEN=OFF
 ```
 
 Warning! Package use axios (Promise) - use babel-polyfill for ie11

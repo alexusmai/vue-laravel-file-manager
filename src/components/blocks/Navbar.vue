@@ -210,10 +210,16 @@ export default {
       this.$store.dispatch('fm/toClipboard', type);
 
       // show notification
-      if(type === 'cut') {
-          EventBus.$emit('addNotification', {status: 'success', message: 'Cut to clipboard!'});
-      } else if(type === 'copy') {
-          EventBus.$emit('addNotification', {status: 'success', message: 'Copied to clipboard!'});
+      if (type === 'cut') {
+        EventBus.$emit('addNotification', {
+          status: 'success',
+          message: this.lang.notifications.cutToClipboard,
+        });
+      } else if (type === 'copy') {
+        EventBus.$emit('addNotification', {
+          status: 'success',
+          message: this.lang.notifications.copyToClipboard,
+        });
       }
     },
 
