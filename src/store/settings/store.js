@@ -14,12 +14,12 @@ export default {
       acl: null,
 
       // App version
-      version: '2.2.2',
+      version: '2.2.3',
 
-      // this headers will be merged with default headers
-      headers: {},
+      // axios headers
+      headers: null,
 
-      // overwrite default URL
+      // axios default URL
       baseUrl: null,
 
       /**

@@ -72,6 +72,10 @@ export default {
       return this.$store.getters['fm/selectedItems'][0];
     },
 
+    /**
+     * Show modal footer
+     * @return boolean
+     */
     showFooter() {
       return this.canCrop(this.selectedItem.extension) && !this.showCropperModule;
     },
@@ -97,13 +101,21 @@ export default {
     canCrop(extension) {
       return this.$store.state.fm.settings.cropExtensions.includes(extension.toLowerCase());
     },
+
+    /**
+     * Set image URL
+     */
     setImgUrl() {
-	  this.imgUrl = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}&v=${this.selectedItem.timestamp}`;
+      this.imgUrl = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItem.path)}&v=${this.selectedItem.timestamp}`;
     },
-	closeCropper() {
+
+    /**
+     * Close cropper
+     */
+    closeCropper() {
       this.showCropperModule = false;
       this.setImgUrl();
-	},
+    },
   },
 };
 </script>

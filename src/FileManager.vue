@@ -34,7 +34,7 @@
 /* eslint-disable import/no-duplicates, no-param-reassign */
 import { mapState } from 'vuex';
 // Axios
-import HTTP from './http/init-axios';
+import HTTP from './http/axios';
 import EventBus from './eventBus';
 // Components
 import Navbar from './components/blocks/Navbar.vue';
@@ -67,8 +67,8 @@ export default {
     }),
   },
   created() {
-    // init base url
-    this.$store.commit('fm/settings/initBaseUrl');
+    // initiate Axios settings - baseUrl and headers
+    this.$store.commit('fm/settings/initAxiosSettings');
 
     // add axios request interceptor
     this.requestInterceptor();
@@ -98,17 +98,10 @@ export default {
     requestInterceptor() {
       HTTP.interceptors.request.use((config) => {
         // overwrite base url
-        if (this.$store.getters['fm/settings/baseUrl'] !== config.baseURL) {
-          config.baseURL = this.$store.getters['fm/settings/baseUrl'];
-        }
+        config.baseURL = this.$store.getters['fm/settings/baseUrl'];
 
         // overwrite headers
-        const newHeaders = this.$store.state.fm.settings.headers;
-
-        if (newHeaders) {
-          Object.keys(newHeaders)
-            .forEach((key) => { config.headers[key] = newHeaders[key]; });
-        }
+        config.headers = this.$store.getters['fm/settings/headers'];
 
         // loading spinner +
         this.$store.commit('fm/messages/addLoading');

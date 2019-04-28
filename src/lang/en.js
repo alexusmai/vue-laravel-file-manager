@@ -97,6 +97,7 @@ const en = {
       size: 'Size',
       title: 'Properties',
       type: 'Type',
+      url: 'URL',
       access: 'Access',
       access_0: 'Access denied',
       access_1: 'Only Read',
@@ -151,6 +152,10 @@ const en = {
       reset: 'Reset',
       save: 'Save',
     },
+  },
+  notifications: {
+    cutToClipboard: 'Cut to clipboard!',
+    copyToClipboard: 'Copied to clipboard!',
   },
 };
 
