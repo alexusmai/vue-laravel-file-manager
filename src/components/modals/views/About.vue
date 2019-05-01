@@ -14,24 +14,12 @@
                 <dd class="col-9">{{ version }}</dd>
 
                 <dt class="col-3">{{ lang.modal.about.developer }}:</dt>
-                <dd class="col-9">Aleksandr Manekin</dd>
-
-                <dt class="col-3">Email:</dt>
-                <dd class="col-9">
-                    <a href="mailto:alexusmai@gmail.com">alexusmai@gmail.com</a>
-                </dd>
+                <dd class="col-9">Aleksandr Manekin (alexusmai@gmail.com)</dd>
 
                 <dt class="col-3">GitHub:</dt>
                 <dd class="col-9">
                     <a href="https://github.com/alexusmai/laravel-file-manager" target="_blank">
                         alexusmai/laravel-file-manager
-                    </a>
-                </dd>
-
-                <dt class="col-3">Home:</dt>
-                <dd class="col-9">
-                    <a href="http://webmai.ru/projects/file-manager" target="_blank">
-                        Laravel File Manager (RU)
                     </a>
                 </dd>
             </dl>
