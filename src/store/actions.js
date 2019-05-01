@@ -27,7 +27,11 @@ export default {
           ? response.data.config.rightDisk
           : getters.diskList[0];
 
-        // find disk settings in URL
+        // paths
+        let leftPath = response.data.config.leftPath;
+        let rightPath = response.data.config.rightPath;
+
+        // find disk and path settings in the URL
         if (window.location.search) {
           const params = new URLSearchParams(window.location.search);
 
@@ -38,16 +42,30 @@ export default {
           if (params.get('rightDisk')) {
             rightDisk = params.get('rightDisk');
           }
+
+          if (params.get('leftPath')) {
+            leftPath = params.get('leftPath');
+          }
+
+          if (params.get('rightPath')) {
+            rightPath = params.get('rightPath');
+          }
         }
 
         // left manager - set default disk
         commit('left/setDisk', leftDisk);
 
+        // if leftPath not null
+        if (leftPath) {
+          commit('left/setSelectedDirectory', leftPath);
+          commit('left/addToHistory', leftPath);
+        }
+
         // load content to the left file manager
         dispatch('getLoadContent', {
           manager: 'left',
           disk: leftDisk,
-          path: null,
+          path: leftPath,
         });
 
         // initialize the app depending on the settings
@@ -55,16 +73,27 @@ export default {
           // if selected left and right managers
           commit('right/setDisk', rightDisk);
 
+          // if rightPath not null
+          if (rightPath) {
+            commit('right/setSelectedDirectory', rightPath);
+            commit('right/addToHistory', rightPath);
+          }
+
           // load content to the right file manager
           dispatch('getLoadContent', {
             manager: 'right',
             disk: rightDisk,
-            path: null,
+            path: rightPath,
           });
         } else if (state.settings.windowsConfig === 2) {
           // if selected left manager and directories tree
           // init directories tree
-          dispatch('tree/initTree', leftDisk);
+          dispatch('tree/initTree', leftDisk).then(() => {
+            if (leftPath) {
+              // reopen folders if path not null
+              dispatch('tree/reopenPath', leftPath);
+            }
+          });
         }
       }
     });
