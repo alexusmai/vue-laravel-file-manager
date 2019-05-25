@@ -69,6 +69,21 @@ Vue.use(FileManager, {
     
     baseUrl: 'http://my_url:80/file-manager/', // overwrite base url Axios
     windowsConfig: 2,
+    extConfig:{ // default extConfig is defined in src/store/settings/store.js
+        canUpload: true,
+        canCopy: true,
+        canCut: true,
+        canPaste: true,
+        canDelete: true,
+        canNewFile: true,
+        canNewFolder: true,
+        canZip: true,
+        canUnzip: true,
+        canRename: true,
+
+        showSize: true,
+        showAbout: true,
+    }
     lang: 'de',     // set language
     translation: {  // add new translation
         name: de,
