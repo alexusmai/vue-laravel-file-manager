@@ -12,7 +12,7 @@
                                v-show="sortSettings.direction === 'up'"></i>
                         </template>
                     </th>
-                    <th class="w-10" v-on:click="sortBy('size')">
+                    <th v-if="extConfig.showSize === true" class="w-10" v-on:click="sortBy('size')">
                         {{ lang.manager.table.size }}
                         <template v-if="sortSettings.field === 'size'">
                             <i class="fas fa-sort-amount-down"
@@ -57,7 +57,7 @@
                         v-on:dblclick="selectDirectory(directory.path)">
                         <i class="far fa-folder"></i> {{ directory.basename }}
                     </td>
-                    <td></td>
+                    <td v-if="extConfig.showSize === true"></td>
                     <td>{{ lang.manager.table.folder }}</td>
                     <td>
                         {{ timestampToDate(directory.timestamp) }}
@@ -75,7 +75,7 @@
                            v-bind:class="extensionToIcon(file.extension)"></i>
                         {{ file.filename ? file.filename : file.basename }}
                     </td>
-                    <td>{{ bytesToHuman(file.size) }}</td>
+                    <td v-if="extConfig.showSize === true">{{ bytesToHuman(file.size) }}</td>
                     <td>
                         {{ file.extension }}
                     </td>
@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
 import managerHelper from './mixins/manager';
@@ -99,7 +100,11 @@ export default {
   props: {
     manager: { type: String, required: true },
   },
+
   computed: {
+    ...mapState('fm', {
+      extConfig: state => state.settings.extConfig,
+    }),
     /**
      * Sort settings
      * @returns {*}

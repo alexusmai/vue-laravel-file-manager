@@ -39,7 +39,12 @@ export default {
         en: Object.freeze(en),
         ar: Object.freeze(ar),
       },
-
+      extConfig: {
+        canUpload: false,
+        canNewFile: true,
+        canNewFolder: true,
+        showSize: false,
+      },
       // Context menu items
       contextMenu: [
         [

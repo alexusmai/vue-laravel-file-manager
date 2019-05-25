@@ -3,12 +3,13 @@
         <div class="col-auto">
             <span v-show="selectedCount">
                 {{ `${lang.info.selected} ${selectedCount}` }}
-                {{ `${lang.info.selectedSize} ${selectedFilesSize}` }}
+              <span v-if="extConfig.showSize === true">  {{ `${lang.info.selectedSize} ${selectedFilesSize}` }} </span>
             </span>
             <span v-show="!selectedCount">
                 {{ `${lang.info.directories} ${directoriesCount}` }}
                 {{ `${lang.info.files} ${filesCount}` }}
-                {{ `${lang.info.size} ${filesSize}`}}
+
+                <span v-if="extConfig.showSize === true">{{ `${lang.info.size} ${filesSize}`}} </span>
             </span>
         </div>
         <div class="col-4">
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
 
@@ -49,6 +51,9 @@ export default {
   name: 'InfoBlock',
   mixins: [translate, helper],
   computed: {
+    ...mapState('fm', {
+      extConfig: state => state.settings.extConfig,
+    }),
     /**
      * Active manager
      * @returns {default.computed.activeManager|(function())|string|activeManager}

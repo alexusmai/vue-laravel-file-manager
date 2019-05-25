@@ -27,6 +27,10 @@ export default {
     if (Object.prototype.hasOwnProperty.call(data, 'translation')) {
       Vue.set(state.translations, data.translation.name, Object.freeze(data.translation.content));
     }
+    // extra configurations
+    if (Object.prototype.hasOwnProperty.call(data, 'ext_config')) {
+      state.ext_config = data.ext_config;
+    }
   },
 
   /**

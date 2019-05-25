@@ -48,7 +48,7 @@
                 <div class="fm-item-info">
                     {{ `${file.filename}.${file.extension}` }}
                     <br>
-                    {{ bytesToHuman(file.size) }}
+                    <span v-if="extConfig.showSize === true"> {{ bytesToHuman(file.size) }} </span>
                 </div>
             </div>
         </div>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
 import managerHelper from './mixins/manager';
@@ -81,6 +82,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('fm', {
+      extConfig: state => state.settings.extConfig,
+    }),
     /**
      * Image extensions list
      * @returns {*}
