@@ -40,10 +40,19 @@ export default {
         ar: Object.freeze(ar),
       },
       extConfig: {
-        canUpload: false,
+        canUpload: true,
+        canCopy: true,
+        canCut: true,
+        canPaste: true,
+        canDelete: true,
         canNewFile: true,
         canNewFolder: true,
-        showSize: false,
+        canZip: true,
+        canUnzip: true,
+        canRename: true,
+
+        showSize: true,
+        showAbout: true,
       },
       // Context menu items
       contextMenu: [

@@ -21,6 +21,7 @@
 
 <script>
 /* eslint-disable no-param-reassign */
+import { mapState } from 'vuex';
 import EventBus from './../../eventBus';
 import translate from '../../mixins/translate';
 import contextMenu from './mixins/contextMenu';
@@ -47,6 +48,9 @@ export default {
     EventBus.$on('contextMenu', event => this.showMenu(event));
   },
   computed: {
+    ...mapState('fm', {
+      extConfig: state => state.settings.extConfig,
+    }),
     /**
      * Context menu items
      * @returns {*}

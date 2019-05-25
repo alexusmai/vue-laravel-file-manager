@@ -22,29 +22,29 @@
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.canNewFile === true" type="button" class="btn btn-secondary"
                             v-on:click="showModal('NewFile')"
                             v-bind:title="lang.btn.file">
                         <i class="far fa-file"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.canNewFolder === true" type="button" class="btn btn-secondary"
                             v-on:click="showModal('NewFolder')"
                             v-bind:title="lang.btn.folder">
                         <i class="far fa-folder"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary"
-                            disabled
-                            v-if="uploading"
-                            v-bind:title="lang.btn.upload">
-                        <i class="fas fa-upload"></i>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
-                            v-else
+                    <button v-if="extConfig.canUpload === true && uploading === false"
+                            type="button" class="btn btn-secondary"
                             v-on:click="showModal('Upload')"
                             v-bind:title="lang.btn.upload">
                         <i class="fas fa-upload"></i>
                     </button>
                     <button type="button" class="btn btn-secondary"
+                            disabled
+                            v-if="extConfig.canUpload === true && uploading === true"
+                            v-bind:title="lang.btn.upload">
+                        <i class="fas fa-upload"></i>
+                    </button>
+                    <button v-if="extConfig.canDelete === true" type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-on:click="showModal('Delete')"
                             v-bind:title="lang.btn.delete">
@@ -52,19 +52,19 @@
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.canCopy === true" type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
                             v-on:click="toClipboard('copy')">
                         <i class="fas fa-copy"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.canCut === true" type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.cut"
                             v-on:click="toClipboard('cut')">
                         <i class="fas fa-cut"></i>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.canPaste === true" type="button" class="btn btn-secondary"
                             v-bind:disabled="!clipboardType"
                             v-bind:title="lang.btn.paste"
                             v-on:click="paste">
@@ -96,7 +96,7 @@
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button v-if="extConfig.showAbout === true" type="button" class="btn btn-secondary"
                             v-bind:title="lang.btn.about"
                             v-on:click="showModal('About')">
                         <i class="fas fa-question"></i>
@@ -108,12 +108,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import translate from './../../mixins/translate';
 import EventBus from './../../eventBus';
 
 export default {
   mixins: [translate],
   computed: {
+    ...mapState('fm', {
+      extConfig: state => state.settings.extConfig,
+    }),
     /**
      * Active manager name
      * @returns {default.computed.activeManager|(function())|string|activeManager}
