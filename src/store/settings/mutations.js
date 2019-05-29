@@ -91,6 +91,25 @@ export default {
   initSettings(state, data) {
     if (!state.lang) state.lang = data.lang;
     if (!state.windowsConfig) state.windowsConfig = data.windowsConfig;
+
+    // Allow server to overide 
+    // overwrite headers - Axios
+    if (Object.prototype.hasOwnProperty.call(data, 'headers')) {
+      state.headers = data.headers;
+    }
+    
+    // language
+    if (Object.prototype.hasOwnProperty.call(data, 'lang')) {
+      state.lang = data.lang;
+    }
+    // add new translation
+    if (Object.prototype.hasOwnProperty.call(data, 'translation')) {
+      Vue.set(state.translations, data.translation.name, Object.freeze(data.translation.content));
+    }
+    // extra configurations
+    if (Object.prototype.hasOwnProperty.call(data, 'extConfig')) {
+      state.ext_config = data.ext_config;
+    }
     state.acl = data.acl;
   },
 };
