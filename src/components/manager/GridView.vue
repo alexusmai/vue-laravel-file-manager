@@ -32,18 +32,13 @@
                  v-on:dblclick="selectAction(file.path, file.extension)"
                  v-on:contextmenu.prevent="contextMenu(file, $event)">
                 <div class="fm-item-icon">
-                    <template v-if="acl && file.acl === 0">
-                        <i class="fas fa-unlock-alt fa-5x pb-2"></i>
-                    </template>
-                    <template v-else-if="thisImage(file.extension)">
-                        <img class="img-thumbnail"
-                             v-bind:alt="file.filename"
-                             v-bind:src="createImgUrl(file.path, file.timestamp)">
-                    </template>
-                    <template v-else>
-                        <i class="far fa-5x pb-2"
-                           v-bind:class="extensionToIcon(file.extension)"></i>
-                    </template>
+                    <i v-if="acl && file.acl === 0" class="fas fa-unlock-alt fa-5x pb-2"></i>
+                    <thumbnail v-else-if="thisImage(file.extension)"
+                               v-bind:disk="disk"
+                               v-bind:file="file">
+                    </thumbnail>
+                    <i v-else class="far fa-5x pb-2"
+                       v-bind:class="extensionToIcon(file.extension)"></i>
                 </div>
                 <div class="fm-item-info">
                     {{ `${file.filename}.${file.extension}` }}
@@ -59,9 +54,11 @@
 import translate from './../../mixins/translate';
 import helper from './../../mixins/helper';
 import managerHelper from './mixins/manager';
+import Thumbnail from './Thumbnail.vue';
 
 export default {
   name: 'grid-view',
+  components: { Thumbnail },
   mixins: [translate, helper, managerHelper],
   data() {
     return {
@@ -101,16 +98,6 @@ export default {
 
       return this.imageExtensions.includes(extension.toLowerCase());
     },
-
-    /**
-     * Create url for image
-     * @param path
-     * @param timestamp
-     * @returns {string}
-     */
-    createImgUrl(path, timestamp) {
-      return `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${this.disk}&path=${path}&v=${timestamp}`;
-    },
   },
 };
 </script>
@@ -141,7 +128,8 @@ export default {
                 cursor: pointer;
             }
 
-            .fm-item-icon > i {
+            .fm-item-icon > i,
+            .fm-item-icon > figure > i {
                 color: #6d757d;
             }
 

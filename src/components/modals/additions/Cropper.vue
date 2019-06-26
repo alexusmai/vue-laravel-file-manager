@@ -2,7 +2,7 @@
     <div class="fm-additions-cropper">
         <div class="row" v-bind:style="{'max-height': maxHeight+'px'}">
             <div class="col-sm-9 cropper-block">
-                <img v-bind:src="imgUrl"
+                <img v-bind:src="imgSrc"
                      ref="fmCropper"
                      v-bind:alt="selectedItem.basename">
             </div>
@@ -136,7 +136,7 @@ export default {
   name: 'Cropper',
   mixins: [translate],
   props: {
-    imgUrl: { type: String, required: true },
+    imgSrc: { required: true },
     maxHeight: { type: Number, required: true },
   },
   data() {
