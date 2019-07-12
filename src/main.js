@@ -5,7 +5,10 @@ import Vuex from 'vuex';
 // store
 import fm from './store';
 // App
-import App from './FileManager.vue';
+import FileManager from './FileManager';
+import App from './App';
+
+
 
 Vue.use(Vuex);
 
@@ -15,9 +18,22 @@ const store = new Vuex.Store({
   modules: { fm },
 });
 
-Vue.config.productionTip = process.env.NODE_ENV === 'production';
+Vue.use(FileManager, {
+    store, // required
+    
+   
+    // default headers example
+    headers: {
+    },
+    
+    baseUrl: 'http://10.134.119.125:5000/', // overwrite base url Axios
+    windowsConfig: 1,
+    lang: 'en',     // set language
+})
 
-window.fm = new Vue({
+Vue.config.productionTip = process.env.NODE_ENV === 'production';
+new Vue({
+  el: '#app',
   store,
-  render: h => h(App),
-}).$mount('#fm');
+  render: h => h(App)
+}) 

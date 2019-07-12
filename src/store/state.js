@@ -4,6 +4,7 @@ export default {
    * left or right
    * default: left
    */
+  initData:'',
   activeManager: 'left',
 
   /**

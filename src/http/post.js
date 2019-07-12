@@ -2,9 +2,18 @@ import HTTP from './axios';
 
 export default {
   /**
+   * initialize 
+   * @param initData
+   * @returns {AxiosPromise<any>}
+   */
+  initialize(initData) {
+    console.log('initialize got', initData)
+    return HTTP.post('initialize', initData);
+  },
+  /**
    * Create new file
    * @param disk
-   * @param path
+   * @param path 
    * @param name
    * @returns {AxiosPromise<any>}
    */

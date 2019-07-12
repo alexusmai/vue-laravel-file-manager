@@ -29,7 +29,7 @@ export default {
     }
     // extra configurations
     if (Object.prototype.hasOwnProperty.call(data, 'extConfig')) {
-      state.ext_config = data.ext_config;
+      state.extConfig = data.extConfig;
     }
   },
 
@@ -108,7 +108,7 @@ export default {
     }
     // extra configurations
     if (Object.prototype.hasOwnProperty.call(data, 'extConfig')) {
-      state.ext_config = data.ext_config;
+      state.extConfig = data.extConfig;
     }
     state.acl = data.acl;
   },

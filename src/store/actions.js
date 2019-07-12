@@ -10,8 +10,9 @@ export default {
    * @param getters
    * @param dispatch
    */
+  
   initializeApp({ state, commit, getters, dispatch }) {
-    GET.initialize().then((response) => {
+    POST.initialize(state.initData).then((response) => {
       if (response.data.result.status === 'success') {
         // set app settings
         commit('settings/initSettings', response.data.config);

@@ -4,7 +4,7 @@
     <navbar></navbar>
     <div class="fm-body">
       <notification></notification>
-      <context-menu></context-menu>
+      <context-menu></context-menu> 
       <modal v-if="showModal"></modal>
       <template v-if="windowsConfig === 1">
         <left-manager class="col" manager="left"></left-manager>
@@ -48,6 +48,9 @@ import Notification from './components/blocks/Notification.vue';
 
 export default {
   name: 'FileManager',
+  props:[
+   
+  ],
   components: {
     Navbar,
     FolderTree,
@@ -58,6 +61,12 @@ export default {
     ContextMenu,
     Notification,
   },
+  data() {
+    return {
+    
+    }
+    
+  },
   computed: {
     ...mapState('fm', {
       windowsConfig: state => state.settings.windowsConfig,
@@ -66,19 +75,19 @@ export default {
       fullScreen: state => state.settings.fullScreen,
     }),
   },
-  created() {
+  mounted() {
+
     // initiate Axios settings - baseUrl and headers
     this.$store.commit('fm/settings/initAxiosSettings');
 
     // add axios request interceptor
     this.requestInterceptor();
 
-    // add axios response interceptor
+    // add axios response interceptor 
     this.responseInterceptor();
 
-    // initialize app settings
-    this.$store.dispatch('fm/initializeApp');
 
+    this.$store.dispatch('fm/initializeApp');
     /**
      * todo Keyboard event
      */

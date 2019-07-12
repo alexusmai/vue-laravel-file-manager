@@ -1,11 +1,16 @@
 /* eslint-disable object-curly-newline */
 export default {
+  setInitData(state, initData ){
+    console.log('setInitData got', initData)
+    state.initData = initData;
+  },
   /**
-   * Set disks
+   * Set disks 
    * @param state
    * @param disks
    */
   setDisks(state, disks) {
+    console.log('Got disks', disks)
     state.disks = disks;
   },
 

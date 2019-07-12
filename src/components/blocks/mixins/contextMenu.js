@@ -107,7 +107,7 @@ export default {
      * @returns {string}
      */
     downloadLink() {
-      return `${this.$store.getters['fm/settings/baseUrl']}download?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItems[0].path)}`;
+      return `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItems[0].path)}`;
     },
   },
 };
