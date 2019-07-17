@@ -1,3 +1,5 @@
+import HTTP from '../../../http/get';
+
 /**
  * Context menu actions
  * {name}Action
@@ -74,17 +76,24 @@ export default {
      * Download file
      */
     downloadAction() {
-      // download file
       const tempLink = document.createElement('a');
       tempLink.style.display = 'none';
-      tempLink.href = this.downloadLink();
       tempLink.setAttribute('download', this.selectedItems[0].basename);
-      tempLink.setAttribute('target', '_blank');
-      document.body.appendChild(tempLink);
-      // click link
-      tempLink.click();
-      // remove link
-      document.body.removeChild(tempLink);
+
+      // download file with authorization
+      if (this.$store.getters['fm/settings/authHeader']) {
+        HTTP.download(this.selectedDisk, this.selectedItems[0].path).then((response) => {
+          tempLink.href = window.URL.createObjectURL(new Blob([response.data]));
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          document.body.removeChild(tempLink);
+        });
+      } else {
+        tempLink.href = `${this.$store.getters['fm/settings/baseUrl']}download?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItems[0].path)}`;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+      }
     },
 
     /**

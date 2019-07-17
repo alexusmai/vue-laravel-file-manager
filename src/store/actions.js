@@ -13,10 +13,7 @@ export default {
   initializeApp({ state, commit, getters, dispatch }) {
     GET.initialize().then((response) => {
       if (response.data.result.status === 'success') {
-        // set app settings
         commit('settings/initSettings', response.data.config);
-
-        // set disks
         commit('setDisks', response.data.config.disks);
 
         let leftDisk = response.data.config.leftDisk
@@ -52,7 +49,6 @@ export default {
           }
         }
 
-        // left manager - set default disk
         commit('left/setDisk', leftDisk);
 
         // if leftPath not null
@@ -61,16 +57,14 @@ export default {
           commit('left/addToHistory', leftPath);
         }
 
-        // load content to the left file manager
         dispatch('getLoadContent', {
           manager: 'left',
           disk: leftDisk,
           path: leftPath,
         });
 
-        // initialize the app depending on the settings
+        // if selected left and right managers
         if (state.settings.windowsConfig === 3) {
-          // if selected left and right managers
           commit('right/setDisk', rightDisk);
 
           // if rightPath not null
@@ -79,7 +73,6 @@ export default {
             commit('right/addToHistory', rightPath);
           }
 
-          // load content to the right file manager
           dispatch('getLoadContent', {
             manager: 'right',
             disk: rightDisk,
@@ -546,5 +539,45 @@ export default {
         dispatch('repeatSort', getters.inactiveManager);
       }
     }
+  },
+
+  /**
+   * Reset application state
+   * @param state
+   * @param commit
+   */
+  resetState({ state, commit }) {
+    // left manager
+    commit('left/setDisk', null);
+    commit('left/setSelectedDirectory', null);
+    commit('left/setDirectoryContent', { directories: [], files: [] });
+    commit('left/resetSelected');
+    commit('left/resetSortSettings');
+    commit('left/resetHistory');
+    commit('left/setView', 'table');
+    // modals
+    commit('modal/clearModal');
+    // messages
+    commit('messages/clearActionResult');
+    commit('messages/clearProgress');
+    commit('messages/clearLoading');
+    commit('messages/clearErrors');
+
+    if (state.settings.windowsConfig === 3) {
+      // right manager
+      commit('right/setDisk', null);
+      commit('right/setSelectedDirectory', null);
+      commit('right/setDirectoryContent', { directories: [], files: [] });
+      commit('right/resetSelected');
+      commit('right/resetSortSettings');
+      commit('right/resetHistory');
+      commit('right/setView', 'table');
+    } else if (state.settings.windowsConfig === 2) {
+      // tree
+      commit('tree/cleanTree');
+      commit('tree/clearTempArray');
+    }
+
+    commit('resetState');
   },
 };

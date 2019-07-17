@@ -75,5 +75,22 @@ export default {
   screenToggle(state) {
     state.fullScreen = !state.fullScreen;
   },
+
+  /**
+   * Reset state
+   * @param state
+   */
+  resetState(state) {
+    state.activeManager = 'left';
+    state.clipboard = {
+      type: null,
+      disk: null,
+      directories: [],
+      files: [],
+    };
+    state.disks = [];
+    state.fileCallback = null;
+    state.fullScreen = false;
+  },
 };
 

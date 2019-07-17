@@ -30,7 +30,7 @@
                                v-show="sortSettings.direction === 'up'"></i>
                         </template>
                     </th>
-                    <th v-on:click="sortBy('date')">
+                    <th class="w-auto" v-on:click="sortBy('date')">
                         {{ lang.manager.table.date }}
                         <template v-if="sortSettings.field === 'date'">
                             <i class="fas fa-sort-amount-down"
@@ -71,8 +71,7 @@
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && file.acl === 0) ? 'text-hidden' : ''">
-                        <i class="far"
-                           v-bind:class="extensionToIcon(file.extension)"></i>
+                        <i class="far" v-bind:class="extensionToIcon(file.extension)"></i>
                         {{ file.filename ? file.filename : file.basename }}
                     </td>
                     <td>{{ bytesToHuman(file.size) }}</td>
@@ -143,6 +142,7 @@ export default {
         td {
             white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         tr:hover {
@@ -159,6 +159,7 @@ export default {
 
         .fm-content-item {
             cursor: pointer;
+            max-width: 1px;
         }
 
         .text-hidden {
