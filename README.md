@@ -6,12 +6,9 @@
 
 ![Laravel File Manager](https://raw.github.com/alexusmai/vue-laravel-file-manager/master/src/assets/laravel-file-manager.gif?raw=true)
 
-# v 2.0.0
+# v 2.4.0
 
-* Audio player (mp3, ogg, wav, aac), Video player (webm, mp4) - ([Plyr](https://github.com/sampotts/plyr))
-* Code editor - ([Code Mirror](https://github.com/codemirror/codemirror))
-* Image cropper - ([Cropper.js](https://github.com/fengyuanchen/cropperjs))
-* Zip / Unzip - only for local disks
+Now you can overwrite default settings using props
 
 
 ## Installation
@@ -52,6 +49,32 @@ Vue.use(FileManager, {store});
 You can overwrite some default settings
 
 ```
+// In the new version 2.4.0 and higher
+<file-manager v-bind:settings="settings"></file-manager>
+
+...
+// settings object structure
+settings: {
+    // axios headers
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      Authorization: `Bearer ${window.localStorage.getItem('user-token')}`,
+    },
+    baseUrl: 'http://test.loc/file-manager/',   // overwrite base url Axios
+    windowsConfig: 2,                           // overwrite config
+    lang: 'de',                                 // set language
+    translation: {                              // add new translation
+        name: de,
+        content: {
+            about: 'Über',
+            back: 'Zurück',
+            ... see lang file structure
+        },
+    },
+},
+...
+
+// Old versions
 Vue.use(FileManager, {
     store, // required
     
@@ -67,10 +90,10 @@ Vue.use(FileManager, {
         'X-CSRF-TOKEN': 'set laravel csrf token here...'
     },
     
-    baseUrl: 'http://my_url:80/file-manager/', // overwrite base url Axios
+    baseUrl: 'http://my_url:80/file-manager/',  // overwrite base url Axios
     windowsConfig: 2,
-    lang: 'de',     // set language
-    translation: {  // add new translation
+    lang: 'de',                                 // set language
+    translation: {                              // add new translation
         name: de,
         content: {
             about: 'Über',
@@ -85,6 +108,20 @@ Now vue component is registered and you can use it in your app
 ```
 <file-manager></file-manager>
 ```
+
+## Available Props
+
+### settings - Object
+
+|  Attribute  |  Type  |  Example  |  Required  |  Description  |
+|  ---------  |  ----  |  -------  |  --------  |  -----------  |
+|  headers    |     Object     |  {'X-Requested-With': 'XMLHttpRequest'}  |  No  | Axios Headers |
+|  baseUrl    |     String     |  'http://my_url:80/file-manager/'  |  No  | Axios base URL |
+|  windowsConfig    |     Int     |  2  |  No  | 1 - only one manager, 2 - manager with folder tree, 3 - two managers |
+|  lang    |     String     |  'de'  |  No  | Set language |
+|  translation    |     Object     |  { ... see lang file structure },  |  No  | Add new translation |
+
+## CSRF, Bootstrap, FontAwesome
 
 Don't forget add a csrf token to head block in your Laravel view and add bootstrap 4 and fontawesome 5 styles
 ```

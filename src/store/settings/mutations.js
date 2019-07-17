@@ -56,7 +56,7 @@ export default {
     }
 
     // initiate headers, if not set manually
-    if (!state.headers) {
+    if (Object.keys(state.headers).length === 0) {
       // off laravel csrf-token if need
       if (process.env.VUE_APP_LFM_CSRF_TOKEN === 'OFF' ||
           process.env.MIX_LFM_CSRF_TOKEN === 'OFF'
@@ -67,14 +67,17 @@ export default {
         const token = document.head.querySelector('meta[name="csrf-token"]');
 
         if (!token) {
+          state.headers = {
+            'X-Requested-With': 'XMLHttpRequest',
+          };
           // eslint-disable-next-line
           console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+        } else {
+          state.headers = {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': token.content,
+          };
         }
-
-        state.headers = {
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-TOKEN': token.content,
-        };
       }
     }
   },

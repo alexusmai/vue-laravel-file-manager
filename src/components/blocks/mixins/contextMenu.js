@@ -101,13 +101,5 @@ export default {
 
       return extension.toLowerCase() === 'zip';
     },
-
-    /**
-     * Generate link for downloading selected file
-     * @returns {string}
-     */
-    downloadLink() {
-      return `${this.$store.getters['fm/settings/baseUrl']}download?disk=${this.selectedDisk}&path=${encodeURIComponent(this.selectedItems[0].path)}`;
-    },
   },
 };

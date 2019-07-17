@@ -5,6 +5,7 @@ import getters from './getters';
 import ru from './../../lang/ru';
 import en from '../../lang/en';
 import ar from './../../lang/ar';
+import sr from './../../lang/sr';
 
 export default {
   namespaced: true,
@@ -14,10 +15,10 @@ export default {
       acl: null,
 
       // App version
-      version: '2.3.2',
+      version: '2.4.0',
 
       // axios headers
-      headers: null,
+      headers: {},
 
       // axios default URL
       baseUrl: null,
@@ -38,6 +39,7 @@ export default {
         ru: Object.freeze(ru),
         en: Object.freeze(en),
         ar: Object.freeze(ar),
+        sr: Object.freeze(sr),
       },
 
       // Context menu items

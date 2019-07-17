@@ -93,4 +93,17 @@ export default {
       params: { disk, path },
     });
   },
+
+  /**
+   * Download file
+   * @param disk
+   * @param path
+   * @return {*}
+   */
+  download(disk, path) {
+    return HTTP.get('download', {
+      responseType: 'arraybuffer',
+      params: { disk, path },
+    });
+  },
 };

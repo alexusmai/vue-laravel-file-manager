@@ -58,22 +58,24 @@ export default {
     ContextMenu,
     Notification,
   },
-  computed: {
-    ...mapState('fm', {
-      windowsConfig: state => state.settings.windowsConfig,
-      activeManager: state => state.settings.activeManager,
-      showModal: state => state.modal.showModal,
-      fullScreen: state => state.settings.fullScreen,
-    }),
+  props: {
+    /**
+     * LFM manual settings
+     */
+    settings: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   created() {
-    // initiate Axios settings - baseUrl and headers
+    // manual settings
+    this.$store.commit('fm/settings/manualSettings', this.settings);
+
+    // initiate Axios
     this.$store.commit('fm/settings/initAxiosSettings');
-
-    // add axios request interceptor
     this.requestInterceptor();
-
-    // add axios response interceptor
     this.responseInterceptor();
 
     // initialize app settings
@@ -91,16 +93,29 @@ export default {
     });
     */
   },
+  destroyed() {
+    // reset state
+    this.$store.dispatch('fm/resetState');
+
+    // delete events
+    EventBus.$off(['contextMenu', 'addNotification']);
+  },
+  computed: {
+    ...mapState('fm', {
+      windowsConfig: state => state.settings.windowsConfig,
+      activeManager: state => state.settings.activeManager,
+      showModal: state => state.modal.showModal,
+      fullScreen: state => state.settings.fullScreen,
+    }),
+  },
   methods: {
     /**
      * Add axios request interceptor
      */
     requestInterceptor() {
       HTTP.interceptors.request.use((config) => {
-        // overwrite base url
+        // overwrite base url and headers
         config.baseURL = this.$store.getters['fm/settings/baseUrl'];
-
-        // overwrite headers
         config.headers = this.$store.getters['fm/settings/headers'];
 
         // loading spinner +
@@ -110,7 +125,6 @@ export default {
       }, (error) => {
         // loading spinner -
         this.$store.commit('fm/messages/subtractLoading');
-        // Do something with request error
         return Promise.reject(error);
       });
     },
