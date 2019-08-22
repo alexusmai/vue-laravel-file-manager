@@ -6,6 +6,7 @@ import ru from './../../lang/ru';
 import en from '../../lang/en';
 import ar from './../../lang/ar';
 import sr from './../../lang/sr';
+import cs from './../../lang/cs';
 
 export default {
   namespaced: true,
@@ -40,6 +41,7 @@ export default {
         en: Object.freeze(en),
         ar: Object.freeze(ar),
         sr: Object.freeze(sr),
+        cs: Object.freeze(cs),
       },
 
       // Context menu items
