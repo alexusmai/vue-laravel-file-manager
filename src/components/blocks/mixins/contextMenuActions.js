@@ -69,6 +69,10 @@ export default {
       this.$store.dispatch('fm/url', {
         disk: this.selectedDisk,
         path: this.selectedItems[0].path,
+      }).then((response) => {
+        if (response.data.result.status === 'success') {
+          this.$store.state.fm.fileCallback(response.data.url);
+        }
       });
     },
 
