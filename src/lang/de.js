@@ -20,7 +20,7 @@ const de = {
     paste: 'Einfügen',
     refresh: 'Neu laden',
     submit: 'Bestätigen',
-    table: 'Tabele',
+    table: 'Detailansicht',
     upload: 'Hochladen',
     uploadSelect: 'Auswählen',
   },
@@ -154,7 +154,7 @@ const de = {
     },
   },
   notifications: {
-    cutToClipboard: 'Ausgeschnitten und abgelegt in die Zwischenablage!',
+    cutToClipboard: 'Ausgeschnitten in die Zwischenablage!',
     copyToClipboard: 'Kopiert in die Zwischenablage!',
   },
 };
