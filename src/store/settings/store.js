@@ -7,6 +7,7 @@ import en from '../../lang/en';
 import ar from './../../lang/ar';
 import sr from './../../lang/sr';
 import cs from './../../lang/cs';
+import de from './../../lang/de';
 
 export default {
   namespaced: true,
@@ -16,7 +17,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.2',
+      version: '2.4.4',
 
       // axios headers
       headers: {},
@@ -42,6 +43,7 @@ export default {
         ar: Object.freeze(ar),
         sr: Object.freeze(sr),
         cs: Object.freeze(cs),
+        de: Object.freeze(de),
       },
 
       // Context menu items
