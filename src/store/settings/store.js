@@ -8,6 +8,7 @@ import ar from './../../lang/ar';
 import sr from './../../lang/sr';
 import cs from './../../lang/cs';
 import de from './../../lang/de';
+import zh_CN from './../../lang/zh_CN';
 
 export default {
   namespaced: true,
@@ -44,6 +45,7 @@ export default {
         sr: Object.freeze(sr),
         cs: Object.freeze(cs),
         de: Object.freeze(de),
+        zh_CN: Object.freeze(zh_CN),
       },
 
       // Context menu items
