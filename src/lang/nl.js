@@ -1,8 +1,10 @@
 /**
- * English translate
+ * Dutch (Netherlands) translate
+ * Laurens - https://github.com/Laussii078
  * @type Object
  */
-const en = {
+const nl = {
+  // todo - need to translate
   btn: {
     about: 'About',
     back: 'Back',
@@ -157,33 +159,34 @@ const en = {
     cutToClipboard: 'Cut to clipboard!',
     copyToClipboard: 'Copied to clipboard!',
   },
+  // todo - need to translate - end
   response: {
-    noConfig: 'Config not found!',
-    notFound: 'Not found!',
-    diskNotFound: 'Disk not found!',
-    pathNotFound: 'Path not found!',
-    diskSelected: 'Disk selected!',
+    noConfig: 'Config niet gevonden!',
+    notFound: 'Niet gevonden!',
+    diskNotFound: 'Schijf niet gevonden!',
+    pathNotFound: 'Pad niet gevonden!',
+    diskSelected: 'Schijf geselecteerd!',
     // files
-    fileExist: 'File already exists!',
-    fileCreated: 'File created!',
-    fileUpdated: 'File updated!',
-    fileNotFound: 'File not found!',
+    fileExist: 'Bestand bestaat al!',
+    fileCreated: 'Bestand aangemaakt!',
+    fileUpdated: 'Bestand bijgewerkt!',
+    fileNotFound: 'Bestand niet gevonden!',
     // directories
-    dirExist: 'Directory already exists!',
-    dirCreated: 'Directory created!',
-    dirNotFound: 'Directory not found',
+    dirExist: 'Folder bestaat al!',
+    dirCreated: 'Folder aangemaakt!',
+    dirNotFound: 'Folder niet gevonden',
     // actions
-    uploaded: 'All files uploaded!',
-    notAllUploaded: 'Some files weren\'t uploaded!',
-    delNotFound: 'Some items weren\'t founded!',
-    deleted: 'Deleted!',
-    renamed: 'Renamed!',
-    copied: 'Copied successfully!',
+    uploaded: 'Alle bestanden geüpload!',
+    notAllUploaded: 'Sommige bestanden zijn niet geüpload!',
+    delNotFound: 'Sommige bestanden konden niet worden gevonden!',
+    deleted: 'Verwijderd!',
+    renamed: 'Hernoemd!',
+    copied: 'Succesvol gekopieerd!',
     // zip
-    zipError: 'Error creating archive!',
+    zipError: 'Fout bij het maken van archief!',
     // acl
-    aclError: 'Access denied!',
+    aclError: 'Toegang geweigerd!',
   },
 };
 
-export default en;
+export default nl;
