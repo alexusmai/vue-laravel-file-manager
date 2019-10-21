@@ -8,6 +8,10 @@ import ar from './../../lang/ar';
 import sr from './../../lang/sr';
 import cs from './../../lang/cs';
 import de from './../../lang/de';
+import es from './../../lang/es';
+import nl from './../../lang/nl';
+/* eslint camelcase: 0 */
+import zh_CN from './../../lang/zh_CN';
 
 export default {
   namespaced: true,
@@ -17,7 +21,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.4',
+      version: '2.4.6',
 
       // axios headers
       headers: {},
@@ -44,6 +48,9 @@ export default {
         sr: Object.freeze(sr),
         cs: Object.freeze(cs),
         de: Object.freeze(de),
+        es: Object.freeze(es),
+        nl: Object.freeze(nl),
+        zh_CN: Object.freeze(zh_CN),
       },
 
       // Context menu items
