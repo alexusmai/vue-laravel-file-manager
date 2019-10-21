@@ -67,22 +67,7 @@ export default {
    * @param error
    */
   setError(state, error) {
-    if (error.response) {
-      state.errors.push({
-        status: error.response.status,
-        message: error.response.data.message || error.response.statusText,
-      });
-    } else if (error.request) {
-      state.errors.push({
-        status: error.request.status,
-        message: error.request.statusText || 'Network error',
-      });
-    } else {
-      state.errors.push({
-        status: 0,
-        message: error.message,
-      });
-    }
+    state.errors.push(error);
   },
 
   /**
