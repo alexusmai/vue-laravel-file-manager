@@ -8,7 +8,8 @@ export default {
     return {
       /**
        * directories.id (int), el id
-       * directories.name                           (string), directory name
+       * directories.basename                       (string), folder name
+       * directories.dirname                        (string) directory name
        * directories.path                           (string), path to directory
        * directories.props                          (object), directory properties
        * directories.props.hasSubdirectories        (boolean), has child directories,

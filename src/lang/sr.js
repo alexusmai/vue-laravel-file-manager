@@ -24,6 +24,7 @@ const sr = {
     table: 'Tabela',
     upload: 'Upload',
     uploadSelect: 'Izaberi datoteke',
+    hidden: ' Skrivene datoteke',
   },
   clipboard: {
     actionType: 'Tip operacije',

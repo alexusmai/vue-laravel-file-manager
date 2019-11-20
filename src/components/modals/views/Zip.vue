@@ -29,7 +29,7 @@
                     v-bind:disabled="!submitActive"
                     v-on:click="createArchive">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

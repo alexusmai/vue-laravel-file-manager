@@ -31,7 +31,7 @@
                 </button>
             </span>
             <span class="d-block">
-                <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+                <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
             </span>
         </div>
     </div>

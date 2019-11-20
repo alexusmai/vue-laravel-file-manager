@@ -25,6 +25,7 @@ const nl = {
     table: 'Table',
     upload: 'Upload',
     uploadSelect: 'Select files',
+    hidden: ' Verborgen bestanden',
   },
   clipboard: {
     actionType: 'Type',

@@ -1,30 +1,62 @@
 export default {
   /**
-   * Files count
+   * Files list(filtered)
    * @param state
-   * @returns {number}
+   * @param getters
+   * @param rootState
    */
-  filesCount(state) {
-    return state.files.length;
+  files(state, getters, rootState) {
+    if (rootState.fm.settings.hiddenFiles) {
+      return state.files;
+    }
+
+    return state.files.filter(item => item.basename.match(new RegExp('^([^.]).*', 'i')));
   },
 
   /**
-   * Directories count
+   * Directories list(filtered)
    * @param state
-   * @returns {number}
+   * @param getters
+   * @param rootState
+   * @returns {*}
    */
-  directoriesCount(state) {
-    return state.directories.length;
+  directories(state, getters, rootState) {
+    if (rootState.fm.settings.hiddenFiles) {
+      return state.directories;
+    }
+
+    return state.directories.filter(item => item.basename.match(new RegExp('^([^.]).*', 'i')));
+  },
+
+  /**
+   * Files counter
+   * @param state
+   * @param getters
+   * @returns {*}
+   */
+  filesCount(state, getters) {
+    return getters.files.length;
+  },
+
+  /**
+   * Directories counter
+   * @param state
+   * @param getters
+   * @returns {*}
+   */
+  directoriesCount(state, getters) {
+    return getters.directories.length;
   },
 
   /**
    * Files size - bytes
    * @param state
+   * @param getters
    * @returns {*}
    */
-  filesSize(state) {
-    if (state.files.length) {
-      return state.files.reduce((previous, current) => previous + current.size, 0);
+  filesSize(state, getters) {
+    if (getters.files.length) {
+      return getters.files.reduce((previous, current) => previous + current.size, 0);
     }
 
     return 0;

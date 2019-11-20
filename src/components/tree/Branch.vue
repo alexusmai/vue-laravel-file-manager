@@ -40,7 +40,7 @@ export default {
      * @returns {*}
      */
     subDirectories() {
-      return this.$store.state.fm.tree.directories.filter(item => item.parentId === this.parentId);
+      return this.$store.getters['fm/tree/directories'].filter(item => item.parentId === this.parentId);
     },
   },
   methods: {

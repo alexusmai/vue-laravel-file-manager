@@ -139,6 +139,12 @@ export default {
 
         // text
         txt: 'fa-file-alt',
+        json: 'fa-file-alt',
+        log: 'fa-file-alt',
+        ini: 'fa-file-alt',
+        xml: 'fa-file-alt',
+        md: 'fa-file-alt',
+        env: 'fa-file-alt',
 
         // code
         js: 'fa-file-code',
