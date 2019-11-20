@@ -26,7 +26,7 @@
                     v-bind:disabled="submitDisable"
                     v-on:click="rename">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

@@ -71,6 +71,13 @@
                         <i class="fas fa-paste"></i>
                     </button>
                 </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.hidden"
+                            v-on:click="toggleHidden">
+                        <i class="fas" v-bind:class="[hiddenFiles ? 'fa-eye': 'fa-eye-slash']"></i>
+                    </button>
+                </div>
             </div>
             <div class="col-auto text-right">
                 <div class="btn-group" role="group">
@@ -179,6 +186,14 @@ export default {
     fullScreen() {
       return this.$store.state.fm.fullScreen;
     },
+
+    /**
+     * Show or Hide hidden files
+     * @returns {boolean}
+     */
+    hiddenFiles() {
+      return this.$store.state.fm.settings.hiddenFiles;
+    },
   },
   methods: {
     /**
@@ -228,6 +243,13 @@ export default {
      */
     paste() {
       this.$store.dispatch('fm/paste');
+    },
+
+    /**
+     * Set Hide or Show hidden files
+     */
+    toggleHidden() {
+      this.$store.commit('fm/settings/toggleHiddenFiles');
     },
 
     /**

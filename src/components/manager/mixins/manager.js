@@ -24,7 +24,7 @@ export default {
      * @returns {*}
      */
     files() {
-      return this.$store.state.fm[this.manager].files;
+      return this.$store.getters[`fm/${this.manager}/files`];
     },
 
     /**
@@ -32,7 +32,7 @@ export default {
      * @returns {*}
      */
     directories() {
-      return this.$store.state.fm[this.manager].directories;
+      return this.$store.getters[`fm/${this.manager}/directories`];
     },
 
     /**

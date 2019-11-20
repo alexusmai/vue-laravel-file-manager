@@ -122,7 +122,7 @@
                 </button>
             </div>
             <span class="d-block">
-                <button v-on:click="$emit('closeCropper')" class="btn btn-default">{{ lang.btn.back }}</button>
+                <button v-on:click="$emit('closeCropper')" class="btn btn-light">{{ lang.btn.back }}</button>
             </span>
         </div>
     </div>

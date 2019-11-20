@@ -24,6 +24,7 @@ const cs = {
     table: 'Tabulka',
     upload: 'Nahrát',
     uploadSelect: 'Vybrat soubory',
+    hidden: ' Skryté soubory',
   },
   clipboard: {
     actionType: 'Typ',

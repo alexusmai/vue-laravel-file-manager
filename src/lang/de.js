@@ -23,6 +23,7 @@ const de = {
     table: 'Detailansicht',
     upload: 'Hochladen',
     uploadSelect: 'Auswählen',
+    hidden: ' Versteckte Dateien',
   },
   clipboard: {
     actionType: 'Type',

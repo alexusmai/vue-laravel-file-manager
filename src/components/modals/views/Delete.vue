@@ -17,7 +17,7 @@
         <div class="modal-footer">
             <button class="btn btn-danger" v-on:click="deleteItems">{{ lang.modal.delete.title }}
             </button>
-            <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

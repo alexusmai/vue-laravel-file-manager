@@ -23,6 +23,7 @@ const en = {
     table: 'Table',
     upload: 'Upload',
     uploadSelect: 'Select files',
+    hidden: ' Hidden files',
   },
   clipboard: {
     actionType: 'Type',

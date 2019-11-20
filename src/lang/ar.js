@@ -23,6 +23,7 @@ const ar = {
     table: 'جدول',
     upload: 'رفع',
     uploadSelect: 'اختر الملفات',
+    hidden: 'الملفات المخفية',
   },
   clipboard: {
     actionType: 'نوع',
