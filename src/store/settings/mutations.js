@@ -91,5 +91,14 @@ export default {
     if (!state.lang) state.lang = data.lang;
     if (!state.windowsConfig) state.windowsConfig = data.windowsConfig;
     state.acl = data.acl;
+    state.hiddenFiles = data.hiddenFiles;
+  },
+
+  /**
+   * Set Hide or Show hidden files
+   * @param state
+   */
+  toggleHiddenFiles(state) {
+    state.hiddenFiles = !state.hiddenFiles;
   },
 };

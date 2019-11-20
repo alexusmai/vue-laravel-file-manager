@@ -15,7 +15,7 @@
             <button class="btn btn-info"
                     v-on:click="updateFile">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>
@@ -60,7 +60,12 @@ export default {
       path: this.selectedItem.path,
     }).then((response) => {
       // add code
-      this.code = response.data;
+      if (this.selectedItem.extension === 'json') {
+        this.code = JSON.stringify(response.data, null, 4);
+      } else {
+        this.code = response.data;
+      }
+
       // set size
       this.$refs.fmCodeEditor.codemirror.setSize(null, this.editorHeight);
     });

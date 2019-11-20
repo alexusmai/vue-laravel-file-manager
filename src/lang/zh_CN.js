@@ -25,6 +25,7 @@ const zh_CN = {
     table: '表格',
     upload: '上传',
     uploadSelect: '选择文件',
+    hidden: ' 隐藏文件',
   },
   clipboard: {
     actionType: '类型',

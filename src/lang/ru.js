@@ -23,6 +23,7 @@ const ru = {
     table: 'Таблица',
     upload: 'Загрузить',
     uploadSelect: 'Выбрать файлы',
+    hidden: 'Скрытые файлы',
   },
   clipboard: {
     actionType: 'Тип операции',

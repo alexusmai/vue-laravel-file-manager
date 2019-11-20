@@ -64,7 +64,7 @@
                     v-bind:disabled="!clipboard.type"
                     v-on:click="resetClipboard">{{ lang.btn.clear }}
             </button>
-            <button class="btn btn-default" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

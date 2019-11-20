@@ -21,7 +21,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.6',
+      version: '2.4.7',
 
       // axios headers
       headers: {},
@@ -52,6 +52,9 @@ export default {
         nl: Object.freeze(nl),
         zh_CN: Object.freeze(zh_CN),
       },
+
+      // show or hide hidden files
+      hiddenFiles: false,
 
       // Context menu items
       contextMenu: [
@@ -151,6 +154,7 @@ export default {
         htaccess: 'text/plain',
         env: 'text/plain',
         txt: 'text/plain',
+        log: 'text/plain',
         ini: 'text/x-ini',
         xml: 'application/xml',
         md: 'text/x-markdown',
@@ -171,6 +175,7 @@ export default {
         rb: 'text/x-ruby',
         go: 'text/x-go',
         yaml: 'text/x-yaml',
+        json: 'application/json',
       },
     };
   },

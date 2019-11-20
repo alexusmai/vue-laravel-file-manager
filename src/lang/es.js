@@ -24,6 +24,7 @@ const es = {
     table: 'Tabla',
     upload: 'Subir',
     uploadSelect: 'Seleccionar archivos',
+    hidden: ' Archivos ocultos',
   },
   clipboard: {
     actionType: 'Tipo',
@@ -160,31 +161,31 @@ const es = {
   },
   // todo - need to translate
   response: {
-    noConfig: 'Config not found!',
-    notFound: 'Not found!',
-    diskNotFound: 'Disk not found!',
-    pathNotFound: 'Path not found!',
-    diskSelected: 'Disk selected!',
+    noConfig: 'Configuración no encontrada!',
+    notFound: 'Extraviado!',
+    diskNotFound: 'Disco no encontrado!',
+    pathNotFound: 'Camino no encontrado!',
+    diskSelected: 'Disco seleccionado!',
     // files
-    fileExist: 'File already exists!',
-    fileCreated: 'File created!',
-    fileUpdated: 'File updated!',
-    fileNotFound: 'File not found!',
+    fileExist: 'El archivo ya existe!',
+    fileCreated: 'Archivo creado!',
+    fileUpdated: 'Archivo actualizado!',
+    fileNotFound: 'Archivo no encontrado!',
     // directories
-    dirExist: 'Directory already exists!',
-    dirCreated: 'Directory created!',
-    dirNotFound: 'Directory not found',
+    dirExist: 'El directorio ya existe!',
+    dirCreated: 'Directorio creado!',
+    dirNotFound: 'Directorio no encontrado',
     // actions
-    uploaded: 'All files uploaded!',
-    notAllUploaded: 'Some files weren\'t uploaded!',
-    delNotFound: 'Some items weren\'t founded!',
-    deleted: 'Deleted!',
-    renamed: 'Renamed!',
-    copied: 'Copied successfully!',
+    uploaded: 'Todos los archivos cargados!',
+    notAllUploaded: 'Algunos archivos no fueron subidos!',
+    delNotFound: 'Algunos artículos no fueron encontrados!',
+    deleted: 'Eliminado!',
+    renamed: 'Renombrado!',
+    copied: 'Copiado exitosamente!',
     // zip
-    zipError: 'Error creating archive!',
+    zipError: 'Error al crear archivo!',
     // acl
-    aclError: 'Access denied!',
+    aclError: 'Acceso denegado!',
   },
 };
 
