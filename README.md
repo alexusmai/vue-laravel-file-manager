@@ -29,7 +29,7 @@ import store from './path-to-your-store/store'   // your Vuex store
 Vue.use(FileManager, {store})
 ```
 
-**ELSE** you need create new vuex instance
+**ELSE** you need to create a new vuex instance
 
 ```
 import Vue from 'vue';
