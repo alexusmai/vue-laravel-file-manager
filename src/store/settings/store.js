@@ -12,6 +12,8 @@ import es from './../../lang/es';
 import nl from './../../lang/nl';
 /* eslint camelcase: 0 */
 import zh_CN from './../../lang/zh_CN';
+import fa from './../../lang/fa';
+import it from './../../lang/it';
 
 export default {
   namespaced: true,
@@ -21,7 +23,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.8',
+      version: '2.4.9',
 
       // axios headers
       headers: {},
@@ -51,6 +53,8 @@ export default {
         es: Object.freeze(es),
         nl: Object.freeze(nl),
         zh_CN: Object.freeze(zh_CN),
+        fa: Object.freeze(fa),
+        it: Object.freeze(it),
       },
 
       // show or hide hidden files
