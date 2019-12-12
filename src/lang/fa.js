@@ -1,5 +1,6 @@
 ﻿/**
- * English translate
+ * Farsi translate
+ * vahidalvandi
  * @type Object
  */
 const fa = {
@@ -131,7 +132,7 @@ const fa = {
       title: 'پخش کننده فایل صوتی',
     },
     videoPlayer: {
-      title:'نمایش دهنده ویدیو',
+      title: 'نمایش دهنده ویدیو',
     },
     zip: {
       title: 'ایجاد بایگانی',
