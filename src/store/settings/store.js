@@ -14,6 +14,7 @@ import nl from './../../lang/nl';
 import zh_CN from './../../lang/zh_CN';
 import fa from './../../lang/fa';
 import it from './../../lang/it';
+import tr from './../../lang/tr';
 
 export default {
   namespaced: true,
@@ -23,7 +24,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.9',
+      version: '2.4.10',
 
       // axios headers
       headers: {},
@@ -52,9 +53,10 @@ export default {
         de: Object.freeze(de),
         es: Object.freeze(es),
         nl: Object.freeze(nl),
-        zh_CN: Object.freeze(zh_CN),
+        'zh-CN': Object.freeze(zh_CN),
         fa: Object.freeze(fa),
         it: Object.freeze(it),
+        tr: Object.freeze(tr),
       },
 
       // show or hide hidden files

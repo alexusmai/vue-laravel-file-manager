@@ -28,7 +28,7 @@ export default {
 
       const date = new Date(timestamp * 1000);
 
-      return date.toLocaleString();
+      return date.toLocaleString(this.$store.state.fm.settings.lang);
     },
 
     /**
