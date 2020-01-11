@@ -24,7 +24,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.9',
+      version: '2.4.10',
 
       // axios headers
       headers: {},
@@ -53,7 +53,7 @@ export default {
         de: Object.freeze(de),
         es: Object.freeze(es),
         nl: Object.freeze(nl),
-        zh_CN: Object.freeze(zh_CN),
+        'zh-CN': Object.freeze(zh_CN),
         fa: Object.freeze(fa),
         it: Object.freeze(it),
         tr: Object.freeze(tr),
