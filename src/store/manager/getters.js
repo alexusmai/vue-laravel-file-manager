@@ -56,7 +56,7 @@ export default {
    */
   filesSize(state, getters) {
     if (getters.files.length) {
-      return getters.files.reduce((previous, current) => previous + current.size, 0);
+      return getters.files.reduce((previous, current) => previous + Number(current.size), 0);
     }
 
     return 0;
@@ -81,7 +81,7 @@ export default {
     const selectedFiles = state.files.filter(file => state.selected.files.includes(file.path));
 
     if (selectedFiles.length) {
-      return selectedFiles.reduce((previous, current) => previous + current.size, 0);
+      return selectedFiles.reduce((previous, current) => previous + Number(current.size), 0);
     }
 
     return 0;
