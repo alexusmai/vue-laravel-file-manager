@@ -15,6 +15,7 @@ import zh_CN from './../../lang/zh_CN';
 import fa from './../../lang/fa';
 import it from './../../lang/it';
 import tr from './../../lang/tr';
+import fr from './../../lang/fr';
 
 export default {
   namespaced: true,
@@ -57,6 +58,7 @@ export default {
         fa: Object.freeze(fa),
         it: Object.freeze(it),
         tr: Object.freeze(tr),
+        fr: Object.freeze(fr),
       },
 
       // show or hide hidden files
