@@ -1,8 +1,8 @@
 /**
- * English translate
+ * French translate
  * @type Object
  */
-const en = {
+const fr = {
   btn: {
     about: 'À propos',
     back: 'Retour',
@@ -187,4 +187,4 @@ const en = {
   },
 };
 
-export default en;
+export default fr;
