@@ -16,6 +16,7 @@ import fa from './../../lang/fa';
 import it from './../../lang/it';
 import tr from './../../lang/tr';
 import fr from './../../lang/fr';
+import pt_BR from './../../lang/pt_BR';
 
 export default {
   namespaced: true,
@@ -25,7 +26,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.11',
+      version: '2.4.12',
 
       // axios headers
       headers: {},
@@ -59,6 +60,7 @@ export default {
         it: Object.freeze(it),
         tr: Object.freeze(tr),
         fr: Object.freeze(fr),
+        'pt-BR': Object.freeze(pt_BR),
       },
 
       // show or hide hidden files
