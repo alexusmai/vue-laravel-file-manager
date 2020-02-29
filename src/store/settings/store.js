@@ -26,7 +26,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.11',
+      version: '2.4.12',
 
       // axios headers
       headers: {},
@@ -43,7 +43,7 @@ export default {
       windowsConfig: null,
 
       // App language
-      lang: 'pt-BR',
+      lang: null,
 
       // Translations (/src/lang)
       translations: {
