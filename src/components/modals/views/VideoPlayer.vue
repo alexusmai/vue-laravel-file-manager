@@ -9,15 +9,15 @@
             </button>
         </div>
         <div class="modal-body">
-            <video ref="fmVideo" controls></video>
+            <video ref="fmVideo" controls/>
         </div>
     </div>
 </template>
 
 <script>
 import Plyr from 'plyr';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Player',

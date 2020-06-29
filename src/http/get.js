@@ -3,7 +3,7 @@ import HTTP from './axios';
 export default {
   /**
    * Get configuration data from server
-   * @returns {AxiosPromise<any>}
+   * @returns {*}
    */
   initialize() {
     return HTTP.get('initialize');
@@ -13,7 +13,7 @@ export default {
    * Get directories for the tree (upper level)
    * @param disk
    * @param path
-   * @returns {AxiosPromise<any>}
+   * @returns {*}
    */
   tree(disk, path) {
     return HTTP.get('tree', { params: { disk, path } });
@@ -22,7 +22,7 @@ export default {
   /**
    * Select disk
    * @param disk
-   * @returns {AxiosPromise<any>}
+   * @returns {*}
    */
   selectDisk(disk) {
     return HTTP.get('select-disk', { params: { disk } });
@@ -32,7 +32,7 @@ export default {
    * Get content (files and folders)
    * @param disk
    * @param path
-   * @returns {AxiosPromise<any>}
+   * @returns {*}
    */
   content(disk, path) {
     return HTTP.get('content', { params: { disk, path } });
@@ -40,9 +40,6 @@ export default {
 
   /**
    * Item properties
-   * @param disk
-   * @param path
-   * @returns {AxiosPromise<any>}
    */
   /* properties(disk, path) {
     return HTTP.get('properties', { params: { disk, path } });
@@ -66,6 +63,19 @@ export default {
    */
   getFile(disk, path) {
     return HTTP.get('download', { params: { disk, path } });
+  },
+
+  /**
+   * Get file - ArrayBuffer
+   * @param disk
+   * @param path
+   * @returns {*}
+   */
+  getFileArrayBuffer(disk, path) {
+    return HTTP.get('download', {
+      responseType: 'arraybuffer',
+      params: { disk, path },
+    });
   },
 
   /**

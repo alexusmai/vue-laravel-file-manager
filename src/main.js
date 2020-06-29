@@ -1,5 +1,6 @@
-/* eslint-disable-next-line */
-import '@babel/polyfill';
+import 'core-js/stable';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'regenerator-runtime/runtime';
 import Vue from 'vue';
 import Vuex from 'vuex';
 // store
@@ -19,5 +20,5 @@ Vue.config.productionTip = process.env.NODE_ENV === 'production';
 
 window.fm = new Vue({
   store,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#fm');

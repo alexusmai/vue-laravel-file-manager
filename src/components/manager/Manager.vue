@@ -1,10 +1,10 @@
 <template>
     <div class="fm-content d-flex flex-column">
-        <disk-list v-bind:manager="manager"></disk-list>
-        <breadcrumb v-bind:manager="manager"></breadcrumb>
+        <disk-list v-bind:manager="manager"/>
+        <breadcrumb v-bind:manager="manager"/>
         <div class="fm-content-body">
-            <table-view v-if="viewType === 'table'" v-bind:manager="manager"></table-view>
-            <grid-view v-else v-bind:manager="manager"></grid-view>
+            <table-view v-if="viewType === 'table'" v-bind:manager="manager"/>
+            <grid-view v-else v-bind:manager="manager"/>
         </div>
     </div>
 </template>

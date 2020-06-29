@@ -5,7 +5,7 @@
                 <span class="badge"
                       v-on:click="selectDisk(disk)"
                       v-bind:class="[disk === selectedDisk ? 'badge-secondary' : 'badge-light']">
-                    <i class="fa-fw far fa-hdd"></i> {{ disk }}
+                    <i class="fa-fw far fa-hdd"/> {{ disk }}
                 </span>
             </li>
         </ul>

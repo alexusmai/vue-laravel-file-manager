@@ -83,7 +83,7 @@ export default {
    * @param file
    */
   updateFile(state, file) {
-    const itemIndex = state.files.findIndex(el => el.basename === file.basename);
+    const itemIndex = state.files.findIndex((el) => el.basename === file.basename);
     if (itemIndex !== -1) state.files[itemIndex] = file;
   },
 

@@ -5,7 +5,7 @@
                 v-bind:class="[manager === activeManager ? 'active-manager' : 'bg-light']">
                 <li class="breadcrumb-item" v-on:click="selectMainDirectory">
                     <span class="badge badge-secondary">
-                        <i class="far fa-hdd"></i>
+                        <i class="far fa-hdd"/>
                     </span>
                 </li>
                 <li class="breadcrumb-item text-truncate"

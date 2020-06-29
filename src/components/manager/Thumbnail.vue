@@ -1,7 +1,7 @@
 <template>
     <figure class="fm-thumbnail">
         <transition name="fade" mode="out-in">
-            <i v-if="!src" class="far fa-file-image fa-5x pb-2"></i>
+            <i v-if="!src" class="far fa-file-image fa-5x pb-2"/>
             <img v-else
                  v-bind:src="src"
                  v-bind:alt="file.filename"
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import GET from './../../http/get';
+import GET from '../../http/get';
 
 export default {
   name: 'Thumbnail',

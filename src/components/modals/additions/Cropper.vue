@@ -69,7 +69,7 @@
                     <button v-on:click="setData()"
                             v-bind:title="lang.modal.cropper.apply"
                             type="button" class="btn btn-block btn-sm btn-info mb-2">
-                        <i class="fas fa-check"></i>
+                        <i class="fas fa-check"/>
                     </button>
                 </div>
             </div>
@@ -78,47 +78,47 @@
             <div>
                 <div class="btn-group mr-2" role="group" aria-label="Scale">
                     <button v-on:click="cropMove(-10, 0)" class="btn btn-info">
-                        <i class="fas fa-arrow-left"></i>
+                        <i class="fas fa-arrow-left"/>
                     </button>
                     <button v-on:click="cropMove(10, 0)" class="btn btn-info">
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-arrow-right"/>
                     </button>
                     <button v-on:click="cropMove(0, -10)" class="btn btn-info">
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-arrow-up"/>
                     </button>
                     <button v-on:click="cropMove(0, 10)" class="btn btn-info">
-                        <i class="fas fa-arrow-down"></i>
+                        <i class="fas fa-arrow-down"/>
                     </button>
                 </div>
                 <div class="btn-group mr-2" role="group" aria-label="Scale">
                     <button v-on:click="cropScaleX()" class="btn btn-info">
-                        <i class="fas fa-arrows-alt-h"></i>
+                        <i class="fas fa-arrows-alt-h"/>
                     </button>
                     <button v-on:click="cropScaleY()" class="btn btn-info">
-                        <i class="fas fa-arrows-alt-v"></i>
+                        <i class="fas fa-arrows-alt-v"/>
                     </button>
                 </div>
                 <div class="btn-group mr-2" role="group" aria-label="Rotate">
                     <button v-on:click="cropRotate(-45)" class="btn btn-info">
-                        <i class="fas fa-undo"></i>
+                        <i class="fas fa-undo"/>
                     </button>
                     <button v-on:click="cropRotate(45)" class="btn btn-info">
-                        <i class="fas fa-redo"></i>
+                        <i class="fas fa-redo"/>
                     </button>
                 </div>
                 <div class="btn-group mr-2" role="group" aria-label="Rotate">
                     <button v-on:click="cropZoom(0.1)" class="btn btn-info">
-                        <i class="fas fa-search-plus"></i>
+                        <i class="fas fa-search-plus"/>
                     </button>
                     <button v-on:click="cropZoom(-0.1)" class="btn btn-info">
-                        <i class="fas fa-search-minus"></i>
+                        <i class="fas fa-search-minus"/>
                     </button>
                 </div>
                 <button v-on:click="cropReset()" v-bind:title="lang.modal.cropper.reset" class="btn btn-info mr-2">
-                    <i class="fas fa-sync-alt"></i>
+                    <i class="fas fa-sync-alt"/>
                 </button>
                 <button v-on:click="cropSave()" v-bind:title="lang.modal.cropper.save" class="btn btn-danger mr-2">
-                    <i class="far fa-save"></i>
+                    <i class="far fa-save"/>
                 </button>
             </div>
             <span class="d-block">
@@ -130,7 +130,7 @@
 
 <script>
 import Cropper from 'cropperjs';
-import translate from './../../../mixins/translate';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Cropper',

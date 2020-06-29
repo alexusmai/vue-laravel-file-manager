@@ -58,8 +58,8 @@ export default {
     // initiate headers, if not set manually
     if (Object.keys(state.headers).length === 0) {
       // off laravel csrf-token if need
-      if (process.env.VUE_APP_LFM_CSRF_TOKEN === 'OFF' ||
-          process.env.MIX_LFM_CSRF_TOKEN === 'OFF'
+      if (process.env.VUE_APP_LFM_CSRF_TOKEN === 'OFF'
+          || process.env.MIX_LFM_CSRF_TOKEN === 'OFF'
       ) {
         state.headers = { 'X-Requested-With': 'XMLHttpRequest' };
       } else {

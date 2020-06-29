@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Rename',
@@ -96,9 +96,9 @@ export default {
      */
     rename() {
       // create new name with path
-      const newName = this.selectedItem.dirname ?
-        `${this.selectedItem.dirname}/${this.name}` :
-        this.name;
+      const newName = this.selectedItem.dirname
+        ? `${this.selectedItem.dirname}/${this.name}`
+        : this.name;
 
       this.$store.dispatch('fm/rename', {
         type: this.selectedItem.type,

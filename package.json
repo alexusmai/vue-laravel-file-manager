@@ -1,6 +1,6 @@
 {
   "name": "laravel-file-manager",
-  "version": "2.4.14",
+  "version": "2.5.0",
   "description": "File manager for Laravel",
   "keywords": [
     "laravel",
@@ -18,26 +18,27 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "codemirror": "^5.41.0",
+    "axios": "^0.19.2",
+    "codemirror": "^5.55.0",
+    "core-js": "^3.6.5",
     "cropperjs": "^1.4.3",
-    "plyr": "^3.4.7",
-    "vue": "^2.5.17",
-    "vue-codemirror": "^4.0.5",
-    "vuex": "^3.0.1"
+    "plyr": "^3.4.8",
+    "vue": "^2.6.11",
+    "vue-codemirror": "^4.0.6",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-plugin-unit-jest": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-airbnb": "^3.0.5",
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "babel-polyfill": "^6.26.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.17"
+    "@vue/cli-plugin-babel": "~4.4.6",
+    "@vue/cli-plugin-eslint": "~4.4.6",
+    "@vue/cli-plugin-vuex": "~4.4.6",
+    "@vue/cli-service": "~4.4.6",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   }
 }

@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <audio ref="fmAudio" controls></audio>
+            <audio ref="fmAudio" controls/>
             <hr>
             <div class="d-flex justify-content-between py-2 px-2"
                  v-bind:class="playingIndex === index ? 'bg-light' : ''"
@@ -21,15 +21,15 @@
                 </div>
                 <template v-if="playingIndex === index">
                     <div v-if="status === 'playing'">
-                        <i v-on:click="togglePlay()" class="fas fa-play active"></i>
+                        <i v-on:click="togglePlay()" class="fas fa-play active"/>
                     </div>
                     <div v-else>
-                        <i v-on:click="togglePlay()" class="fas fa-pause"></i>
+                        <i v-on:click="togglePlay()" class="fas fa-pause"/>
                     </div>
                 </template>
                 <template v-else>
                     <div>
-                        <i v-on:click="selectTrack(index)" class="fas fa-play"></i>
+                        <i v-on:click="selectTrack(index)" class="fas fa-play"/>
                     </div>
                 </template>
             </div>
@@ -39,8 +39,8 @@
 
 <script>
 import Plyr from 'plyr';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Player',
