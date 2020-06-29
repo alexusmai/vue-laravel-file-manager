@@ -2,21 +2,22 @@ import mutations from './mutations';
 import getters from './getters';
 
 // languages
-import ru from './../../lang/ru';
+import ru from '../../lang/ru';
 import en from '../../lang/en';
-import ar from './../../lang/ar';
-import sr from './../../lang/sr';
-import cs from './../../lang/cs';
-import de from './../../lang/de';
-import es from './../../lang/es';
-import nl from './../../lang/nl';
+import ar from '../../lang/ar';
+import sr from '../../lang/sr';
+import cs from '../../lang/cs';
+import de from '../../lang/de';
+import es from '../../lang/es';
+import nl from '../../lang/nl';
 /* eslint camelcase: 0 */
-import zh_CN from './../../lang/zh_CN';
-import fa from './../../lang/fa';
-import it from './../../lang/it';
-import tr from './../../lang/tr';
-import fr from './../../lang/fr';
-import pt_BR from './../../lang/pt_BR';
+import zh_CN from '../../lang/zh_CN';
+import fa from '../../lang/fa';
+import it from '../../lang/it';
+import tr from '../../lang/tr';
+import fr from '../../lang/fr';
+import pt_BR from '../../lang/pt_BR';
+import zh_TW from '../../lang/zh_TW';
 
 export default {
   namespaced: true,
@@ -26,7 +27,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.4.14',
+      version: '2.5.0',
 
       // axios headers
       headers: {},
@@ -61,6 +62,7 @@ export default {
         tr: Object.freeze(tr),
         fr: Object.freeze(fr),
         'pt-BR': Object.freeze(pt_BR),
+        'zh-TW': Object.freeze(zh_TW),
       },
 
       // show or hide hidden files

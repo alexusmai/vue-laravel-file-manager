@@ -21,6 +21,10 @@
                     <a href="https://github.com/alexusmai/laravel-file-manager" target="_blank">
                         alexusmai/laravel-file-manager
                     </a>
+                    <br>
+                    <a href="https://github.com/alexusmai/vue-laravel-file-manager" target="_blank">
+                        alexusmai/vue-laravel-file-manager
+                    </a>
                 </dd>
             </dl>
         </div>
@@ -28,8 +32,8 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'About',

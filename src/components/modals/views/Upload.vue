@@ -18,7 +18,7 @@
                      v-for="(item, index) in newFiles"
                      v-bind:key="index">
                     <div class="w-75 text-truncate">
-                        <i class="far" v-bind:class="mimeToIcon(item.type)"></i>
+                        <i class="far" v-bind:class="mimeToIcon(item.type)"/>
                         {{ item.name }}
                     </div>
                     <div class="text-right">
@@ -94,9 +94,9 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
-import helper from './../../../mixins/helper';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
+import helper from '../../../mixins/helper';
 
 export default {
   name: 'Upload',

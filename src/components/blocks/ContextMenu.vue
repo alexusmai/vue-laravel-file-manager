@@ -12,7 +12,7 @@
                 v-bind:key="`i-${index}`"
                 v-if="showMenuItem(item.name)"
                 v-on:click="menuAction(item.name)">
-                <i class="fa-fw" v-bind:class="item.icon"></i>
+                <i class="fa-fw" v-bind:class="item.icon"/>
                 {{ lang.contextMenu[item.name] }}
             </li>
         </ul>
@@ -21,7 +21,7 @@
 
 <script>
 /* eslint-disable no-param-reassign */
-import EventBus from './../../eventBus';
+import EventBus from '../../eventBus';
 import translate from '../../mixins/translate';
 import contextMenu from './mixins/contextMenu';
 import contextMenuRules from './mixins/contextMenuRules';
@@ -44,7 +44,7 @@ export default {
      * Listen events
      * 'contextMenu'
      */
-    EventBus.$on('contextMenu', event => this.showMenu(event));
+    EventBus.$on('contextMenu', (event) => this.showMenu(event));
   },
   computed: {
     /**
@@ -147,6 +147,10 @@ export default {
         background-color: white;
         box-shadow: 3px 2px 5px gray;
         border-radius: 5px;
+
+        &:focus {
+            outline: none;
+        }
 
         .list-unstyled {
             margin-bottom: 0;

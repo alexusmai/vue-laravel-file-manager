@@ -1,5 +1,5 @@
 // Event bus
-import EventBus from './../../../eventBus';
+import EventBus from '../../../eventBus';
 
 export default {
   computed: {
@@ -192,6 +192,12 @@ export default {
         this.$store.commit('fm/modal/setModalState', {
           modalName: 'VideoPlayer',
           show: true,
+        });
+      } else if (extension.toLowerCase() === 'pdf') {
+        // show pdf document
+        this.$store.dispatch('fm/openPDF', {
+          disk: this.selectedDisk,
+          path,
         });
       }
     },

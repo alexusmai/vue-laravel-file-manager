@@ -7,36 +7,36 @@
                         {{ lang.manager.table.name }}
                         <template v-if="sortSettings.field === 'name'">
                             <i class="fas fa-sort-amount-down"
-                               v-show="sortSettings.direction === 'down'"></i>
+                               v-show="sortSettings.direction === 'down'"/>
                             <i class="fas fa-sort-amount-up"
-                               v-show="sortSettings.direction === 'up'"></i>
+                               v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-10" v-on:click="sortBy('size')">
                         {{ lang.manager.table.size }}
                         <template v-if="sortSettings.field === 'size'">
                             <i class="fas fa-sort-amount-down"
-                               v-show="sortSettings.direction === 'down'"></i>
+                               v-show="sortSettings.direction === 'down'"/>
                             <i class="fas fa-sort-amount-up"
-                               v-show="sortSettings.direction === 'up'"></i>
+                               v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-10" v-on:click="sortBy('type')">
                         {{ lang.manager.table.type }}
                         <template v-if="sortSettings.field === 'type'">
                             <i class="fas fa-sort-amount-down"
-                               v-show="sortSettings.direction === 'down'"></i>
+                               v-show="sortSettings.direction === 'down'"/>
                             <i class="fas fa-sort-amount-up"
-                               v-show="sortSettings.direction === 'up'"></i>
+                               v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                     <th class="w-auto" v-on:click="sortBy('date')">
                         {{ lang.manager.table.date }}
                         <template v-if="sortSettings.field === 'date'">
                             <i class="fas fa-sort-amount-down"
-                               v-show="sortSettings.direction === 'down'"></i>
+                               v-show="sortSettings.direction === 'down'"/>
                             <i class="fas fa-sort-amount-up"
-                               v-show="sortSettings.direction === 'up'"></i>
+                               v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
                 </tr>
@@ -44,7 +44,7 @@
             <tbody>
                 <tr v-if="!isRootPath">
                     <td colspan="4" class="fm-content-item" v-on:click="levelUp">
-                        <i class="fas fa-level-up-alt"></i>
+                        <i class="fas fa-level-up-alt"/>
                     </td>
                 </tr>
                 <tr v-for="(directory, index) in directories"
@@ -55,9 +55,9 @@
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && directory.acl === 0) ? 'text-hidden' : ''"
                         v-on:dblclick="selectDirectory(directory.path)">
-                        <i class="far fa-folder"></i> {{ directory.basename }}
+                        <i class="far fa-folder"/> {{ directory.basename }}
                     </td>
-                    <td></td>
+                    <td/>
                     <td>{{ lang.manager.table.folder }}</td>
                     <td>
                         {{ timestampToDate(directory.timestamp) }}
@@ -71,7 +71,7 @@
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && file.acl === 0) ? 'text-hidden' : ''">
-                        <i class="far" v-bind:class="extensionToIcon(file.extension)"></i>
+                        <i class="far" v-bind:class="extensionToIcon(file.extension)"/>
                         {{ file.filename ? file.filename : file.basename }}
                     </td>
                     <td>{{ bytesToHuman(file.size) }}</td>
@@ -88,8 +88,8 @@
 </template>
 
 <script>
-import translate from './../../mixins/translate';
-import helper from './../../mixins/helper';
+import translate from '../../mixins/translate';
+import helper from '../../mixins/helper';
 import managerHelper from './mixins/manager';
 
 export default {

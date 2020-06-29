@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <codemirror ref="fmCodeEditor" v-model="code" :options="cmOptions"></codemirror>
+            <codemirror ref="fmCodeEditor" v-model="code" :options="cmOptions"/>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info"
@@ -41,8 +41,8 @@ import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/go/go';
 import 'codemirror/mode/yaml/yaml';
 import 'codemirror/mode/properties/properties';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'TextEdit',

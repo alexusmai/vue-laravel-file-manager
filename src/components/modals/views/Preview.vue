@@ -13,10 +13,10 @@
             <template v-if="showCropperModule">
                 <cropper-module v-bind:imgSrc="imgSrc"
                                 v-bind:maxHeight="maxHeight"
-                                v-on:closeCropper="closeCropper"></cropper-module>
+                                v-on:closeCropper="closeCropper"/>
             </template>
             <transition v-else name="fade" mode="out-in">
-                <i v-if="!imgSrc" class="fas fa-spinner fa-spin fa-5x p-5 text-muted"></i>
+                <i v-if="!imgSrc" class="fas fa-spinner fa-spin fa-5x p-5 text-muted"/>
                 <img v-else
                      v-bind:src="imgSrc"
                      v-bind:alt="selectedItem.basename"
@@ -27,7 +27,7 @@
             <span class="d-block">
                 <button class="btn btn-info"
                         v-bind:title="lang.modal.cropper.title" v-on:click="showCropperModule = true">
-                    <i class="fas fa-crop-alt"></i>
+                    <i class="fas fa-crop-alt"/>
                 </button>
             </span>
             <span class="d-block">
@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import CropperModule from './../additions/Cropper.vue';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
-import helper from './../../../mixins/helper';
-import GET from './../../../http/get';
+import CropperModule from '../additions/Cropper.vue';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
+import helper from '../../../mixins/helper';
+import GET from '../../../http/get';
 
 export default {
   name: 'Preview',

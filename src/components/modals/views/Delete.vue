@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
             <div v-if="selectedItems.length">
-                <selected-file-list></selected-file-list>
+                <selected-file-list/>
             </div>
             <div v-else>
                 <span class="text-danger">{{ lang.modal.delete.noSelected }}</span>
@@ -24,8 +24,8 @@
 
 <script>
 import SelectedFileList from '../additions/SelectedFileList.vue';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Delete',
@@ -46,7 +46,7 @@ export default {
      */
     deleteItems() {
       // create items list for delete
-      const items = this.selectedItems.map(item => ({
+      const items = this.selectedItems.map((item) => ({
         path: item.path,
         type: item.type,
       }));

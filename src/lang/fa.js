@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Farsi translate
  * vahidalvandi
  * @type Object
