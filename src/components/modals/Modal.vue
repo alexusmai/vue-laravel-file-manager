@@ -5,7 +5,7 @@
                  role="document"
                  v-bind:class="modalSize"
                  v-on:click.stop>
-                <component v-bind:is="modalName"></component>
+                <component v-bind:is="modalName"/>
             </div>
         </div>
     </transition>

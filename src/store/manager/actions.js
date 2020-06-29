@@ -28,9 +28,9 @@ export default {
 
         // if directories tree is shown, not main directory and directory have subdirectories
         if (
-          rootState.fm.settings.windowsConfig === 2 &&
-          path &&
-          response.data.directories.length
+          rootState.fm.settings.windowsConfig === 2
+          && path
+          && response.data.directories.length
         ) {
           dispatch('fm/tree/showSubdirectories', path, { root: true });
         }

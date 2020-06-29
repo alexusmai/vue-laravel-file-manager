@@ -10,7 +10,7 @@ export default {
       return state.files;
     }
 
-    return state.files.filter(item => item.basename.match(new RegExp('^([^.]).*', 'i')));
+    return state.files.filter((item) => item.basename.match(new RegExp('^([^.]).*', 'i')));
   },
 
   /**
@@ -25,7 +25,7 @@ export default {
       return state.directories;
     }
 
-    return state.directories.filter(item => item.basename.match(new RegExp('^([^.]).*', 'i')));
+    return state.directories.filter((item) => item.basename.match(new RegExp('^([^.]).*', 'i')));
   },
 
   /**
@@ -78,7 +78,7 @@ export default {
    * @returns {number}
    */
   selectedFilesSize(state) {
-    const selectedFiles = state.files.filter(file => state.selected.files.includes(file.path));
+    const selectedFiles = state.files.filter((file) => state.selected.files.includes(file.path));
 
     if (selectedFiles.length) {
       return selectedFiles.reduce((previous, current) => previous + Number(current.size), 0);
@@ -92,9 +92,9 @@ export default {
    * @param state
    */
   selectedList(state) {
-    const selectedDirectories = state.directories.filter(directory => state.selected.directories.includes(directory.path));
+    const selectedDirectories = state.directories.filter((directory) => state.selected.directories.includes(directory.path));
 
-    const selectedFiles = state.files.filter(file => state.selected.files.includes(file.path));
+    const selectedFiles = state.files.filter((file) => state.selected.files.includes(file.path));
 
     return selectedDirectories.concat(selectedFiles);
   },
@@ -116,11 +116,11 @@ export default {
    * Compare directories name
    * @param state
    */
-  directoryExist: state => basename => state.directories.some(el => el.basename === basename),
+  directoryExist: (state) => (basename) => state.directories.some((el) => el.basename === basename),
 
   /**
    * Compare files name
    * @param state
    */
-  fileExist: state => basename => state.files.some(el => el.basename === basename),
+  fileExist: (state) => (basename) => state.files.some((el) => el.basename === basename),
 };

@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Status',

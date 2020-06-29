@@ -13,7 +13,7 @@
                 <div class="col-1 text-right">
                     <i v-on:click="copyToClipboard(selectedDisk)"
                        v-bind:title="lang.clipboard.copy"
-                       class="far fa-copy"></i>
+                       class="far fa-copy"/>
                 </div>
             </div>
             <div class="row">
@@ -22,7 +22,7 @@
                 <div class="col-1 text-right">
                     <i v-on:click="copyToClipboard(selectedItem.basename)"
                        v-bind:title="lang.clipboard.copy"
-                       class="far fa-copy"></i>
+                       class="far fa-copy"/>
                 </div>
             </div>
             <div class="row">
@@ -31,7 +31,7 @@
                 <div class="col-1 text-right">
                     <i v-on:click="copyToClipboard(selectedItem.path)"
                        v-bind:title="lang.clipboard.copy"
-                       class="far fa-copy"></i>
+                       class="far fa-copy"/>
                 </div>
             </div>
             <template v-if="selectedItem.type === 'file'">
@@ -41,7 +41,7 @@
                     <div class="col-1 text-right">
                         <i v-on:click="copyToClipboard(bytesToHuman(selectedItem.size))"
                            v-bind:title="lang.clipboard.copy"
-                           class="far fa-copy"></i>
+                           class="far fa-copy"/>
                     </div>
                 </div>
                 <div class="row">
@@ -51,14 +51,14 @@
                         <span v-else>
                             <button v-on:click="getUrl" type="button"
                                     class="btn btn-sm btn-light">
-                                <i class="fas fa-sm fa-link"></i> Get URL
+                                <i class="fas fa-sm fa-link"/> Get URL
                             </button>
                         </span>
                     </div>
                     <div v-if="url" class="col-1 text-right">
                         <i v-on:click="copyToClipboard(url)"
                            v-bind:title="lang.clipboard.copy"
-                           class="far fa-copy"></i>
+                           class="far fa-copy"/>
                     </div>
                 </div>
             </template>
@@ -69,7 +69,7 @@
                     <div class="col-1 text-right">
                         <i v-on:click="copyToClipboard(timestampToDate(selectedItem.timestamp))"
                            v-bind:title="lang.clipboard.copy"
-                           class="far fa-copy"></i>
+                           class="far fa-copy"/>
                     </div>
                 </div>
             </template>
@@ -84,10 +84,10 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
-import helper from './../../../mixins/helper';
-import EventBus from './../../../eventBus';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
+import helper from '../../../mixins/helper';
+import EventBus from '../../../eventBus';
 
 export default {
   name: 'Properties',

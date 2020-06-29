@@ -295,7 +295,7 @@ export default {
 
         // delete directories from tree
         if (state.settings.windowsConfig === 2) {
-          const onlyDir = items.filter(item => item.type === 'dir');
+          const onlyDir = items.filter((item) => item.type === 'dir');
           dispatch('tree/deleteFromTree', onlyDir);
         }
       }
@@ -511,8 +511,8 @@ export default {
   updateContent({ state, commit, getters, dispatch }, { response, oldDir, commitName, type }) {
     // if operation success
     if (
-      response.data.result.status === 'success' &&
-      oldDir === getters.selectedDirectory
+      response.data.result.status === 'success'
+      && oldDir === getters.selectedDirectory
     ) {
       // add/update file/folder in to the files/folders list
       commit(`${state.activeManager}/${commitName}`, response.data[type]);
@@ -529,9 +529,9 @@ export default {
 
         // if both managers show the same folder
       } else if (
-        state.settings.windowsConfig === 3 &&
-        state.left.selectedDirectory === state.right.selectedDirectory &&
-        state.left.selectedDisk === state.right.selectedDisk
+        state.settings.windowsConfig === 3
+        && state.left.selectedDirectory === state.right.selectedDirectory
+        && state.left.selectedDisk === state.right.selectedDisk
       ) {
         // add/update file/folder in to the files/folders list (inactive manager)
         commit(`${getters.inactiveManager}/${commitName}`, response.data[type]);
@@ -579,5 +579,21 @@ export default {
     }
 
     commit('resetState');
+  },
+
+  /**
+   * Open PDF
+   * @param context
+   * @param disk
+   * @param path
+   */
+  openPDF(context, { disk, path }) {
+    const win = window.open();
+
+    GET.getFileArrayBuffer(disk, path).then((response) => {
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+
+      win.document.write(`<iframe src="${URL.createObjectURL(blob)}" allowfullscreen height="100%" width="100%"></iframe>`);
+    });
   },
 };

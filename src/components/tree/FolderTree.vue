@@ -1,9 +1,9 @@
 <template>
     <div class="fm-tree">
         <div class="fm-tree-disk sticky-top">
-            <i class="far fa-hdd"></i> {{ selectedDisk }}
+            <i class="far fa-hdd"/> {{ selectedDisk }}
         </div>
-        <branch v-bind:parent-id="0"></branch>
+        <branch v-bind:parent-id="0"/>
     </div>
 </template>
 

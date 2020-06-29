@@ -1,17 +1,17 @@
 <template>
   <div class="fm d-flex flex-column"
        v-bind:class="{ 'fm-full-screen': fullScreen }">
-    <navbar></navbar>
+    <navbar/>
     <div class="fm-body">
-      <notification></notification>
-      <context-menu></context-menu>
-      <modal v-if="showModal"></modal>
+      <notification/>
+      <context-menu/>
+      <modal v-if="showModal"/>
       <template v-if="windowsConfig === 1">
-        <left-manager class="col" manager="left"></left-manager>
+        <left-manager class="col" manager="left"/>
       </template>
       <template v-else-if="windowsConfig === 2">
-        <folder-tree class="col-4 col-md-3"></folder-tree>
-        <left-manager class="col-8 col-md-9" manager="left"></left-manager>
+        <folder-tree class="col-4 col-md-3"/>
+        <left-manager class="col-8 col-md-9" manager="left"/>
       </template>
       <template v-else-if="windowsConfig === 3">
         <left-manager class="col-12 col-sm-6"
@@ -26,7 +26,7 @@
         </right-manager>
       </template>
     </div>
-    <info-block></info-block>
+    <info-block/>
   </div>
 </template>
 
@@ -105,10 +105,10 @@ export default {
   },
   computed: {
     ...mapState('fm', {
-      windowsConfig: state => state.settings.windowsConfig,
-      activeManager: state => state.settings.activeManager,
-      showModal: state => state.modal.showModal,
-      fullScreen: state => state.settings.fullScreen,
+      windowsConfig: (state) => state.settings.windowsConfig,
+      activeManager: (state) => state.settings.activeManager,
+      showModal: (state) => state.modal.showModal,
+      fullScreen: (state) => state.settings.fullScreen,
     }),
   },
   methods: {
@@ -297,4 +297,3 @@ export default {
     padding-bottom: 0;
   }
 </style>
-

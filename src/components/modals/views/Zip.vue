@@ -22,7 +22,7 @@
                 </div>
             </div>
             <hr>
-            <selected-file-list></selected-file-list>
+            <selected-file-list/>
         </div>
         <div class="modal-footer">
             <button class="btn btn-info"
@@ -36,8 +36,8 @@
 
 <script>
 import SelectedFileList from '../additions/SelectedFileList.vue';
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
 
 export default {
   name: 'Zip',

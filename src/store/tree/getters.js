@@ -4,7 +4,7 @@ export default {
    * @param state
    * @returns {function(*): (number | *)}
    */
-  findDirectoryIndex: state => path => state.directories.findIndex(el => el.path === path),
+  findDirectoryIndex: (state) => (path) => state.directories.findIndex((el) => el.path === path),
 
   /**
    * Filtered directories list
@@ -18,6 +18,6 @@ export default {
       return state.directories;
     }
 
-    return state.directories.filter(item => item.basename.match(new RegExp('^([^.]).*', 'i')));
+    return state.directories.filter((item) => item.basename.match(new RegExp('^([^.]).*', 'i')));
   },
 };

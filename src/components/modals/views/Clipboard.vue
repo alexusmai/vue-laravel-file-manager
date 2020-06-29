@@ -11,13 +11,13 @@
                 <div class="d-flex justify-content-between">
                     <div class="w-75 text-truncate">
                         <span>
-                           <i class="far fa-hdd"></i>{{ clipboard.disk }}
+                           <i class="far fa-hdd"/>{{ clipboard.disk }}
                         </span>
                     </div>
                     <div class="text-right text-muted">
                         <span v-bind:title="`${lang.clipboard.actionType} - ${lang.clipboard[clipboard.type]}`">
-                            <i v-if="clipboard.type === 'copy'" class="fas fa-copy"></i>
-                            <i v-else class="fas fa-cut"></i>
+                            <i v-if="clipboard.type === 'copy'" class="fas fa-copy"/>
+                            <i v-else class="fas fa-cut"/>
                         </span>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                      v-bind:key="`d-${index}`">
                     <div class="w-75 text-truncate">
                         <span>
-                            <i class="far fa-folder"></i>{{ dir.name }}
+                            <i class="far fa-folder"/>{{ dir.name }}
                         </span>
                     </div>
                     <div class="text-right">
@@ -43,7 +43,7 @@
                      v-bind:key="`f-${index}`">
                     <div class="w-75 text-truncate">
                         <span>
-                            <i class="far" v-bind:class="file.icon"></i>{{ file.name }}
+                            <i class="far" v-bind:class="file.icon"/>{{ file.name }}
                         </span>
                     </div>
                     <div class="text-right">
@@ -70,9 +70,9 @@
 </template>
 
 <script>
-import modal from './../mixins/modal';
-import translate from './../../../mixins/translate';
-import helper from './../../../mixins/helper';
+import modal from '../mixins/modal';
+import translate from '../../../mixins/translate';
+import helper from '../../../mixins/helper';
 
 export default {
   name: 'Clipboard',
@@ -91,7 +91,7 @@ export default {
      * @returns {{path: *, name: *}[]}
      */
     directories() {
-      return this.$store.state.fm.clipboard.directories.map(item => ({
+      return this.$store.state.fm.clipboard.directories.map((item) => ({
         path: item,
         name: item.split('/').slice(-1)[0],
       }));
