@@ -344,6 +344,7 @@ export default {
       disk: getters.selectedDisk,
       newName,
       oldName,
+      type,
     }).then((response) => {
       // refresh content
       if (type === 'dir') {

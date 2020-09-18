@@ -18,6 +18,7 @@ import tr from '../../lang/tr';
 import fr from '../../lang/fr';
 import pt_BR from '../../lang/pt_BR';
 import zh_TW from '../../lang/zh_TW';
+import pl from '../../lang/pl';
 
 export default {
   namespaced: true,
@@ -27,7 +28,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.5.0',
+      version: '2.5.2',
 
       // axios headers
       headers: {},
@@ -63,6 +64,7 @@ export default {
         fr: Object.freeze(fr),
         'pt-BR': Object.freeze(pt_BR),
         'zh-TW': Object.freeze(zh_TW),
+        pl: Object.freeze(pl),
       },
 
       // show or hide hidden files
