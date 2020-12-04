@@ -1,6 +1,6 @@
 <template>
-    <transition name="fm-modal">
-        <div class="fm-modal" ref="fmModal" v-on:click="hideModal">
+    <transition name="fm-modal" appear>
+        <div class="fm-modal" ref="fmModal" v-on:click="hideModal" v-if="showModal">
             <div class="modal-dialog"
                  role="document"
                  v-bind:class="modalSize"
@@ -59,6 +59,9 @@ export default {
     modalName() {
       return this.$store.state.fm.modal.modalName;
     },
+    showModal() {
+      return this.$store.state.fm.modal.showModal;
+    },
 
     /**
      * Modal size style
@@ -94,20 +97,38 @@ export default {
         right: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .35);
+        background-color:rgba(12,15, 33, 89%);
         display: block;
-        transition: opacity .4s ease;
+        opacity: auto;
         overflow: auto;
-
+        transition: all .4s ease;
         .modal-xl {
             max-width: 96%;
+        }
+        .modal-content{
+          transition: all .4s ease;
+        }
+        .close{
+          outline: none;
         }
     }
 
     .fm-modal-enter-active, .fm-modal-leave-active {
-        transition: opacity .5s;
+        transition: all .4s ease;
+        .modal-content{
+          transition: all .4s ease;
+        }
     }
     .fm-modal-enter, .fm-modal-leave-to {
         opacity: 0;
+        .modal-content{
+          transform: translateY(-2rem);
+        }
+    }
+    .fm-modal-enter-to, .fm-modal-leave {
+        opacity: 1;
+        .modal-content{
+          transform: translateY(0);
+        }
     }
 </style>

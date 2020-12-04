@@ -13,7 +13,8 @@
                        v-focus
                        v-bind:class="{'is-invalid': directoryExist}"
                        v-model="directoryName"
-                       v-on:keyup="validateDirName">
+                       v-on:keyup="validateDirName"
+                       v-on:keyup.enter="addFolder">
                 <div class="invalid-feedback" v-show="directoryExist">
                     {{ lang.modal.newFolder.fieldFeedback }}
                 </div>
@@ -70,13 +71,15 @@ export default {
      * Create new directory
      */
     addFolder() {
-      this.$store.dispatch('fm/createDirectory', this.directoryName).then((response) => {
-        // if new directory created successfully
-        if (response.data.result.status === 'success') {
-          // close modal window
-          this.hideModal();
-        }
-      });
+      if (this.directoryName && !this.directoryExist) {
+        this.$store.dispatch('fm/createDirectory', this.directoryName).then((response) => {
+          // if new directory created successfully
+          if (response.data.result.status === 'success') {
+            // close modal window
+            this.hideModal();
+          }
+        });
+      }
     },
   },
 };

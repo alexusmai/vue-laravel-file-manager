@@ -1,7 +1,7 @@
 <template>
     <div class="fm-table">
-        <table class="table table-sm">
-            <thead>
+        <table class="table table-sm table-borderless">
+            <thead class="thead-dark">
                 <tr>
                     <th class="w-65" v-on:click="sortBy('name')">
                         {{ lang.manager.table.name }}
@@ -120,18 +120,26 @@ export default {
 </script>
 
 <style lang="scss">
+    $border-radii: 0.3rem;
+    $color-p1: #f4f4f4;
+    $bg-p1: #293c7b;
+    $border-size: 2px solid;
     .fm-table {
+        thead{
+            border-bottom: $border-size $bg-p1;
+        }
 
         thead th{
             background: white;
             position: sticky;
             top: 0;
             z-index: 10;
+            padding: 0.5rem;
             cursor: pointer;
             border-top: none;
 
             &:hover {
-                background-color: #f8f9fa;
+                background-color: #4d4d4d;
             }
 
             & > i {
@@ -140,13 +148,38 @@ export default {
         }
 
         td {
+            padding: 0.5rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
+        tr{
+            border-bottom: $border-size $color-p1;
+            transition: all 0.3s ease;
+        }
+
         tr:hover {
             background-color: #f8f9fa;
+            border-bottom: $border-size $color-p1;
+        }
+        .table-info {
+            background-color: $bg-p1;
+            color: $color-p1;
+            border-bottom: $border-size $color-p1;
+            border-radius: $border-radii;
+            td{
+                background-color: $bg-p1;
+                color: $color-p1;
+            }
+            td:first-child{
+                border-top-left-radius: $border-radii;
+                border-bottom-left-radius: $border-radii;
+            }
+            td:last-child{
+                border-top-right-radius: $border-radii;
+                border-bottom-right-radius: $border-radii;
+            }
         }
 
         .w-10 {

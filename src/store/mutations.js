@@ -92,4 +92,8 @@ export default {
     state.fileCallback = null;
     state.fullScreen = false;
   },
+
+  setRefreshing(state) {
+    state.refreshing = !state.refreshing;
+  },
 };

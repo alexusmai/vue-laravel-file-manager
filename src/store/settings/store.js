@@ -70,6 +70,14 @@ export default {
       // show or hide hidden files
       hiddenFiles: false,
 
+      //  @param enabled - Auto Sync Changes in system files and folders
+      //  ex: Deleted System files or changes in file and folders
+      //  @param timeout - Auto Sync Timeout in milliseconds
+      autoSync: {
+        enabled: false,
+        timeout: 5000,
+      },
+
       // Context menu items
       contextMenu: [
         [
@@ -168,6 +176,12 @@ export default {
         htaccess: 'text/plain',
         env: 'text/plain',
         txt: 'text/plain',
+        gitignore: 'text/plain',
+        npmignore: 'text/plain',
+        eslintignore: 'text/plain',
+        browserslistrc: 'text/plain',
+        eslintrc: 'text/plain',
+        babelrc: 'text/plain',
         log: 'text/plain',
         ini: 'text/x-ini',
         xml: 'application/xml',
