@@ -92,6 +92,8 @@ export default {
     if (!state.windowsConfig) state.windowsConfig = data.windowsConfig;
     state.acl = data.acl;
     state.hiddenFiles = data.hiddenFiles;
+    state.autoSync.enabled = data.autoSyncFilesAndFolders;
+    state.autoSync.interval = data.autoSyncTimeout;
   },
 
   /**

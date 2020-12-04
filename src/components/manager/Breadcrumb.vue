@@ -4,7 +4,7 @@
             <ol class="breadcrumb"
                 v-bind:class="[manager === activeManager ? 'active-manager' : 'bg-light']">
                 <li class="breadcrumb-item" v-on:click="selectMainDirectory">
-                    <span class="badge badge-secondary">
+                    <span class="badge badge-dark shadow">
                         <i class="far fa-hdd"/>
                     </span>
                 </li>
@@ -95,13 +95,17 @@ export default {
             margin-bottom: 0.5rem;
 
             &.active-manager {
-                background-color: #c2e5eb;
+                background-color: #eeeeee;
             }
-
+            .breadcrumb-item{
+              color: #6d757d;
+              padding: 0.2rem;
+            }
             .breadcrumb-item:not(.active):hover {
                 cursor: pointer;
                 font-weight: normal;
                 color: #6d757d;
+                padding: 0.2rem;
             }
         }
     }

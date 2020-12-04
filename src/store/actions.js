@@ -471,18 +471,23 @@ export default {
    * @param dispatch
    * @returns {*}
    */
-  refreshAll({ state, getters, dispatch }) {
+  refreshAll({ state, commit, getters, dispatch }) {
+    commit('setRefreshing');
     if (state.settings.windowsConfig === 2) {
       // refresh tree
       return dispatch('tree/initTree', state.left.selectedDisk).then(() => Promise.all([
         // reopen folders if need
         dispatch('tree/reopenPath', getters.selectedDirectory),
         // refresh manager/s
-        dispatch('refreshManagers'),
+        dispatch('refreshManagers').then(() => {
+          commit('setRefreshing');
+        }),
       ]));
     }
     // refresh manager/s
-    return dispatch('refreshManagers');
+    return dispatch('refreshManagers').then(() => {
+      commit('setRefreshing');
+    });
   },
 
   /**

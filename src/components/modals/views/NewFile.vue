@@ -13,7 +13,9 @@
                        v-focus
                        v-bind:class="{'is-invalid': fileExist}"
                        v-model="fileName"
-                       v-on:keyup="validateFileName">
+                       v-on:keyup="validateFileName"
+                       v-on:keyup.enter="addFile"
+                       v-bind:disabled="!submitActive && submit">
                 <div class="invalid-feedback" v-show="fileExist">
                     {{ lang.modal.newFile.fieldFeedback }}
                 </div>
@@ -21,7 +23,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn btn-info"
-                    v-bind:disabled="!submitActive"
+                    v-bind:disabled="!submitActive && submit"
                     v-on:click="addFile">{{ lang.btn.submit }}
             </button>
             <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
@@ -43,6 +45,9 @@ export default {
 
       // file exist
       fileExist: false,
+
+      // submit running
+      submit: false,
     };
   },
   computed: {
@@ -67,16 +72,27 @@ export default {
     },
 
     /**
+     * toggle submit state
+     */
+    toggleSubmit() {
+      this.submit = !this.submit;
+    },
+
+    /**
      * Create new file
      */
     addFile() {
-      this.$store.dispatch('fm/createFile', this.fileName).then((response) => {
-        // if new directory created successfully
-        if (response.data.result.status === 'success') {
-          // close modal window
-          this.hideModal();
-        }
-      });
+      if (this.fileName && !this.fileExist) {
+        this.toggleSubmit();
+        this.$store.dispatch('fm/createFile', this.fileName).then((response) => {
+          // if new directory created successfully
+          if (response.data.result.status === 'success') {
+            // close modal window
+            this.hideModal();
+            this.toggleSubmit();
+          }
+        });
+      }
     },
   },
 };

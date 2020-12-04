@@ -72,6 +72,11 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      autoSyncing: null,
+    };
+  },
   created() {
     // manual settings
     this.$store.commit('fm/settings/manualSettings', this.settings);
@@ -83,6 +88,9 @@ export default {
 
     // initialize app settings
     this.$store.dispatch('fm/initializeApp');
+
+    // start autosyncing if enabled
+    this.initAutoSync();
 
     /**
      * todo Keyboard event
@@ -96,6 +104,12 @@ export default {
     });
     */
   },
+  beforeDestroy() {
+    if (this.autoSyncing !== null) {
+      clearInterval(this.autoSyncing);
+    }
+  },
+
   destroyed() {
     // reset state
     this.$store.dispatch('fm/resetState');
@@ -104,11 +118,15 @@ export default {
     EventBus.$off(['contextMenu', 'addNotification']);
   },
   computed: {
+    shouldSync() {
+      return this.autoSyncing === null && this.autoSync.enabled;
+    },
     ...mapState('fm', {
       windowsConfig: (state) => state.settings.windowsConfig,
       activeManager: (state) => state.settings.activeManager,
       showModal: (state) => state.modal.showModal,
       fullScreen: (state) => state.settings.fullScreen,
+      autoSync: (state) => state.settings.autoSync,
     }),
   },
   methods: {
@@ -216,6 +234,15 @@ export default {
         this.$store.commit('fm/setActiveManager', managerName);
       }
     },
+
+    initAutoSync() {
+      // console.log(this.autoSyncing, this.shouldSync, this.autoSync);
+      if (this.shouldSync) {
+        this.autoSyncing = setInterval(() => {
+          this.$store.dispatch('fm/refreshAll');
+        }, this.autoSync.timeout);
+      }
+    },
   },
 };
 </script>
@@ -227,6 +254,9 @@ export default {
     height: 100%;
     padding: 1rem 1rem 0;
     background-color: white;
+    border: 0.2rem solid #333333c2;
+    margin-top: 2vh;
+    border-radius: 0.5rem;
 
     &:-moz-full-screen {
       background-color: white;
@@ -248,8 +278,8 @@ export default {
       position: relative;
       padding-top: 1rem;
       padding-bottom: 1rem;
-      border-top: 1px solid #6d757d;
-      border-bottom: 1px solid #6d757d;
+      border-top: 3px solid #6d757d;
+      border-bottom: 3px solid #6d757d;
     }
 
     .unselectable {

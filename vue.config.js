@@ -1,8 +1,10 @@
 module.exports = {
+  filenameHashing : false,
+  runtimeCompiler : true,
   configureWebpack: {
-    // No need for splitting
     optimization: {
-      splitChunks: false
-    }
-  }
+      splitChunks: false,
+      minimize: true,
+    },
+  },
 };

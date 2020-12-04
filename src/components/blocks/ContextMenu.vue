@@ -145,7 +145,7 @@ export default {
         position: absolute;
         z-index: 9997;
         background-color: white;
-        box-shadow: 3px 2px 5px gray;
+        box-shadow: 2px 8px 15px -2px rgba(0,0,0,0.3);
         border-radius: 5px;
 
         &:focus {
@@ -166,6 +166,7 @@ export default {
 
             &:hover {
                 background-color: #f8f9fa;
+                border-radius: 5px;
             }
 
             i {

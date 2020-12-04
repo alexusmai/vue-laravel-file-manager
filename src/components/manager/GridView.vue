@@ -109,19 +109,27 @@ export default {
         .fm-grid-item {
             position: relative;
             width: 125px;
-            padding: 0.4rem;
-            margin-bottom: 1rem;
+            padding: 0.8rem;
+            margin-bottom: 1.25rem;
+            margin-left: 1.25rem;
             margin-right: 1rem;
             border-radius: 5px;
+            transition: 0.3s all;
 
             &.active {
-                background-color: #c2e5eb;
-                box-shadow: 3px 2px 5px gray;
+                background-color: #1d1d1d;
+                color: #f4f4f4;
+                box-shadow: 2px 8px 15px -2px rgba(0,0,0,0.3);
+
+                .fm-item-icon > i,
+                .fm-item-icon > figure > i {
+                    color: #f4f4f4;
+                }
             }
 
             &:not(.active):hover {
                 background-color: #f8f9fa;
-                box-shadow: 3px 2px 5px gray;
+                box-shadow: 2px 8px 15px -2px rgba(0,0,0,0.3);
             }
 
             .fm-item-icon{

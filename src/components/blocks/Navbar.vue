@@ -3,48 +3,49 @@
         <div class="row justify-content-between">
             <div class="col-auto">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="backDisabled"
                             v-bind:title="lang.btn.back"
                             v-on:click="historyBack()">
                         <i class="fas fa-step-backward"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="forwardDisabled"
                             v-bind:title="lang.btn.forward"
                             v-on:click="historyForward()">
                         <i class="fas fa-step-forward"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
-                            v-on:click="refreshAll()"
-                            v-bind:title="lang.btn.refresh">
-                        <i class="fas fa-sync-alt"/>
+                    <button type="button" v-bind:class="btnClass"
+                            v-on:click="refreshAll($event)"
+                            v-bind:title="lang.btn.refresh"
+                            v-bind:disabled="refreshDisabled">
+                        <i class="fas fa-sync-alt" :class="{'rotate-center': isRefreshing}"/>
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-on:click="showModal('NewFile')"
                             v-bind:title="lang.btn.file">
                         <i class="far fa-file"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-on:click="showModal('NewFolder')"
                             v-bind:title="lang.btn.folder">
                         <i class="far fa-folder"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             disabled
                             v-if="uploading"
                             v-bind:title="lang.btn.upload">
                         <i class="fas fa-upload"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-else
                             v-on:click="showModal('Upload')"
                             v-bind:title="lang.btn.upload">
                         <i class="fas fa-upload"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="!isAnyItemSelected"
                             v-on:click="showModal('Delete')"
                             v-bind:title="lang.btn.delete">
@@ -52,19 +53,19 @@
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
                             v-on:click="toClipboard('copy')">
                         <i class="fas fa-copy"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.cut"
                             v-on:click="toClipboard('cut')">
                         <i class="fas fa-cut"/>
                     </button>
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:disabled="!clipboardType"
                             v-bind:title="lang.btn.paste"
                             v-on:click="paste">
@@ -72,7 +73,7 @@
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:title="lang.btn.hidden"
                             v-on:click="toggleHidden">
                         <i class="fas" v-bind:class="[hiddenFiles ? 'fa-eye': 'fa-eye-slash']"/>
@@ -81,29 +82,29 @@
             </div>
             <div class="col-auto text-right">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
-                            v-bind:class="[viewType === 'table' ? 'active' : '']"
+                    <button type="button"
+                            v-bind:class="[btnClass, viewType === 'table' ? 'active' : '']"
                             v-on:click="selectView('table')"
                             v-bind:title="lang.btn.table">
                         <i class="fas fa-th-list"/>
                     </button>
-                    <button role="button" class="btn btn-secondary"
-                            v-bind:class="[viewType === 'grid' ? 'active' : '']"
+                    <button role="button"
+                            v-bind:class="[btnClass, viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
                             v-bind:title="lang.btn.grid">
                         <i class="fas fa-th"/>
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button"
                             v-bind:title="lang.btn.fullScreen"
-                            v-bind:class="{ active: fullScreen }"
+                            v-bind:class="[btnClass ,{ active: fullScreen }] "
                             v-on:click="screenToggle">
                         <i class="fas fa-expand-arrows-alt"/>
                     </button>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <button type="button" v-bind:class="btnClass"
                             v-bind:title="lang.btn.about"
                             v-on:click="showModal('About')">
                         <i class="fas fa-question"/>
@@ -120,6 +121,12 @@ import EventBus from '../../eventBus';
 
 export default {
   mixins: [translate],
+  data() {
+    return {
+      // btn background
+      btnClass: 'btn btn-outline-warning shadow-warning text-dark mr-1',
+    };
+  },
   computed: {
     /**
      * Active manager name
@@ -135,6 +142,13 @@ export default {
      */
     backDisabled() {
       return !this.$store.state.fm[this.activeManager].historyPointer;
+    },
+    /**
+     * Refresh button state
+     * @returns {boolean}
+     */
+    refreshDisabled() {
+      return this.$store.state.fm.settings.autoSync.enabled;
     },
 
     /**
@@ -193,6 +207,13 @@ export default {
      */
     hiddenFiles() {
       return this.$store.state.fm.settings.hiddenFiles;
+    },
+    /**
+     * Show or Hide hidden files
+     * @returns {boolean}
+     */
+    isRefreshing() {
+      return this.$store.state.fm.refreshing;
     },
   },
   methods: {
@@ -305,10 +326,48 @@ export default {
 </script>
 
 <style lang="scss">
+    $shadow: 0px 3px 6px -3px #5a4c17de;
     .fm-navbar {
 
         .btn-group {
             margin-right: 0.4rem;
         }
     }
+
+    .btn:not(:disabled):not(.disabled){
+      transition: all 0.25s ease;
+      &:hover{
+        transform: translateY(-0.15rem);
+      }
+    }
+    .btn:not(:disabled):not(.disabled):focus, .shadow-warning{
+      box-shadow: $shadow;
+    }
+
+    .rotate-center {
+      -webkit-animation: rotate-center 0.6s linear infinite both;
+              animation: rotate-center 0.6s linear infinite both;
+    }
+
+    @-webkit-keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+    @keyframes rotate-center {
+      0% {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+      }
+    }
+
 </style>

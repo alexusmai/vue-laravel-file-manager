@@ -25,4 +25,7 @@ export default {
 
   // full screen mode
   fullScreen: false,
+
+  // refreshing managers
+  refreshing: false,
 };
