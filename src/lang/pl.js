@@ -118,8 +118,8 @@ const pl = {
     upload: {
       ifExist: 'Jeśli plik istnieje:',
       noSelected: 'Nie wybrano plików!',
-      overwrite: 'Nadpisać!',
-      selected: 'Wybrany:',
+      overwrite: 'Nadpisz',
+      selected: 'Wybrano:',
       size: 'Rozmiar:',
       skip: 'Pomiń',
       title: 'Prześlij pliki',
