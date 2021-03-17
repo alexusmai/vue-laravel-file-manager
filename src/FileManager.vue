@@ -72,6 +72,14 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      interceptorIndex: {
+        request: null,
+        response: null,
+      },
+    };
+  },
   created() {
     // manual settings
     this.$store.commit('fm/settings/manualSettings', this.settings);
@@ -102,6 +110,10 @@ export default {
 
     // delete events
     EventBus.$off(['contextMenu', 'addNotification']);
+
+    // eject interceptors
+    HTTP.interceptors.request.eject(this.interceptorIndex.request);
+    HTTP.interceptors.response.eject(this.interceptorIndex.response);
   },
   computed: {
     ...mapState('fm', {
@@ -116,7 +128,7 @@ export default {
      * Add axios request interceptor
      */
     requestInterceptor() {
-      HTTP.interceptors.request.use((config) => {
+      this.interceptorIndex.request = HTTP.interceptors.request.use((config) => {
         // overwrite base url and headers
         config.baseURL = this.$store.getters['fm/settings/baseUrl'];
         config.headers = this.$store.getters['fm/settings/headers'];
@@ -136,7 +148,7 @@ export default {
      * Add axios response interceptor
      */
     responseInterceptor() {
-      HTTP.interceptors.response.use((response) => {
+      this.interceptorIndex.response = HTTP.interceptors.response.use((response) => {
         // loading spinner -
         this.$store.commit('fm/messages/subtractLoading');
 
