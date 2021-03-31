@@ -28,7 +28,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.5.3',
+      version: '2.5.4',
 
       // axios headers
       headers: {},
