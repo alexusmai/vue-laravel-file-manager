@@ -27,6 +27,10 @@ export default {
     if (Object.prototype.hasOwnProperty.call(data, 'translation')) {
       Vue.set(state.translations, data.translation.name, Object.freeze(data.translation.content));
     }
+    // image extensions
+    if (Object.prototype.hasOwnProperty.call(data, 'imageExtensions')) {
+      state.imageExtensions = data.imageExtensions;
+    }
   },
 
   /**
