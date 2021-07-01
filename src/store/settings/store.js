@@ -191,6 +191,9 @@ export default {
         yaml: 'text/x-yaml',
         json: 'application/json',
       },
+
+      // Override Path
+      overridePath: null
     };
   },
   mutations,

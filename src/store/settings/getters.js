@@ -25,4 +25,13 @@ export default {
   authHeader(state) {
     return Object.prototype.hasOwnProperty.call(state.headers, 'Authorization');
   },
+
+  /**
+   * Override Path
+   * @param state
+   * @returns {string|null}
+   */
+  overridePath(state) {
+    return state.overridePath;
+  },
 };
