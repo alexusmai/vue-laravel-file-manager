@@ -84,11 +84,12 @@
         </div>
         <div class="modal-footer">
             <button class="btn"
+                    type="button"
                     v-bind:class="[countFiles ? 'btn-info' : 'btn-light']"
                     v-bind:disabled="!countFiles"
                     v-on:click="uploadFiles">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-light" v-on:click="hideModal()">{{ lang.btn.cancel }}</button>
+            <button type="button" class="btn btn-light" v-on:click="hideModal()">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

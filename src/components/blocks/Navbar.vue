@@ -87,7 +87,7 @@
                             v-bind:title="lang.btn.table">
                         <i class="fas fa-th-list"/>
                     </button>
-                    <button role="button" class="btn btn-secondary"
+                    <button type="button" class="btn btn-secondary"
                             v-bind:class="[viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
                             v-bind:title="lang.btn.grid">

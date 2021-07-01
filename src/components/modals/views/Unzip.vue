@@ -51,11 +51,11 @@
             <span v-else class="text-danger">{{ lang.modal.unzip.warning }}</span>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-info"
+            <button type="button" class="btn btn-info"
                     v-bind:disabled="!submitActive"
                     v-on:click="unpackArchive">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button type="button" class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>
