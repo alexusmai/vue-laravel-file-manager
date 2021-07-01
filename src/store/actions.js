@@ -28,6 +28,10 @@ export default {
         let leftPath = response.data.config.leftPath;
         let rightPath = response.data.config.rightPath;
 
+        if(state.settings.overridePath) {
+          leftPath = state.settings.overridePath;
+        }
+
         // find disk and path settings in the URL
         if (window.location.search) {
           const params = new URLSearchParams(window.location.search);
