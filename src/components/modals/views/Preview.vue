@@ -25,13 +25,13 @@
         </div>
         <div v-if="showFooter" class="d-flex justify-content-between">
             <span class="d-block">
-                <button class="btn btn-info"
+                <button type="button" class="btn btn-info"
                         v-bind:title="lang.modal.cropper.title" v-on:click="showCropperModule = true">
                     <i class="fas fa-crop-alt"/>
                 </button>
             </span>
             <span class="d-block">
-                <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+                <button type="button" class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
             </span>
         </div>
     </div>

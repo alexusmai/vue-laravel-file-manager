@@ -12,10 +12,10 @@
             <codemirror ref="fmCodeEditor" v-model="code" :options="cmOptions"/>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-info"
+            <button type="button" class="btn btn-info"
                     v-on:click="updateFile">{{ lang.btn.submit }}
             </button>
-            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button type="button" class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>

@@ -19,10 +19,10 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-danger"
+            <button type="button" class="btn btn-danger"
                     v-bind:disabled="!errors.length"
                     v-on:click="clearErrors">{{ lang.btn.clear }}</button>
-            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            <button type="button" class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
         </div>
     </div>
 </template>
