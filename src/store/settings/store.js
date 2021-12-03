@@ -17,6 +17,7 @@ import it from '../../lang/it';
 import tr from '../../lang/tr';
 import fr from '../../lang/fr';
 import pt_BR from '../../lang/pt_BR';
+import pt_PT from '../../lang/pt_PT';
 import zh_TW from '../../lang/zh_TW';
 import pl from '../../lang/pl';
 
@@ -63,6 +64,7 @@ export default {
         tr: Object.freeze(tr),
         fr: Object.freeze(fr),
         'pt-BR': Object.freeze(pt_BR),
+        'pt-PT': Object.freeze(pt_PT),
         'zh-TW': Object.freeze(zh_TW),
         pl: Object.freeze(pl),
       },
