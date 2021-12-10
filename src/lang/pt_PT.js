@@ -35,7 +35,7 @@ const pt_PT = {
   },
   contextMenu: {
     copy: 'Copiar',
-    cut: 'Colar',
+    cut: 'Cortar',
     delete: 'Apagar',
     download: 'Download',
     info: 'Selecionado:',
