@@ -1,13 +1,13 @@
 {
-  "name": "laravel-file-manager",
-  "version": "2.5.4",
+  "name": "@stydevz/laravel-file-manager",
+  "version": "2.5.5",
   "description": "File manager for Laravel",
   "keywords": [
     "laravel",
     "file",
     "manager"
   ],
-  "author": "Aleksandr Manekin <alexusmai@gmail.com>",
+  "author": "Stydevz",
   "private": false,
   "license": "MIT",
   "main": "src/init.js",
