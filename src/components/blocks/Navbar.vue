@@ -3,112 +3,202 @@
         <div class="row justify-content-between">
             <div class="col-auto">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="backDisabled"
                             v-bind:title="lang.btn.back"
-                            v-on:click="historyBack()">
-                        <i class="fas fa-step-backward"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-on:click="historyBack()"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-arrow-left</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="forwardDisabled"
                             v-bind:title="lang.btn.forward"
-                            v-on:click="historyForward()">
-                        <i class="fas fa-step-forward"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-on:click="historyForward()"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-arrow-right</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-on:click="refreshAll()"
-                            v-bind:title="lang.btn.refresh">
-                        <i class="fas fa-sync-alt"/>
-                    </button>
+                            v-bind:title="lang.btn.refresh"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-refresh</v-icon>
+                    </v-btn>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <v-btn type="button" class="btn btn-secondary"
                             v-on:click="showModal('NewFile')"
-                            v-bind:title="lang.btn.file">
-                        <i class="far fa-file"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.file"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-file-outline</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-on:click="showModal('NewFolder')"
-                            v-bind:title="lang.btn.folder">
-                        <i class="far fa-folder"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.folder"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-folder-outline</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             disabled
                             v-if="uploading"
-                            v-bind:title="lang.btn.upload">
-                        <i class="fas fa-upload"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.upload"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-upload-outline</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-else
                             v-on:click="showModal('Upload')"
-                            v-bind:title="lang.btn.upload">
-                        <i class="fas fa-upload"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.upload"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-upload-outline</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-on:click="showModal('Delete')"
-                            v-bind:title="lang.btn.delete">
-                        <i class="fas fa-trash-alt"/>
-                    </button>
+                            v-bind:title="lang.btn.delete"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-delete-outline</v-icon>
+                    </v-btn>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
-                            v-on:click="toClipboard('copy')">
-                        <i class="fas fa-copy"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-on:click="toClipboard('copy')"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-content-copy</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.cut"
-                            v-on:click="toClipboard('cut')">
-                        <i class="fas fa-cut"/>
-                    </button>
-                    <button type="button" class="btn btn-secondary"
+                            v-on:click="toClipboard('cut')"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-content-cut</v-icon>
+                    </v-btn>
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:disabled="!clipboardType"
                             v-bind:title="lang.btn.paste"
-                            v-on:click="paste">
-                        <i class="fas fa-paste"/>
-                    </button>
+                            v-on:click="paste"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-content-paste</v-icon>
+                    </v-btn>
                 </div>
-                <div class="btn-group" role="group">
+                <!-- <div class="btn-group" role="group">
                     <button type="button" class="btn btn-secondary"
                             v-bind:title="lang.btn.hidden"
                             v-on:click="toggleHidden">
                         <i class="fas" v-bind:class="[hiddenFiles ? 'fa-eye': 'fa-eye-slash']"/>
                     </button>
-                </div>
+                </div> -->
             </div>
             <div class="col-auto text-right">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:class="[viewType === 'table' ? 'active' : '']"
                             v-on:click="selectView('table')"
-                            v-bind:title="lang.btn.table">
-                        <i class="fas fa-th-list"/>
-                    </button>
-                    <button role="button" class="btn btn-secondary"
+                            v-bind:title="lang.btn.table"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-format-list-bulleted</v-icon>
+                    </v-btn>
+                    <v-btn role="button" class="btn btn-secondary"
                             v-bind:class="[viewType === 'grid' ? 'active' : '']"
                             v-on:click="selectView('grid')"
-                            v-bind:title="lang.btn.grid">
-                        <i class="fas fa-th"/>
-                    </button>
+                            v-bind:title="lang.btn.grid"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-view-grid-outline</v-icon>
+                    </v-btn>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:title="lang.btn.fullScreen"
                             v-bind:class="{ active: fullScreen }"
-                            v-on:click="screenToggle">
-                        <i class="fas fa-expand-arrows-alt"/>
-                    </button>
+                            v-on:click="screenToggle"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-fullscreen</v-icon>
+                    </v-btn>
                 </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
+                <!-- <div class="btn-group" role="group">
+                    <v-btn type="button" class="btn btn-secondary"
                             v-bind:title="lang.btn.about"
-                            v-on:click="showModal('About')">
-                        <i class="fas fa-question"/>
-                    </button>
-                </div>
+                            v-on:click="showModal('About')"
+                            fab
+                            tile
+                            small
+                            color="primary"
+                            elevation="1"
+                            >
+                        <v-icon>mdi-help-circle-outline</v-icon>
+                    </v-btn>
+                </div> -->
             </div>
         </div>
     </div>

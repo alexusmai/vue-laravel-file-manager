@@ -95,14 +95,7 @@ export default {
     /**
      * todo Keyboard event
      */
-    /*
-    window.addEventListener('keyup', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      EventBus.$emit('keyMonitor', event);
-    });
-    */
+    window.addEventListener('keyup', this.keyEvent);
   },
   destroyed() {
     // reset state
@@ -114,6 +107,8 @@ export default {
     // eject interceptors
     HTTP.interceptors.request.eject(this.interceptorIndex.request);
     HTTP.interceptors.response.eject(this.interceptorIndex.response);
+
+    window.removeEventListener('keyup', this.keyEvent);
   },
   computed: {
     ...mapState('fm', {
@@ -124,6 +119,12 @@ export default {
     }),
   },
   methods: {
+    keyEvent(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      EventBus.$emit('keyMonitor', e);
+    },
     /**
      * Add axios request interceptor
      */
@@ -233,7 +234,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~plyr/src/sass/plyr.scss";
+  @import "plyr/src/sass/plyr.scss";
   .fm {
     position: relative;
     height: 100%;

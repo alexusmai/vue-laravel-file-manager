@@ -1,20 +1,24 @@
 <template>
     <ul class="list-unstyled fm-tree-branch">
         <li v-for="(directory, index) in subDirectories" v-bind:key="index">
-            <p class="unselectable"
+            <p class="unselectable" style="align-items: center; display: flex;"
                v-bind:class="{'selected': isDirectorySelected(directory.path)}"
                v-on:click="selectDirectory(directory.path)">
-                <i class="far"
-                   v-if="directory.props.hasSubdirectories"
-                   v-on:click.stop="showSubdirectories(
-                        directory.path,
-                        directory.props.showSubdirectories
-                      )"
-                   v-bind:class="[arrowState(index)
-                    ? 'fa-minus-square'
-                    : 'fa-plus-square'
-                   ]"/>
-                <i class="fas fa-minus fa-xs" v-else/>
+                <v-icon
+                  style="margin-right: 6px;" 
+                  v-if="directory.props.hasSubdirectories"
+                  v-on:click.stop="showSubdirectories(directory.path, directory.props.showSubdirectories)">
+                      <template v-if="arrowState(index)">
+                        mdi-minus-box-outline
+                      </template>
+                      <template v-else> 
+                        mdi-plus-box-outline
+                      </template>
+                </v-icon>
+                <v-icon style="margin-right: 6px;"  v-else>
+                  mdi-minus
+                </v-icon>
+
                 {{ directory.basename }}
             </p>
 

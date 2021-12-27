@@ -1,11 +1,11 @@
 <template>
     <div class="fm-breadcrumb">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb"
+            <ol class="breadcrumb" style="height: 32px; align-items: center;"
                 v-bind:class="[manager === activeManager ? 'active-manager' : 'bg-light']">
-                <li class="breadcrumb-item" v-on:click="selectMainDirectory">
-                    <span class="badge badge-secondary">
-                        <i class="far fa-hdd"/>
+                <li class="breadcrumb-item" style="display: inline-flex;" v-on:click="selectMainDirectory">
+                    <span class="badge">
+                        <v-icon small>mdi-server</v-icon>
                     </span>
                 </li>
                 <li class="breadcrumb-item text-truncate"

@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-between">
                     <div class="w-75 text-truncate">
                         <span>
-                           <i class="far fa-hdd"/>{{ clipboard.disk }}
+                           <v-icon small>mdi-server</v-icon>{{ clipboard.disk }}
                         </span>
                     </div>
                     <div class="text-right text-muted">

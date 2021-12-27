@@ -1,7 +1,7 @@
 <template>
     <div class="fm-tree">
-        <div class="fm-tree-disk sticky-top">
-            <i class="far fa-hdd"/> {{ selectedDisk }}
+        <div class="fm-tree-disk">
+            <v-icon small>mdi-server</v-icon> {{ selectedDisk }}
         </div>
         <branch v-bind:parent-id="0"/>
     </div>
