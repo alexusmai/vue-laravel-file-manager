@@ -1,28 +1,28 @@
 export default {
-  /**
-   * Active manager
-   * left or right
-   * default: left
-   */
-  activeManager: 'left',
+    /**
+     * Active manager
+     * left or right
+     * default: left
+     */
+    activeManager: 'left',
 
-  /**
-   * Clipboard
-   * Operation type - copy || cut
-   */
-  clipboard: {
-    type: null,
-    disk: null,
-    directories: [],
-    files: [],
-  },
+    /**
+     * Clipboard
+     * Operation type - copy || cut
+     */
+    clipboard: {
+        type: null,
+        disk: null,
+        directories: [],
+        files: [],
+    },
 
-  // available disks
-  disks: [],
+    // available disks
+    disks: [],
 
-  // file callback for ckeditor, ...
-  fileCallback: null,
+    // file callback for ckeditor, ...
+    fileCallback: null,
 
-  // full screen mode
-  fullScreen: false,
+    // full screen mode
+    fullScreen: false,
 };

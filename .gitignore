@@ -1,6 +1,7 @@
-/node_modules/
-/dist/
-
-# Editor directories and files
-/.idea/
-/.env.development
+node_modules
+.DS_Store
+dist
+dist-ssr
+.idea/
+*.local
+.env.development

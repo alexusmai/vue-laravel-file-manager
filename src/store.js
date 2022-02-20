@@ -11,17 +11,17 @@ import getters from './store/getters';
 import actions from './store/actions';
 
 export default {
-  namespaced: true,
-  modules: {
-    settings,
-    left: manager,
-    right: manager,
-    tree,
-    modal,
-    messages,
-  },
-  state,
-  mutations,
-  actions,
-  getters,
+    namespaced: true,
+    modules: {
+        settings,
+        left: manager,
+        right: manager,
+        tree,
+        modal,
+        messages,
+    },
+    state,
+    mutations,
+    actions,
+    getters,
 };
