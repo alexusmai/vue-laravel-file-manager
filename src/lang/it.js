@@ -25,6 +25,7 @@ const it = {
     upload: 'Upload',
     uploadSelect: 'Seleziona files',
     hidden: ' Files Nascosti',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Tipo',
@@ -124,6 +125,9 @@ const it = {
       size: 'Dim.:',
       skip: 'Salta',
       title: 'Carica files',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editor',

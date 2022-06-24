@@ -26,6 +26,7 @@ const nl = {
     upload: 'Upload',
     uploadSelect: 'Select files',
     hidden: ' Verborgen bestanden',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Type',
@@ -125,6 +126,9 @@ const nl = {
       size: 'Size:',
       skip: 'Skip',
       title: 'Upload files',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editor',

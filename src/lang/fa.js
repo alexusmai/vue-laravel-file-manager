@@ -25,6 +25,7 @@ const fa = {
     upload: 'بارگذاری',
     uploadSelect: 'انتخاب فایل',
     hidden: ' فایل های مخفی',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'نوع',
@@ -124,6 +125,9 @@ const fa = {
       size: 'اندازه:',
       skip: 'رد شدن',
       title: 'بارگزاری فایل ها',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'ویرایشگر',

@@ -28,7 +28,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.5.4',
+      version: '2.6.0',
 
       // axios headers
       headers: {},
@@ -191,6 +191,15 @@ export default {
         yaml: 'text/x-yaml',
         json: 'application/json',
       },
+
+      // Allow file types
+      allowFileTypes: [],
+
+      // Max POST size
+      maxPostSize: null,
+
+      // Max upload file size
+      maxUploadFileSize: null,
     };
   },
   mutations,

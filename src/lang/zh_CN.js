@@ -26,6 +26,7 @@ const zh_CN = {
     upload: '上传',
     uploadSelect: '选择文件',
     hidden: ' 隐藏文件',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: '类型',
@@ -125,6 +126,9 @@ const zh_CN = {
       size: '大小:',
       skip: '忽略',
       title: '上传文件',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: '编辑',

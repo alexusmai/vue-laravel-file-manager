@@ -1,6 +1,6 @@
 {
   "name": "laravel-file-manager",
-  "version": "2.5.4",
+  "version": "2.6.0",
   "description": "File manager for Laravel",
   "keywords": [
     "laravel",
@@ -37,7 +37,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.14.1",
+    "sass": "^1.53.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12"
   }

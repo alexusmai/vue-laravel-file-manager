@@ -24,6 +24,7 @@ const pl = {
     upload: 'Wyślij plik',
     uploadSelect: 'Wybierz pliki',
     hidden: 'Ukryte pliki',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Rodzaj',
@@ -123,6 +124,9 @@ const pl = {
       size: 'Rozmiar:',
       skip: 'Pomiń',
       title: 'Prześlij pliki',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Edytor',

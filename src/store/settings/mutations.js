@@ -92,6 +92,9 @@ export default {
     if (!state.windowsConfig) state.windowsConfig = data.windowsConfig;
     state.acl = data.acl;
     state.hiddenFiles = data.hiddenFiles;
+    state.allowFileTypes = data.allowFileTypes;
+    state.maxPostSize = data.maxPostSize;
+    state.maxUploadFileSize = data.maxUploadFileSize;
   },
 
   /**

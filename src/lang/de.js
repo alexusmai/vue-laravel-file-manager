@@ -24,6 +24,7 @@ const de = {
     upload: 'Hochladen',
     uploadSelect: 'Auswählen',
     hidden: ' Versteckte Dateien',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Type',
@@ -123,6 +124,9 @@ const de = {
       size: 'Größe:',
       skip: 'Überspringen',
       title: 'Hochladen von Dateien',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editor',

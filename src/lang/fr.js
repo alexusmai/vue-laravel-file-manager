@@ -24,6 +24,7 @@ const fr = {
     upload: 'Télécharger',
     uploadSelect: 'Sélectionner fichiers',
     hidden: ' Masquer fichiers',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Type',
@@ -123,6 +124,9 @@ const fr = {
       size: 'Taille:',
       skip: 'Passer',
       title: 'Télécharger fichiers',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editeur',

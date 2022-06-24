@@ -25,6 +25,7 @@ const zh_TW = {
     upload: '上傳',
     uploadSelect: '選擇文件',
     hidden: ' 隱藏文件',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: '類型',
@@ -124,6 +125,9 @@ const zh_TW = {
       size: '大小:',
       skip: '忽略',
       title: '上傳文件',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: '編輯',

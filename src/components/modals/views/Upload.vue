@@ -19,10 +19,21 @@
                      v-bind:key="index">
                     <div class="w-75 text-truncate">
                         <i class="far" v-bind:class="mimeToIcon(item.type)"/>
-                        {{ item.name }}
+                        <span v-bind:class="[notValidFilesIndexes.includes(index) ? 'text-danger' : '']">
+                          {{ item.name }}
+                        </span>
                     </div>
                     <div class="text-right">
-                        {{ bytesToHuman(item.size) }}
+                        <span v-bind:class="[notValidFilesIndexes.includes(index) ? 'text-danger' : '']">
+                            {{ bytesToHuman(item.size) }}
+                        </span>
+                        <button type="button"
+                                class="close"
+                                aria-label="Delete"
+                                v-on:click="deleteFile(index)"
+                                v-bind:title="lang.btn.deleteFile">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
                 <hr>
@@ -33,7 +44,9 @@
                     </div>
                     <div class="text-right">
                         <strong>{{ lang.modal.upload.size }}</strong>
-                        {{ allFilesSize }}
+                        <span v-bind:class="[!isValidAllFilesSize ? 'text-danger' : '']">
+                          {{ allFilesSize }}
+                        </span>
                     </div>
                 </div>
                 <hr>
@@ -81,11 +94,22 @@
                     </div>
                 </div>
             </div>
+            <div class="alert alert-danger" v-if="countFiles && (notValidFilesIndexes.length || !isValidAllFilesSize)">
+                <p v-if="notValidFilesIndexes.length">
+                    {{ lang.modal.upload.noAllowFileTypes }} - {{ $store.state.fm.settings.allowFileTypes.join(', ') }}
+                </p>
+                <p v-if="notValidFilesIndexes.length">
+                    {{ lang.modal.upload.noMaxUploadFileSize }} - {{ bytesToHuman($store.state.fm.settings.maxUploadFileSize * 1024) }}
+                </p>
+                <p v-if="!isValidAllFilesSize">
+                    {{ lang.modal.upload.noMaxPostSize }} - {{ bytesToHuman($store.state.fm.settings.maxPostSize * 1024) }}
+                </p>
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn"
-                    v-bind:class="[countFiles ? 'btn-info' : 'btn-light']"
-                    v-bind:disabled="!countFiles"
+                    v-bind:class="[countFiles && !notValidFilesIndexes.length && isValidAllFilesSize ? 'btn-info' : 'btn-light']"
+                    v-bind:disabled="!countFiles || notValidFilesIndexes.length || !isValidAllFilesSize"
                     v-on:click="uploadFiles">{{ lang.btn.submit }}
             </button>
             <button class="btn btn-light" v-on:click="hideModal()">{{ lang.btn.cancel }}</button>
@@ -142,6 +166,38 @@ export default {
       return this.bytesToHuman(size);
     },
 
+    notValidFilesIndexes() {
+      const indexes = [];
+
+      for (let i = 0; i < this.newFiles.length; i += 1) {
+        const ext = this.newFiles[i].name.split('.').pop();
+        if (
+          (
+            this.$store.state.fm.settings.allowFileTypes.length
+            && !this.$store.state.fm.settings.allowFileTypes.includes(ext)
+          )
+          || (
+            this.$store.state.fm.settings.maxUploadFileSize !== null
+            && this.newFiles[i].size > this.$store.state.fm.settings.maxUploadFileSize * 1024
+          )
+        ) {
+          indexes.push(i);
+        }
+      }
+
+      return indexes;
+    },
+
+    isValidAllFilesSize() {
+      let size = 0;
+
+      for (let i = 0; i < this.newFiles.length; i += 1) {
+        size += this.newFiles[i].size;
+      }
+
+      return this.$store.state.fm.settings.maxPostSize === null || size <= this.$store.state.fm.settings.maxPostSize * 1024;
+    },
+
   },
   methods: {
     /**
@@ -177,6 +233,22 @@ export default {
           }
         });
       }
+    },
+
+    /**
+     * Delete file
+     * @param index
+     */
+    deleteFile(index) {
+      const dt = new DataTransfer();
+
+      for (let i = 0; i < this.newFiles.length; i += 1) {
+        if (i !== index) {
+          dt.items.add(this.newFiles[i]);
+        }
+      }
+
+      this.newFiles = dt.files;
     },
   },
 };

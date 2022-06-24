@@ -25,6 +25,7 @@ const sr = {
     upload: 'Upload',
     uploadSelect: 'Izaberi datoteke',
     hidden: ' Skrivene datoteke',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Tip operacije',
@@ -124,6 +125,9 @@ const sr = {
       size: 'Veličina:',
       skip: 'Preskoči',
       title: 'DOdaj fajlove',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editor',

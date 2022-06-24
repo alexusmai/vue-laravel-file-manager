@@ -25,6 +25,7 @@ const pt_BR = {
     upload: 'Upload',
     uploadSelect: 'Selecionar arquivos',
     hidden: ' Arquivos ocultos',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'Formato',
@@ -124,6 +125,9 @@ const pt_BR = {
       size: 'Tamanho:',
       skip: 'Pular',
       title: 'Upload de arquivos',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editor',

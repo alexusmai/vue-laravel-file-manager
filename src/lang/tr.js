@@ -24,6 +24,7 @@ const tr = {
     upload: 'Yükle',
     uploadSelect: 'Dosyaları seç',
     hidden: ' Gizli dosyalar',
+    deleteFile: 'Delete file',
   },
   clipboard: {
     actionType: 'İşlem türü',
@@ -123,6 +124,9 @@ const tr = {
       size: 'Boyut:',
       skip: 'Atla',
       title: 'Dosyaları yükle',
+      noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
+      noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
+      noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
     },
     editor: {
       title: 'Editör',
