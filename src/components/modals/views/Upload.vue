@@ -40,7 +40,9 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <strong>{{ lang.modal.upload.selected }}</strong>
-                        {{ newFiles.length }}
+                        <span v-bind:class="[!isValidAllFilesNumber ? 'text-danger' : '']">
+                          {{ newFiles.length }}
+                        </span>
                     </div>
                     <div class="text-right">
                         <strong>{{ lang.modal.upload.size }}</strong>
@@ -94,7 +96,7 @@
                     </div>
                 </div>
             </div>
-            <div class="alert alert-danger" v-if="countFiles && (notValidFilesIndexes.length || !isValidAllFilesSize)">
+            <div class="alert alert-danger" v-if="countFiles && (notValidFilesIndexes.length || !isValidAllFilesSize || !isValidAllFilesNumber)">
                 <p v-if="notValidFilesIndexes.length">
                     {{ lang.modal.upload.noAllowFileTypes }} - {{ $store.state.fm.settings.allowFileTypes.join(', ') }}
                 </p>
@@ -104,12 +106,15 @@
                 <p v-if="!isValidAllFilesSize">
                     {{ lang.modal.upload.noMaxPostSize }} - {{ bytesToHuman($store.state.fm.settings.maxPostSize * 1024) }}
                 </p>
+              <p v-if="!isValidAllFilesNumber">
+                {{ lang.modal.upload.noMaxFileUploads }} - {{ $store.state.fm.settings.maxFileUploads }}
+              </p>
             </div>
         </div>
         <div class="modal-footer">
             <button class="btn"
-                    v-bind:class="[countFiles && !notValidFilesIndexes.length && isValidAllFilesSize ? 'btn-info' : 'btn-light']"
-                    v-bind:disabled="!countFiles || notValidFilesIndexes.length || !isValidAllFilesSize"
+                    v-bind:class="[countFiles && !notValidFilesIndexes.length && isValidAllFilesSize && isValidAllFilesNumber ? 'btn-info' : 'btn-light']"
+                    v-bind:disabled="!countFiles || notValidFilesIndexes.length || !isValidAllFilesSize || !isValidAllFilesNumber"
                     v-on:click="uploadFiles">{{ lang.btn.submit }}
             </button>
             <button class="btn btn-light" v-on:click="hideModal()">{{ lang.btn.cancel }}</button>
@@ -196,6 +201,10 @@ export default {
       }
 
       return this.$store.state.fm.settings.maxPostSize === null || size <= this.$store.state.fm.settings.maxPostSize * 1024;
+    },
+
+    isValidAllFilesNumber() {
+      return this.$store.state.fm.settings.maxFileUploads === null || this.newFiles.length <= this.$store.state.fm.settings.maxFileUploads;
     },
 
   },

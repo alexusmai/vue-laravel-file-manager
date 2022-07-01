@@ -28,7 +28,7 @@ export default {
       acl: null,
 
       // App version
-      version: '2.6.0',
+      version: '2.6.1',
 
       // axios headers
       headers: {},
@@ -200,6 +200,9 @@ export default {
 
       // Max upload file size
       maxUploadFileSize: null,
+
+      // Max upload files number
+      maxFileUploads: null,
     };
   },
   mutations,

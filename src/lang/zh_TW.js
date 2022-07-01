@@ -128,6 +128,7 @@ const zh_TW = {
       noAllowFileTypes: 'The file extension is not on the list of allowed uploads',
       noMaxUploadFileSize: 'The maximum file upload size has been exceeded',
       noMaxPostSize: 'The maximum size of uploaded files has been exceeded',
+      noMaxFileUploads: 'The maximum number of uploaded files has been exceeded',
     },
     editor: {
       title: '編輯',

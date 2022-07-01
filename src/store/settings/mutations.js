@@ -95,6 +95,7 @@ export default {
     state.allowFileTypes = data.allowFileTypes;
     state.maxPostSize = data.maxPostSize;
     state.maxUploadFileSize = data.maxUploadFileSize;
+    state.maxFileUploads = data.maxFileUploads;
   },
 
   /**
