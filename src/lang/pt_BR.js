@@ -35,7 +35,7 @@ const pt_BR = {
     },
     contextMenu: {
         copy: 'Copiar',
-        cut: 'Colar',
+        cut: 'Recortar',
         delete: 'Apagar',
         download: 'Download',
         info: 'Selecionado:',
@@ -117,7 +117,7 @@ const pt_BR = {
             title: 'Status',
         },
         upload: {
-            ifExist: 'Se arquivo não existir:',
+            ifExist: 'Se arquivo já existir:',
             noSelected: 'Nenhum arquivo selecionado!',
             overwrite: 'Substituir!',
             selected: 'Selecionado:',
@@ -175,7 +175,7 @@ const pt_BR = {
         dirCreated: 'Pasta criada!',
         dirNotFound: 'Pasta não encontrada',
         // actions
-        uploaded: 'Todos os arquivo realizarm o upload!',
+        uploaded: 'Todos os arquivos realizaram o upload!',
         notAllUploaded: 'Alguns arquivos não realizaram o upload!',
         delNotFound: 'Alguns itens não foram encontrados!',
         deleted: 'Deletado!',
