@@ -115,11 +115,11 @@ Don't forget to add a csrf token to head block in your Laravel view and add boot
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 ```
 
-[Laravel mix environment variables](https://laravel.com/docs/mix#environment-variables)
+[Laravel VITE environment variables](https://laravel.com/docs/9.x/vite#environment-variables)
 ```
 // set baseUrl
-MIX_LFM_BASE_URL=http://my-url.loc/file-manager/
+VITE_LFM_BASE_URL=http://my-url.loc/file-manager/
 
 // if you don't want to use csrf-token - you can off it
-MIX_LFM_CSRF_TOKEN=OFF
+VITE_LFM_CSRF_TOKEN=OFF
 ```

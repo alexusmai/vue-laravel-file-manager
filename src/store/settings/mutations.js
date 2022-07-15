@@ -34,12 +34,12 @@ export default {
     initAxiosSettings(state) {
         // initiate base url, if not set manually
         if (!state.baseUrl) {
-            if (process.env.VUE_APP_LFM_AXIOS_BASE_URL) {
+            if (import.meta.env.VITE_APP_LFM_AXIOS_BASE_URL) {
                 // vue .env
-                state.baseUrl = process.env.VUE_APP_LFM_AXIOS_BASE_URL;
-            } else if (process.env.MIX_LFM_BASE_URL) {
+                state.baseUrl = import.meta.env.VITE_APP_LFM_AXIOS_BASE_URL;
+            } else if (import.meta.env.VITE_LFM_BASE_URL) {
                 // laravel .env
-                state.baseUrl = process.env.MIX_LFM_BASE_URL;
+                state.baseUrl = import.meta.env.VITE_LFM_BASE_URL;
             } else {
                 let baseUrl = `${window.location.protocol}//${window.location.hostname}`;
 
@@ -56,7 +56,7 @@ export default {
         // initiate headers, if not set manually
         if (Object.keys(state.headers).length === 0) {
             // off laravel csrf-token if need
-            if (process.env.VUE_APP_LFM_CSRF_TOKEN === 'OFF' || process.env.MIX_LFM_CSRF_TOKEN === 'OFF') {
+            if (import.meta.env.VITE_APP_LFM_CSRF_TOKEN === 'OFF' || import.meta.env.VITE_LFM_CSRF_TOKEN === 'OFF') {
                 state.headers = { 'X-Requested-With': 'XMLHttpRequest' };
             } else {
                 // Laravel CSRF token
