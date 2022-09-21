@@ -2,6 +2,11 @@
 import EventBus from '../../../eventBus';
 
 export default {
+  data(){
+    return {
+      isHold : false
+    }
+  },
   computed: {
     /**
      * Selected disk for this manager
@@ -91,6 +96,38 @@ export default {
     },
 
     /**
+     * Select or hold items in list
+     * @param type
+     * @param path
+     * @param event
+     */
+    hold(type, path, event) {
+      if(event.button != 2 ){
+        this.selectItem(type, path, event);
+        this.isHold = true;
+      }
+    },
+
+    /**
+     * unhold left button
+     */
+    unHold() {
+      this.isHold = false;
+    },
+
+    /**
+     * Select items in list (files + folders)
+     * @param type
+     * @param path
+     * @param event
+     */
+    selectItemOnOver(type, path, event) {
+      if(this.isHold){
+        this.selectItem(type, path, event);
+      }
+    },
+
+    /**
      * Select items in list (files + folders)
      * @param type
      * @param path
@@ -101,7 +138,7 @@ export default {
       const alreadySelected = this.selected[type].includes(path);
 
       // if pressed Ctrl -> multi select
-      if (event.ctrlKey || event.metaKey) {
+      if ((event.ctrlKey || event.metaKey) || this.isHold) {
         if (!alreadySelected) {
           // add new selected item
           this.$store.commit(`fm/${this.manager}/setSelected`, { type, path });
@@ -112,7 +149,7 @@ export default {
       }
 
       // single select
-      if (!event.ctrlKey && !alreadySelected && !event.metaKey) {
+      if (!event.ctrlKey && !event.metaKey && !this.isHold) {
         this.$store.commit(`fm/${this.manager}/changeSelected`, { type, path });
       }
     },

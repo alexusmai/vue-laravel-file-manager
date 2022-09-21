@@ -12,6 +12,15 @@
                                v-show="sortSettings.direction === 'up'"/>
                         </template>
                     </th>
+                    <th class="w-65" v-on:click="sortBy('dirname')">
+                        {{ lang.manager.table.dirname }}
+                        <template v-if="sortSettings.field === 'dirname'">
+                            <i class="fas fa-sort-amount-down"
+                               v-show="sortSettings.direction === 'down'"/>
+                            <i class="fas fa-sort-amount-up"
+                               v-show="sortSettings.direction === 'up'"/>
+                        </template>
+                    </th>
                     <th class="w-10" v-on:click="sortBy('size')">
                         {{ lang.manager.table.size }}
                         <template v-if="sortSettings.field === 'size'">
@@ -41,22 +50,26 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-on:mouseleave="unHold()">
                 <tr v-if="!isRootPath">
                     <td colspan="4" class="fm-content-item" v-on:click="levelUp">
                         <i class="fas fa-level-up-alt"/>
                     </td>
                 </tr>
                 <tr v-for="(directory, index) in directories"
+                    v-on:mousedown="hold('directories', directory.path, $event)"
+                    v-on:mouseover="selectItemOnOver('directories', directory.path, $event)"
+                    v-on:mouseup="unHold()"
                     v-bind:key="`d-${index}`"
                     v-bind:class="{'table-info': checkSelect('directories', directory.path)}"
-                    v-on:click="selectItem('directories', directory.path, $event)"
                     v-on:contextmenu.prevent="contextMenu(directory, $event)">
+
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && directory.acl === 0) ? 'text-hidden' : ''"
                         v-on:dblclick="selectDirectory(directory.path)">
                         <i class="far fa-folder"/> {{ directory.basename }}
                     </td>
+                    <td>{{  directory.dirname  }}</td>
                     <td/>
                     <td>{{ lang.manager.table.folder }}</td>
                     <td>
@@ -64,9 +77,11 @@
                     </td>
                 </tr>
                 <tr v-for="(file, index) in files"
+                    v-on:mousedown="hold('files', file.path, $event)"
+                    v-on:mouseover="selectItemOnOver('files', file.path, $event)"
+                    v-on:mouseup="unHold()"
                     v-bind:key="`f-${index}`"
                     v-bind:class="{'table-info': checkSelect('files', file.path)}"
-                    v-on:click="selectItem('files', file.path, $event)"
                     v-on:dblclick="selectAction(file.path, file.extension)"
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
                     <td class="fm-content-item unselectable"
@@ -74,6 +89,7 @@
                         <i class="far" v-bind:class="extensionToIcon(file.extension)"/>
                         {{ file.filename ? file.filename : file.basename }}
                     </td>
+                    <td>{{   file.dirname  }}</td>
                     <td>{{ bytesToHuman(file.size) }}</td>
                     <td>
                         {{ file.extension }}

@@ -25,4 +25,8 @@ export default {
 
   // full screen mode
   fullScreen: false,
+
+  // search term
+  searchTerm: '',
+
 };

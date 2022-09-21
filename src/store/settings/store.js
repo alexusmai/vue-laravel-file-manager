@@ -107,6 +107,10 @@ export default {
             icon: 'far fa-copy',
           },
           {
+            name: 'path',
+            icon: 'fa fa-link',
+          },
+          {
             name: 'cut',
             icon: 'fas fa-cut',
           },

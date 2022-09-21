@@ -189,6 +189,20 @@ export default {
   },
 
   /**
+   * Sort table by directory
+   * @param state
+   */
+  sortByDirname(state) {
+    if (state.sort.direction === 'up') {
+      state.directories.sort((a, b) => a.dirname.localeCompare(b.dirname));
+      state.files.sort((a, b) => a.dirname.localeCompare(b.dirname));
+    } else {
+      state.directories.sort((a, b) => b.dirname.localeCompare(a.dirname));
+      state.files.sort((a, b) => b.dirname.localeCompare(a.dirname));
+    }
+  },
+
+  /**
    * Sort by file size
    * @param state
    */

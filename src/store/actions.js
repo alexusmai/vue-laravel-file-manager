@@ -486,6 +486,28 @@ export default {
   },
 
   /**
+   * @param state
+   * @param commit
+   * @param dispatch
+   * @returns {*}
+   */
+  search({ state, commit, dispatch }) {
+    commit('left/setSelectedDirectory', null);
+    // only left manager
+    return dispatch('left/refreshDirectory', state.searchTerm);
+  },
+
+  /**
+   * Update search term
+   * @param commit
+   * @param term
+   * @returns {*}
+   */
+  searchTermUpdate({ commit }, term) {
+    return commit('setSearchTerm', term);
+  },
+
+  /**
    * Repeat sorting
    * @param state
    * @param dispatch

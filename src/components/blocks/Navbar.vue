@@ -79,6 +79,19 @@
                     </button>
                 </div>
             </div>
+            <div class="col-auto">
+                <form v-on:submit.prevent="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" v-model="searchTerm" :placeholder="lang.placeholders.search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"/></button>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" @click="clearSearch()" type="button">{{lang.btn.clear}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-auto text-right">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-secondary"
@@ -194,6 +207,15 @@ export default {
     hiddenFiles() {
       return this.$store.state.fm.settings.hiddenFiles;
     },
+
+      searchTerm: {
+          get() {
+              return this.$store.state.fm.searchTerm;
+          },
+          set(value) {
+              this.$store.dispatch('fm/searchTermUpdate', value);
+          }
+      },
   },
   methods: {
     /**
@@ -202,6 +224,18 @@ export default {
     refreshAll() {
       this.$store.dispatch('fm/refreshAll');
     },
+
+      /**
+       * Search
+       */
+      search() {
+          this.$store.dispatch('fm/search');
+      },
+
+      clearSearch() {
+          this.searchTerm = '';
+          this.$store.dispatch('fm/refreshAll');
+      },
 
     /**
      * History back

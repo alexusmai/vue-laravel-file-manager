@@ -9,6 +9,16 @@ export default {
     state.disks = disks;
   },
 
+
+  /**
+   * Set disks
+   * @param state
+   * @param term
+   */
+  setSearchTerm(state, term) {
+    state.searchTerm = term;
+  },
+
   /**
    * Set clipboard
    * @param state

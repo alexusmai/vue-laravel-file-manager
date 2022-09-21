@@ -132,5 +132,13 @@ export default {
     propertiesRule() {
       return !this.multiSelect;
     },
+
+    /**
+     * Path - menu item path - show or hide
+     * @returns {boolean}
+     */
+    pathRule() {
+      return !this.multiSelect;
+    },
   },
 };

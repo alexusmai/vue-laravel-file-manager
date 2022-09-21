@@ -30,6 +30,7 @@ export default {
 <style lang="scss">
     .fm-tree {
         overflow: auto;
+        max-height: 80vh;
         border-right: 1px solid #6d757d;
 
         & > .fm-folders-tree {

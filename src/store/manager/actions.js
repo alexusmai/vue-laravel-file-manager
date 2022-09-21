@@ -39,13 +39,15 @@ export default {
   },
 
   /**
-   * Refresh content in the selected directory
+   * Refresh content in the selected directory or search by term
    * @param state
    * @param commit
    * @param dispatch
+   * @param term  - search ter,
    */
-  refreshDirectory({ state, commit, dispatch }) {
-    GET.content(state.selectedDisk, state.selectedDirectory).then((response) => {
+  refreshDirectory({ state, commit, dispatch }, term = null) {
+    let method = term == null ? 'content' : 'search'
+    GET[method](state.selectedDisk, term ? term : state.selectedDirectory).then((response) => {
       commit('resetSelected');
       commit('resetSortSettings');
       commit('resetHistory');
@@ -111,6 +113,9 @@ export default {
     switch (field) {
       case 'name':
         commit('sortByName');
+        break;
+      case 'dirname':
+        commit('sortByDirname');
         break;
       case 'size':
         commit('sortBySize');

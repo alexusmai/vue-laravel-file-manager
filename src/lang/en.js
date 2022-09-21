@@ -26,6 +26,9 @@ const en = {
     hidden: ' Hidden files',
     deleteFile: 'Delete file',
   },
+  placeholders:{
+    search: 'Search'
+  },
   clipboard: {
     actionType: 'Type',
     copy: 'Copy',
@@ -35,6 +38,7 @@ const en = {
   },
   contextMenu: {
     copy: 'Copy',
+    path: 'Path',
     cut: 'Cut',
     delete: 'Delete',
     download: 'Download',
@@ -65,6 +69,7 @@ const en = {
       name: 'Name',
       size: 'Size',
       type: 'Type',
+      dirname: 'Directory',
     },
   },
   modal: {

@@ -178,5 +178,13 @@ export default {
         show: true,
       });
     },
+
+    /**
+     * Copy Path of the item
+     * work only with https
+     */
+    pathAction() {
+      navigator.clipboard.writeText(this.selectedItems[0].path)
+    },
   },
 };

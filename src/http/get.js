@@ -39,6 +39,16 @@ export default {
   },
 
   /**
+   * Search content (files and folders)
+   * @param disk
+   * @param term
+   * @returns {*}
+   */
+  search(disk, term) {
+    return HTTP.get('search', { params: { disk, term } });
+  },
+
+  /**
    * Item properties
    */
   /* properties(disk, path) {

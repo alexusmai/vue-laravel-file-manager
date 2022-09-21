@@ -26,6 +26,9 @@ const ru = {
     hidden: 'Скрытые файлы',
     deleteFile: 'Удалить файл',
   },
+  placeholders:{
+    search: 'Поиск'
+  },
   clipboard: {
     actionType: 'Тип операции',
     copy: 'Копировать',
@@ -35,6 +38,7 @@ const ru = {
   },
   contextMenu: {
     copy: 'Копировать',
+    path: 'Путь',
     cut: 'Вырезать',
     delete: 'Удалить',
     download: 'Скачать',
@@ -65,6 +69,7 @@ const ru = {
       name: 'Имя',
       size: 'Размер',
       type: 'Тип',
+      dirname: 'Директория',
     },
   },
   modal: {

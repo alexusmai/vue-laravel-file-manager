@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss">
     .fm-content {
-        height: 100%;
+        height: 80vh;
         padding-left: 1rem;
 
         .fm-content-body {
