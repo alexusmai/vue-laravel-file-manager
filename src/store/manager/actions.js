@@ -88,6 +88,15 @@ export default {
     },
 
     /**
+     * Search files and folders
+     * @param commit
+     * @param newSearch
+     */
+    searchFilesOrFolders({ commit }, newSearch) {
+        commit('setSearch', newSearch);
+    },
+
+    /**
      * Sort data by field
      * @param context
      * @param field
