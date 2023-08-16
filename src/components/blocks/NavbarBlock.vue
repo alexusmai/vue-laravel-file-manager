@@ -115,6 +115,21 @@
                     </button>
                 </div>
             </div>
+            <div class="col-4">
+                <div class="d-flex border rounded">
+                    <input
+                        type="text"
+                        class="border-0 form-control search-input"
+                        placeholder="Search files and folders"
+                        :value="search"
+                        @input="setSearch"
+                    />
+
+                    <button class="border-0 mr-2" type="button" @click="setSearch('')">
+                        <i class="bi bi-x navbar-icon"></i>
+                    </button>
+                </div>
+            </div>
             <div class="col-auto text-right">
                 <div class="btn-group" role="group">
                     <button
@@ -247,6 +262,13 @@ export default {
         hiddenFiles() {
             return this.$store.state.fm.settings.hiddenFiles;
         },
+
+        /**
+         * Search string
+         */
+        search() {
+            return this.$store.state.fm[this.activeManager].search;
+        }
     },
     methods: {
         /**
@@ -353,6 +375,15 @@ export default {
 
             this.$store.commit('fm/screenToggle');
         },
+
+        /**
+         * Set search string
+         * @param {any} e
+         */
+        setSearch(e) {
+            let newSearch = e == ''? '' : e.target.value;
+            this.$store.dispatch(`fm/${this.activeManager}/searchFilesOrFolders`, newSearch);
+        },
     },
 };
 </script>
@@ -363,6 +394,11 @@ export default {
 
     .col-auto > .btn-group:not(:last-child) {
         margin-right: 0.4rem;
+    }
+
+    .search-input:focus{
+        outline: none;
+        box-shadow: none;
     }
 }
 </style>

@@ -166,6 +166,15 @@ export default {
     },
 
     /**
+     * Set search string
+     * @param state
+     * @param newSearch
+     */
+    setSearch(state, newSearch) {
+        state.search = newSearch;
+    },
+
+    /**
      * Reset sort settings
      * @param state
      */

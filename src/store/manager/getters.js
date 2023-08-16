@@ -6,11 +6,13 @@ export default {
      * @param rootState
      */
     files(state, getters, rootState) {
+        const files = state.files.filter((item) => item.basename.match(new RegExp(`^.*${state.search}.*`, 'i')));
+
         if (rootState.fm.settings.hiddenFiles) {
-            return state.files;
+            return files;
         }
 
-        return state.files.filter((item) => item.basename.match(/^([^.]).*/i));
+        return files.filter((item) => item.basename.match(/^([^.]).*/i));
     },
 
     /**
@@ -21,11 +23,13 @@ export default {
      * @returns {*}
      */
     directories(state, getters, rootState) {
+        const directories = state.directories.filter((item) => item.basename.match(new RegExp(`^.*${state.search}.*`, 'i')));
+
         if (rootState.fm.settings.hiddenFiles) {
-            return state.directories;
+            return directories;
         }
 
-        return state.directories.filter((item) => item.basename.match(/^([^.]).*/i));
+        return directories.filter((item) => item.basename.match(/^([^.]).*/i));
     },
 
     /**
