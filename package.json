@@ -1,6 +1,6 @@
 {
   "name": "laravel-file-manager",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "File manager for Laravel",
   "keywords": [
     "laravel",
@@ -17,7 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^1.6.2",
     "codemirror": "^5.65.1",
     "codemirror-editor-vue3": "^2.1.7",
     "cropperjs": "^1.5.12",

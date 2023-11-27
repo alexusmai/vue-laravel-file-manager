@@ -7,7 +7,7 @@
 # New in version 3
 
 - Vue.js 3
-- Bootstrap 5
+- Bootstrap 5.3
 - Bootstrap icons
 
 ## Installation
@@ -111,8 +111,8 @@ Don't forget to add a csrf token to head block in your Laravel view and add boot
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Example -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 ```
 
 [Laravel VITE environment variables](https://laravel.com/docs/9.x/vite#environment-variables)
