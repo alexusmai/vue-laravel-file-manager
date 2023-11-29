@@ -8,13 +8,20 @@
             <button type="button" class="btn-close" aria-label="Close" v-on:click="hideModal"></button>
         </div>
         <div class="modal-body">
-            <codemirror
-                ref="fmCodeEditor"
-                v-bind:value="code"
-                v-bind:options="cmOptions"
-                v-bind:height="editorHeight"
-                v-on:change="onChange"
-            />
+            <div v-if="codeLoaded">
+                <codemirror
+                    ref="fmCodeEditor"
+                    v-bind:value="code"
+                    v-bind:options="cmOptions"
+                    v-bind:height="editorHeight"
+                    v-on:change="onChange"
+                />
+            </div>
+            <div class="p-5" v-else :style="{ height: editorHeight + 'px' }">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border spinner-border-big" role="status"></div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-info" v-on:click="updateFile">
@@ -59,6 +66,7 @@ export default {
         return {
             code: '',
             editedCode: '',
+            codeLoaded: false,
         };
     },
     mounted() {
@@ -75,6 +83,11 @@ export default {
                 } else {
                     this.code = response.data;
                 }
+
+                this.codeLoaded = true;
+            })
+            .catch(() => {
+                this.hideModal();
             });
     },
     computed: {
@@ -157,5 +170,10 @@ export default {
     .modal-body {
         padding: 0;
     }
+}
+
+.spinner-border-big {
+    width: 3rem;
+    height: 3rem;
 }
 </style>
