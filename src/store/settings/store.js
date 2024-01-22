@@ -20,6 +20,7 @@ import pt_BR from '../../lang/pt_BR';
 import zh_TW from '../../lang/zh_TW';
 import pl from '../../lang/pl';
 import hu from '../../lang/hu';
+import uk from '../../lang/uk';
 
 export default {
     namespaced: true,
@@ -67,6 +68,7 @@ export default {
                 'zh-TW': Object.freeze(zh_TW),
                 pl: Object.freeze(pl),
                 hu: Object.freeze(hu),
+                uk: Object.freeze(uk),
             },
 
             // show or hide hidden files

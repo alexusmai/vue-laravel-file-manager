@@ -1,0 +1,190 @@
+/**
+ * Ukrainian translate
+ * @type Object
+ */
+const uk = {
+    btn: {
+        about: 'Про програму',
+        back: 'Назад',
+        cancel: 'Скасувати',
+        clear: 'Очистити',
+        copy: 'Копіювати',
+        cut: 'Вирізати',
+        delete: 'Видалити',
+        edit: 'Редагувати',
+        forward: 'Вперед',
+        folder: 'Нова папка',
+        file: 'Новий файл',
+        fullScreen: 'На весь екран',
+        grid: 'Сітка',
+        paste: 'Вставити',
+        refresh: 'Оновити',
+        submit: 'Надіслати',
+        table: 'Таблиця',
+        upload: 'Завантажити',
+        uploadSelect: 'Вибрати файли',
+        hidden: 'Приховані файли',
+    },
+    clipboard: {
+        actionType: 'Тип операції',
+        copy: 'Копіювати',
+        cut: 'Вирізати',
+        none: 'Нічого не вибрано',
+        title: 'Буфер обміну',
+    },
+    contextMenu: {
+        copy: 'Копіювати',
+        cut: 'Вирізати',
+        delete: 'Видалити',
+        download: 'Завантажити',
+        info: 'Вибрано:',
+        open: 'Відкрити',
+        paste: 'Вставити',
+        properties: 'Властивості',
+        rename: 'Перейменувати',
+        select: 'Вибрати',
+        view: 'Перегляд',
+        zip: 'Створити архів',
+        unzip: 'Розархівувати',
+        edit: 'Редагувати',
+        audioPlay: 'Відтворити аудіо',
+        videoPlay: 'Відтворити відео',
+    },
+    info: {
+        directories: 'Папок:',
+        files: 'Файлів:',
+        selected: 'Вибрано:',
+        selectedSize: 'Розмір:',
+        size: 'Розмір файлів:',
+    },
+    manager: {
+        table: {
+            date: 'Дата',
+            folder: 'Папка',
+            name: "Ім'я",
+            size: 'Розмір',
+            type: 'Тип',
+        },
+    },
+    modal: {
+        about: {
+            developer: 'Розробник',
+            name: 'Laravel File Manager',
+            title: 'Про програму',
+            version: 'Версія',
+        },
+        delete: {
+            noSelected: 'Нічого не вибрано!',
+            title: 'Видалити',
+        },
+        newFile: {
+            fieldName: "Ім'я файлу",
+            fieldFeedback: 'Такий файл вже існує!',
+            title: 'Створити новий файл',
+        },
+        newFolder: {
+            fieldName: "Ім'я папки",
+            fieldFeedback: 'Така папка вже існує!',
+            title: 'Створити нову папку',
+        },
+        preview: {
+            title: 'Попередній перегляд',
+        },
+        properties: {
+            disk: 'Диск',
+            modified: 'Змінено',
+            name: "Ім'я",
+            path: 'Шлях',
+            size: 'Розмір',
+            title: 'Властивості',
+            type: 'Тип',
+            url: 'URL',
+            access: 'Доступ',
+            access_0: 'Немає доступу',
+            access_1: 'Тільки читання',
+            access_2: 'Читання та запис',
+        },
+        rename: {
+            directoryExist: 'Папка існує',
+            fieldName: "Введіть нове ім'я",
+            fieldFeedback: "Некоректне ім'я",
+            fileExist: 'Файл існує',
+            title: 'Перейменувати',
+        },
+        status: {
+            noErrors: 'Помилок немає!',
+            title: 'Стан',
+        },
+        upload: {
+            ifExist: 'Якщо файл існує:',
+            noSelected: 'Жодного файлу не вибрано!',
+            overwrite: 'Перезаписати!',
+            selected: 'Вибрано:',
+            size: 'Розмір:',
+            skip: 'Пропустити',
+            title: 'Завантажити файли',
+        },
+        editor: {
+            title: 'Редактор',
+        },
+        audioPlayer: {
+            title: 'Аудіоплеєр',
+        },
+        videoPlayer: {
+            title: 'Відеоплеєр',
+        },
+        zip: {
+            title: 'Створити архів',
+            fieldName: "Ім'я архіву",
+            fieldFeedback: 'Такий файл вже існує!',
+        },
+        unzip: {
+            title: 'Розпакувати архів',
+            fieldName: "Ім'я папки",
+            fieldRadioName: 'Розпакувати в:',
+            fieldRadio1: 'В поточну папку',
+            fieldRadio2: 'В нову папку',
+            fieldFeedback: 'Папка існує!',
+            warning: 'Увага! При збігу імен файли будуть перезаписані!',
+        },
+        cropper: {
+            title: 'Обрізка',
+            apply: 'Застосувати',
+            reset: 'Скинути',
+            save: 'Зберегти',
+        },
+    },
+    notifications: {
+        cutToClipboard: 'Вирізано!',
+        copyToClipboard: 'Скопійовано!',
+    },
+    response: {
+        noConfig: 'Конфігурація не знайдена!',
+        notFound: 'Не знайдено!',
+        diskNotFound: 'Диск не знайдено!',
+        pathNotFound: 'Шлях не існує!',
+        diskSelected: 'Диск обраний!',
+        // files
+        fileExist: 'Файл існує!',
+        fileCreated: 'Файл створено!',
+        fileUpdated: 'Файл оновлено!',
+        fileNotFound: 'Файл не знайдено!',
+        // directories
+        dirExist: 'Директорія існує!',
+        dirCreated: 'Директорія створена!',
+        dirNotFound: 'Директорія не знайдена',
+        // actions
+        uploaded: 'Усі файли завантажено!',
+        notAllUploaded: 'Не всі файли завантажено!',
+        delNotFound: 'Не всі елементи знайдено!',
+        deleted: 'Видалено!',
+        renamed: 'Перейменовано!',
+        copied: 'Скопійовано!',
+        // zip
+        zipError: 'Помилка створення архіву!',
+        // acl
+        aclError: 'В доступі відмовлено!',
+    },
+};
+
+export default uk;
