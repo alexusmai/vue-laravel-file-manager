@@ -1,7 +1,7 @@
 <template>
     <div class="fm-navbar mb-3">
         <div class="row justify-content-between">
-            <div class="col-auto">
+            <div class="col-auto d-flex ml-4">
                 <div class="btn-group" role="group">
                     <button
                         type="button"
@@ -20,6 +20,17 @@
                     >
                         <i class="bi bi-clipboard"></i>
                     </button>
+                </div>
+                <div>
+                    <a
+								        id="upload-link-button"
+                        :href="uploadUrl"
+                        class="ml-4 btn back-blue bluebtn-hover shadow roundness-10"
+                        role="button"
+                        style="color: #fff;"
+                    >
+                    <span class="pre">資料アップロード</span>
+                    </a>
                 </div>
             </div>
         </div>
