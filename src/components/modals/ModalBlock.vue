@@ -12,6 +12,7 @@
 import NewFileModal from './views/NewFileModal.vue';
 import NewFolderModal from './views/NewFolderModal.vue';
 import UploadModal from './views/UploadModal.vue';
+import RemoteUploadModal from './views/RemoteUploadModal.vue';
 import DeleteModal from './views/DeleteModal.vue';
 import ClipboardModal from './views/ClipboardModal.vue';
 import StatusModal from './views/StatusModal.vue';
@@ -31,6 +32,7 @@ export default {
         NewFileModal,
         NewFolderModal,
         UploadModal,
+        RemoteUploadModal,
         DeleteModal,
         ClipboardModal,
         StatusModal,

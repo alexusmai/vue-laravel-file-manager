@@ -84,4 +84,13 @@ export default {
     unzip(data) {
         return HTTP.post('unzip', data);
     },
+
+    /**
+     * Remote upload (upload file from URL)
+     * @param data
+     * @returns {*}
+     */
+    remoteUpload(data) {
+        return HTTP.post('remote-upload', data);
+    },
 };

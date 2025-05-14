@@ -68,6 +68,14 @@
                     <button
                         type="button"
                         class="btn btn-secondary"
+                        v-on:click="showModal('RemoteUploadModal')"
+                        v-bind:title="lang.btn.remoteUpload"
+                    >
+                        <i class="bi bi-cloud-upload"></i>
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
                         v-bind:disabled="!isAnyItemSelected"
                         v-on:click="showModal('DeleteModal')"
                         v-bind:title="lang.btn.delete"

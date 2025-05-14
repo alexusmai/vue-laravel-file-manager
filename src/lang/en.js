@@ -124,6 +124,11 @@ const en = {
             skip: 'Skip',
             title: 'Upload files',
         },
+        remoteUpload: {
+            title: 'Upload from URL',
+            urlLabel: 'File URL',
+            urlPlaceholder: 'Enter the file URL here',
+        },
         editor: {
             title: 'Editor',
         },

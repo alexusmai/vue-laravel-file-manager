@@ -267,6 +267,30 @@ export default {
     },
 
     /**
+     * Upload file from remote URL
+     * @param getters
+     * @param dispatch
+     * @param url
+     * @param overwrite
+     * @returns {Promise}
+     */
+    uploadByUrl({ getters, dispatch }, { url, overwrite }) {
+        const selectedDirectory = getters.selectedDirectory;
+        const data = {
+            disk: getters.selectedDisk,
+            path: selectedDirectory || '',
+            url,
+            overwrite,
+        };
+        return POST.remoteUpload(data).then((response) => {
+            if (response.data.result.status === 'success' && selectedDirectory === getters.selectedDirectory) {
+                dispatch('refreshManagers');
+            }
+            return response;
+        });
+    },
+
+    /**
      * Delete selected files and folders
      * @param state
      * @param getters

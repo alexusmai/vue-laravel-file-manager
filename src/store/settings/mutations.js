@@ -51,6 +51,7 @@ export default {
 
                 state.baseUrl = baseUrl;
             }
+            console.log('LFM Base URL:', state.baseUrl);
         }
 
         // initiate headers, if not set manually
@@ -58,10 +59,11 @@ export default {
             // off laravel csrf-token if need
             if (import.meta.env.VITE_APP_LFM_CSRF_TOKEN === 'OFF' || import.meta.env.VITE_LFM_CSRF_TOKEN === 'OFF') {
                 state.headers = { 'X-Requested-With': 'XMLHttpRequest' };
+                console.log('[CSRF] CSRF token disabled by env, using only X-Requested-With');
             } else {
                 // Laravel CSRF token
                 const token = document.head.querySelector('meta[name="csrf-token"]');
-
+                console.log('[CSRF] Token meta tag:', token);
                 if (!token) {
                     state.headers = {
                         'X-Requested-With': 'XMLHttpRequest',
@@ -73,6 +75,7 @@ export default {
                         'X-Requested-With': 'XMLHttpRequest',
                         'X-CSRF-TOKEN': token.content,
                     };
+                    console.log('[CSRF] Using token:', token.content);
                 }
             }
         }
