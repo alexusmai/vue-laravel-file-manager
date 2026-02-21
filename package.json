@@ -17,25 +17,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "codemirror": "^5.65.1",
-    "codemirror-editor-vue3": "^2.1.7",
-    "cropperjs": "^1.5.12",
-    "mitt": "^3.0.0",
-    "plyr": "^3.6.12",
-    "vue": "^3.2.25",
-    "vuex": "^4.0.2"
+    "axios": "^1.13.5",
+    "codemirror-editor-vue3": "^2.8.0",
+    "cropperjs": "^2.1.0",
+    "mitt": "^3.0.1",
+    "plyr": "^3.8.4",
+    "vue": "^3.5.28",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.0",
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^9.2.0",
-    "prettier": "^2.5.1",
-    "sass": "^1.49.7",
-    "vite": "^3.0.0"
+    "@vitejs/plugin-vue": "^6.0.4",
+    "eslint": "^10.0.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.8.0",
+    "prettier": "^3.8.1",
+    "sass": "^1.97.3",
+    "vite": "^7.3.1"
   }
 }

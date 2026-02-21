@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'plyr/src/sass/plyr.scss';
+@import 'plyr/dist/plyr.css';
 
 .fm-modal-video-player {
 }
